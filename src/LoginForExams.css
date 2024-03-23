@@ -1,0 +1,44 @@
+.Loginback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("./images.jpg/loginBackground.jpg");
+    background-size: cover;
+    
+  }
+  
+  .Login {
+    display: grid;
+    row-gap: 10px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 5px;
+    
+  }
+
+  .signup{
+    text-align: center;
+  }
+
+  .signup button{
+    margin-top: 5px;
+    padding: 3px 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 10px;
+   }
+
+.signup button:hover{
+    background-color:  rgb(255, 255, 255);
+    border-right: 1px solid green;
+    border-bottom: 1px solid green;
+  }
+
+  .signup button:active{
+   
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+
+  }

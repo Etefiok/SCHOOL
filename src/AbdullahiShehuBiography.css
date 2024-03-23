@@ -1,0 +1,23 @@
+.page-cont{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.page-cont > .content-wrapper{
+    width: 1000px;
+}
+
+.page-cont > .content-wrapper > #foodpic{
+    width: 350px;
+    margin: 25px 40px 20px 0px;
+    float: left;
+    border: 1px solid #cea135;
+    
+}
+
+.page-cont > .content-wrapper p{
+    letter-spacing: 1px;
+    line-height: 30px;
+    text-align:justify;
+}

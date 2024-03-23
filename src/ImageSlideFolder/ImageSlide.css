@@ -1,0 +1,53 @@
+
+
+.image-container button{
+    
+    border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+   
+}
+
+.image-container::-webkit-scrollbar{
+    /* width: 0; */
+}
+
+.image-container {
+    margin-top: 10px;
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    margin-right: 2px;
+    margin-left: 2px;
+    
+    
+}
+
+@media screen and (max-width:780px){
+    .image-container {
+        margin-top: 10px;
+        width: 100%;
+        overflow: auto;
+        white-space: nowrap;
+        
+    }
+
+    .image-container img {
+        max-width: 180px;
+        height: auto;
+        display: inline-block;
+        margin-right: 2px;
+        margin-left: 2px;
+        
+        
+    }
+}
+

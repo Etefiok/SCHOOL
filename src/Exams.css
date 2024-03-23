@@ -1,0 +1,41 @@
+
+.Examsback{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+/* background-image: url("./images.jpg/LoginBackground2.jpg"); */
+background-color: rgb(235, 225, 225);
+background-size: cover;
+
+}
+
+.Exams{display: grid;
+    row-gap: 10px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    /* background-color: white; */
+    width: 800px;
+    font-size: 16px;
+    
+    
+   
+}
+
+.GoodLuck{
+    display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+/* background-image: url("./images.jpg/LoginBackground2.jpg"); */
+background-color: rgb(235, 225, 225);
+background-size: cover;
+
+}
+.Submit{
+    height: fit-content;
+    color: red;
+}
+
+

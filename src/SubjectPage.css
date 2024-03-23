@@ -1,0 +1,157 @@
+.SubjectContainer {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    /* height: 85vh; */
+    /* background-image: url(https://www.nairaland.com/attachments/2768243_nigerianstudents_jpegea912c2d51c1cae7bcee727df71dd0a6);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: burlywood;
+        
+     
+  }
+    
+  .SubjectContainer h1{
+
+    text-align: center;
+    font-weight: bolder;
+    backdrop-filter: blur(15px);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.5);
+    color: #ECF0F1;
+    padding: 10px 20px;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 2px;
+
+  }
+  
+.Subject h4 {
+    justify-content: center;
+    align-items: center;
+   border-radius: 10px;
+    padding: 10px 20px;
+   display: grid;
+  width: fit-content;
+  gap: 20px;
+  background-color:none;
+  grid-template-columns: auto auto auto auto;
+  
+
+}
+
+
+  .Subject button {
+    padding: 50px;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 20px;
+    color: whitesmoke;
+    font-family: 'Times New Roman', serif;
+    text-shadow: 2px 2px 4px #000000;
+  box-shadow: 2px 2px 4px #000000;
+  }
+
+  .Subject button:hover{
+   backdrop-filter: blur(15px);
+  
+
+
+  text-shadow: 4px 4px 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+
+  }
+
+
+  .Subject button:active{
+    box-shadow: 4px 4px 5px rgba(255, 255, 255, 0.5);
+  }
+
+
+  /* .maths {
+    background-size: cover;
+    background-image: url('./images.jpg/maths.png');
+  }
+
+  .english {
+    background-size: cover;
+    background-image: url('./images.jpg/litineng.jpeg');
+  }
+
+  .litinenglish {
+    background-size: cover;
+    background-image: url('./images.jpg/litineng.jpeg');
+  }
+
+  .social {
+    background-size: cover;
+    background-image: url('./images.jpg/social.png');
+  }
+
+  .Economics {
+    background-size: cover;
+    background-image: url('./images.jpg/economics.jpg');
+  }
+
+  .Computer {
+    background-size: cover;
+    background-image: url('./images.jpg/computer.jpg');
+  }
+
+  .Basict {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  }
+
+  .Basict {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  }
+
+  .Agriculture {
+    background-size: cover;
+    background-image: url('./images.jpg/Agriculture.jpg');
+  }
+
+  .Biology {
+    background-size: cover;
+    background-image: url('./images.jpg/biology.jpg');
+  }
+
+  .Yeruba {
+    background-size: cover;
+    background-image: url('./images.jpg/yeruba.jpeg');
+  }
+
+  .Chemistry {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  }
+
+  .CRK {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  }
+
+  .Government {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  }
+
+  .Science {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  }
+
+  .Technical {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  }
+
+  .AutoMech {
+    background-size: cover;
+    background-image: url('./images.jpg/basictech.jpg');
+  } */

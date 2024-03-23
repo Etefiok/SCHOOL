@@ -1,0 +1,15 @@
+.cardstle{
+    width: 15rem;
+    margin: 10px;
+    text-align: center;
+    line-height: 10px;
+    float: left;
+
+}
+
+.cardba{
+    border: 2px solid red;
+    width: fit-content;
+    height: 50px;
+    float: left;
+}

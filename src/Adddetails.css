@@ -1,0 +1,32 @@
+/* .ad{ */
+    /* display: flex; */
+    /* grid-template-columns: auto auto auto auto auto auto; */
+    /* row-gap: 5px; */
+    /* height: fit-content; */
+    /* justify-content: 'center';  */
+    /* background-color: aqua; */
+    /* gap: '20px';
+    width: '18rem'; */
+
+/* } */
+
+/* .inputgap{ */
+    /* display: flex; */
+    /* row-gap: 5px; */
+    /* background-color: black; */
+    /* height: fit-content; */
+    /* justify-content: 'center';  */
+    /* width: fit-content; */
+    /* grid-template-columns: auto auto auto auto auto auto; */
+    /* padding: 20px; */
+    
+
+/* } */
+
+.inputgap{
+    display: grid;
+    row-gap: 5px;
+}
+
+
+

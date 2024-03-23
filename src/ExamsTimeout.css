@@ -1,0 +1,45 @@
+/* Styles for the modal overlay */
+.exams-containe {
+  position: fixed; /* Change from absolute to fixed */
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  /* Semi-transparent black overlay */
+  z-index: 999; 
+  
+}
+
+/* Styles for the centered notice */
+.centered-notice {
+  position: fixed; /* Change from absolute to fixed */
+  
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  /*  Ensure the notice is above the overlay */
+
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  text-align: center;
+  padding-top: 60px;
+  
+}
+.centered-notice p{
+  
+  background-color: red;
+  font-size: 15px;
+  color: white;
+  
+}
+
+.centered-notice button{
+  border-radius: 10px;
+  width: 4%;
+  border: none;
+
+}
