@@ -25,18 +25,18 @@ const NavBar_out = () => {
   return (
     <div className='Navbar'>
     {/* <img src={require("./images.jpg/schoollogo.jpeg")}alt="logo" /> */}
-    <Navbar expand="lg" className="tertiary " >
+    <Navbar expand="lg" className="" >
     
       <Container fluid >
       <div>
               <img src={require("./images.jpg/schoollogo.jpeg")}alt="logo" />
           </div>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Toggle aria-controls="" />
+        <Navbar.Collapse id="">
 
           <Nav>
 
-<div className='manue'>
+<div className='menu'>
             <Nav.Link className='Animation1' id="navbarScrollingDropdown" onClick={() => { window.location.href = "./"; }}>Home</Nav.Link>
 
             <NavDropdown className='Animation2' title="Academics" id="navbarScrollingDropdown">

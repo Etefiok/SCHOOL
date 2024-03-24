@@ -4,7 +4,7 @@ const Ss1profileData = [
     {
       
       title: "Abdullahi Shehu",
-      name: "Name: Abdullahi S.",
+      name: "Abdullahi S.",
       team: "Team: Nigeria",
       nationality: "Nationality: Nigeria",
       jerseyNumber: "Jersey Number : 7" ,
@@ -32,7 +32,7 @@ const Ss1profileData = [
     },
     {
       title: "Elderson Echiejile",
-      name: "Name: Elderson E.",
+      name: "Elderson E.",
       team: "Team: Nigeria",
       nationality: "Nationality: Nigeria",
       jerseyNumber: "Jersey Number : 3" ,

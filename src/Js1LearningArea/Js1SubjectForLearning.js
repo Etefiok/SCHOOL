@@ -27,7 +27,7 @@ const Js1SubjectForLearning = () => {
         <div className="SubjectContainer">
             <h1>CHOOSE SUBJECT</h1>
             <div className="Subject">
-<h4>
+<span>
 
     <button className='maths' onClick={() => { window.location.href = "./Exams";}}>Mathematics</button>
     <button className='english' onClick={() => { window.location.href ="./LearnEnglish"}}>English</button>
@@ -47,7 +47,7 @@ const Js1SubjectForLearning = () => {
     <button className='Technical'>Technical Drawing</button>
     <button className='AutoMech'>Auto Mech</button>
     
-</h4>
+</span>
         </div>
         </div>
         </div>

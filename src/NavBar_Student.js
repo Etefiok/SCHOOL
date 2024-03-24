@@ -49,22 +49,22 @@ const handleSearch = () =>{
   return (
     <div className='Navbar'>
     {/* <img src={require("./images.jpg/schoollogo.jpeg")}alt="logo" /> */}
-    <Navbar expand="lg" className="bg-body-tertiary " >
+    <Navbar expand="lg" className="" >
     
       <Container fluid >
       <div>
               <img src={require("./images.jpg/schoollogo.jpeg")}alt="logo" />
           </div>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Toggle aria-controls="" />
+        <Navbar.Collapse id="">
 {/* <div className='manue'> */}
           <Nav>
 
-<div className='manue'>  
+<div className='menu'>  
             <Nav.Link className='Animation1' id="navbarScrollingDropdown" onClick={() => { window.location.href = "./Homepage_Student"; }}>Home</Nav.Link>
 
             <NavDropdown className='Animation2' title="Academics" id="navbarScrollingDropdown">
-            <NavDropdown.Item onClick={() => { window.location.href = "./Class"; }}><DescriptionIcon />Exams</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => { window.location.href = "./ClassesForExams"; }}><DescriptionIcon />Exams</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./Classes"; }}><DescriptionIcon />Learning</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./Performance";}}><EmojiEventsIcon />Performance</NavDropdown.Item>
         
@@ -95,12 +95,30 @@ const handleSearch = () =>{
           </NavDropdown>
 
         <NavDropdown className='Animation4' title="Student Portal" id="navbarScrollingDropdown">
-               
               <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ChatRoom"; }}><ChatIcon /> Chat Room</NavDropdown.Item>
-              
-
         </NavDropdown>
 
+{/* This is the profile for media query */}
+                <NavDropdown className='Animation5' title={Students.name} id="navbarScrollingDropdown">
+                <img src={Students.image} alt="Passport Preview"  style={{ maxWidth: '40%', maxHeight: '100%', borderRadius: '50px' }}  />
+                <p>{Students.StudentStatus}</p>
+                <NavDropdown.Item onClick={() => { window.location.href = "./AbdullahiShehu"; }}><AccountCircleIcon />Profile</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => { window.location.href = "./Performance";}}><EmojiEventsIcon />Performance</NavDropdown.Item>
+
+                <NavDropdown.Divider />
+
+                <NavDropdown.Item onClick={() => { window.location.href = "";}}><FaCog /> Settings</NavDropdown.Item>
+
+                <NavDropdown.Divider />
+
+                <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ "; }}><LogoutIcon /> Logout</NavDropdown.Item>
+
+                </NavDropdown>
+{/* profile for media queryends here */}
+        
+        
+        
+        
  </div>
 </Nav>
          
