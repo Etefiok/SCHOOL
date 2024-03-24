@@ -16,7 +16,7 @@ function Subjects() {
         <div className="SubjectContainer">
             <h1>CHOOSE SUBJECT</h1>
             <div className="Subject">
-<h4>
+<span>
    
     <button className='maths' onClick={() => { window.location.href = "./Exams";}}>Mathematics</button>
     <button className='english'onClick={() => { window.location.href = "./InstructionEnglishExams"}} >English</button>
@@ -36,7 +36,7 @@ function Subjects() {
     <button className='Technical'>Technical Drawing</button>
     <button className='AutoMech'>Auto Mech</button>
     
-</h4>
+</span>
         </div>
         </div>
         </div>
