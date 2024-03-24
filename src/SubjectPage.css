@@ -58,16 +58,16 @@
 }
 
 
-.Subject span{
+.Subject{
   justify-content: center;
   align-items: center;
- border-radius: 10px;
+  border-radius: 10px;
   padding: 10px 20px;
- display: grid;
-width: fit-content;
-gap: 20px;
-background-color:none;
-grid-template-columns: auto auto auto ;
+  display: grid;
+  width: fit-content;
+  gap: 20px;
+  background-color:none;
+  grid-template-columns: auto auto auto ;
 
 
 }
@@ -77,56 +77,52 @@ grid-template-columns: auto auto auto ;
   .Subject {
     position: absolute;
     /* background-color: blue; */
-   width: fit-content;
-   height:fit-content;
-   margin-top: 50px;
-   margin-left: 5px;
- }
-
-  .Subject span{
-    justify-content: center;
-    align-items: center;
-   border-radius: 10px;
+    width: 100%;
+    height:fit-content;
+    margin-top: 50px;
+    left: 0px;
+    margin-right: 50px;
+    justify-content:stretch;
+    align-items: none;
+    border-radius: 10px;
     padding: 10px 20px;
-   display: grid;
-  width: fit-content;
-  /* margin-left: 70px; */
-  gap: 20px;
-  /* background-color:red; */
-  grid-template-columns: auto auto;
-  
-
-  }
-
+    display: grid;
+ /* width: fit-content; */
+    gap: 5px;
+    grid-template-columns: auto;
+ 
+   
+ }
 
 }
 
 
-.Subject span button{
-  padding: 40px;
-  font-size: 30px;
+.Subject button{
+  padding: 10px;
+  font-size: 20px;
   font-weight: bolder;
-  background-color: transparent;
+  background-color:rgb(255, 255, 255);
   backdrop-filter: blur(10px);
   border: none;
   border-radius: 20px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-family: 'Times New Roman', serif;
 }
 
 @media screen and (max-width: 780px) {
-  .Subject span button{
-    padding: 10px;
-    font-size: 20px;
+  .Subject button{
+    padding: 5px;
+    font-size: 18px;
     font-weight: lighter;
     background-color: white;
     backdrop-filter: none;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     color: rgb(0, 0, 0);
     font-family: 'Times New Roman', serif;
+    margin: 0px;
   }
 
 }
@@ -141,7 +137,7 @@ grid-template-columns: auto auto auto ;
 
   .Subject button:active{
     box-shadow: 4px 4px 5px rgba(255, 255, 255, 0.5);
-    background-color: rgb(179, 151, 116);
+    background-color:blanchedalmond;
   }
 
 
