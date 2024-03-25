@@ -55,7 +55,7 @@ const Question = (props) => {
   );
 };
 
-const Js1EngTopic1Test = ({updateScore}) => {
+const Js1EngTest1 = ({updateScore}) => {
   const [examScore,setExamScore] = useState(0)
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
@@ -76,18 +76,28 @@ const Js1EngTopic1Test = ({updateScore}) => {
       id: 3,
       question: 'Where is the Great Wall of China located?',
       correctAnswer: 'China'
-    }
+    },
+    {
+      id: 3,
+      question: 'Where is the Great Wall of China located?',
+      correctAnswer: 'China'
+    },
+    {
+      id: 2,
+      question: 'What is the currency of Japan?',
+      correctAnswer: 'Yen'
+    },
   ];
 
   const handleAnswer = (answer) => {
     setAnswers([...answers, answer]);
     if (answer === questions[currentQuestion].correctAnswer) {
-      const updatedScore = examScore ? examScore + 10 : 10; // Initialize score if null
-      localStorage.setItem("Js1FirstEngTestScore", JSON.stringify (updatedScore))
+      const updatedScore = examScore ? examScore + 2 : 2; // Initialize score if null
+      localStorage.setItem("Js1EngTest1", JSON.stringify (updatedScore))
       setExamScore(updatedScore);
       updateScore(updatedScore);
     }
-    else (localStorage.setItem("Js1FirstEngTestScore", JSON.stringify (0)))
+    else (localStorage.setItem("Js1EngTest1", JSON.stringify (0)))
       
     setCurrentQuestion(currentQuestion + 1);
   };
@@ -106,8 +116,8 @@ const Js1EngTopic1Test = ({updateScore}) => {
           <div className='GoodLuck'>
                   <div className='GoodLuckButton'>
                       <p>Total Score: {examScore}%</p>
-                      <p>Good Luck !</p>
-                     <button onClick={() =>{ window.location.href = "./LearnEconomics";}}>Next Topic</button>
+                      <p>Congratulation</p>
+                     <button onClick={() =>{ window.location.href = "./LearnEnglish";}}>Next Topic</button>
                   </div>
               </div>
      
@@ -116,4 +126,4 @@ const Js1EngTopic1Test = ({updateScore}) => {
   );
 };
 
-export default Js1EngTopic1Test;
+export default Js1EngTest1;

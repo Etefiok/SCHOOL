@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import './AbdullahiShehuResultStatus.css';
+import '../AbdullahiShehuResultStatus.css';
 // import "./AbdullahiShehu.css";
 import { Navigate, useNavigate } from "react-router-dom";
-import Ss1profileData from "./Ss1profileData";
+import Ss1profileData from "../Ss1profileData";
 import { useLocation } from 'react-router-dom';
 
 
@@ -25,7 +25,7 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
         <div>
             <div className="FormContain">
                 <div className="FormLogo">
-                    <img src={require("./images.jpg/schoollogo.jpeg")}alt="logo" />
+                    <img src={require("../images.jpg/schoollogo.jpeg")}alt="logo" />
                 </div>
 
                     <div>
@@ -77,27 +77,27 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
     <div className="table-container">
         <table className='table'>
         <tr>
-            <th colSpan="1">SCHOLASTIC AREA</th>
-            <th colSpan="6">TERM 1 (100 marks)</th>
+            <th colSpan="1">SUBJECTS</th>
+            <th colSpan="6">TEST RESULT SHEET</th>
         </tr>
 
             <tr>
                 <div className="table-merge" >SUBJECTS</div>
-                <th>Attendance</th>
-                <th>Test</th>
-                {/* <th>Make-Up Test</th> */}
-                <th>Exams</th>
+                <th>TEST 1</th>
+                <th>TEST 2</th>
+                <th>TEST 3</th>
+                <th>One-To-One</th>
                 <th>Total Score</th>
                 <div className="table-merge">Grade</div>
             </tr>
             
             <tr>
                 <p></p>
-                <th>20 %</th>
+                <th>10 %</th>
+                <th>10 %</th>
+                <th>10 %</th>
+                <th>10 %</th>
                 <th>40 %</th>
-                <th>60 %</th>
-                {/* <th>30 %</th> */}
-                <th>100 %</th>
                 
             </tr>
             
@@ -107,7 +107,7 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
                 <td>{item.column1}</td>
                 <td>{item.column2}</td>
                 <td>{item.column3}</td>
-                {/* <td>{item.column4}</td> */}
+                <td>{item.column4}</td>
                 <td>{item.column5}</td>
                 <td>{item.column6}</td>
                 <td>{item.column7}</td>               
@@ -117,7 +117,7 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
         </table> 
 
         <div className="TotalScores-container">
-            <table className='table'>
+            {/* <table className='table'>
                 
                 <tr>
                     <th>Overall Marks</th>
@@ -145,10 +145,10 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
                     
                 </tr>
                 
-            </table> 
+            </table>  */}
         </div>
 
-            <div className="table1-2Container">
+            {/* <div className="table1-2Container">
                 <div className="table01">
                     <div className="Co-Scholastic">
                         Co-Scholastic Area <br></br>
@@ -199,7 +199,7 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
                     </table> 
                 </div>
                 
-            </div>
+            </div> */}
         </div>
             <div className="Remark">
                 <p>Remark:</p>
@@ -211,29 +211,38 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
     );
   };
   
-  const AbdullahiShehuJss1ThirdTermResult = ({score}) => {
-    const Js1FirstEnglishExamScore = parseInt(localStorage.getItem("Js1FirstEnglishExamScore")) || 0;  
-    const engTestTotalScore = parseInt(localStorage.getItem("engTestTotalScore"))  || 0;
+  const Test_Result_Sheet = () => {
+    const Js1EngTest1 = parseInt(localStorage.getItem("Js1EngTest1")) || 0;
+    const Js1EngTest2 = parseInt(localStorage.getItem("Js1EngTest2")) || 0;
+    const Js1EngTest3 = parseInt(localStorage.getItem("Js1EngTest3")) || 0;
+    const Js1EngTopicOneToOneScore = parseInt(localStorage.getItem("Js1EngTopicOneToOneScore")) || 0;
 
 
-    const totalScore = engTestTotalScore + Js1FirstEnglishExamScore;
+    // const Js1FirstEconsExamScore = localStorage.getItem("Js1FirstEconsExamScore")    
+    // const js1FirstMathExamScore = localStorage.getItem("Js1FirstMathExamScore")  
+    // const Js1FirstLitInEnglishExamScore = localStorage.getItem("Js1FirstLitInEnglishExamScore") 
+    
 
+
+    // const total = parseInt(Js1EngTest1) + parseInt(Js1EngTest2) + parseInt(Js1EngTest3) + parseInt(Js1EngTopicOneToOneScore);
+    const engTestTotalScore = Js1EngTest1 + Js1EngTest2 + Js1EngTest3 + Js1EngTopicOneToOneScore;
+    localStorage.setItem("engTestTotalScore", JSON.stringify(engTestTotalScore));
 
     
     
     const dataArray1 = [
         { column1: 'Matthematics', column2: 'Data 2', column3: 'Data 3', column4: 'Data 4', column5: "", column6: 'Data 10', column7: ''},
-        { column1: 'English', column2: 'Data 7', column3: <div className="TextAlign">{engTestTotalScore}</div>, column4: "", column5: <div className="TextAlign">{Js1FirstEnglishExamScore}</div>, column6: totalScore, column7: "" },
-        { column1: 'Lit in English', column2: 'Data 12', column3: 'Data 13', column4: 'Data 14', column5: "", column6: 'Data 10', column7: score },
-        { column1: 'Social Studies', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: score },
-        { column1: 'Economics', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5:"", column6: 'Data 10', column7: score },
-        { column1: 'Computer Studies', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: '', column6: 'Data 10', column7: score },
-        { column1: 'Basic Tech', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: score },
-        { column1: 'Agriculture', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: score },
-        { column1: 'Biology', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: score },
-        { column1: 'Yeroba', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: score },  
-        { column1: 'Chemistry', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: score },
-        { column1: 'CRK', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: score },
+        { column1: 'English', column2: <div className="TextAlign">{Js1EngTest1}</div>, column3: <div className="TextAlign">{Js1EngTest2}</div>, column4: <div className="TextAlign">{Js1EngTest3}</div>, column5: <div className="TextAlign">{Js1EngTopicOneToOneScore}</div>, column6: engTestTotalScore, column7: "" },
+        { column1: 'Lit in English', column2: 'Data 12', column3: 'Data 13', column4: 'Data 14', column5:"", column6: 'Data 10', column7: "" },
+        { column1: 'Social Studies', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: "" },
+        { column1: 'Economics', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: "", column6: 'Data 10', column7: "" },
+        { column1: 'Computer Studies', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: '', column6: 'Data 10', column7: "" },
+        { column1: 'Basic Tech', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: "" },
+        { column1: 'Agriculture', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: "" },
+        { column1: 'Biology', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: "" },
+        { column1: 'Yeroba', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: "" },  
+        { column1: 'Chemistry', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: "" },
+        { column1: 'CRK', column2: 'Data 17', column3: 'Data 18', column4: 'Data 19', column5: 'Data 19', column6: 'Data 10', column7: "" },
     ];
 
       
@@ -307,4 +316,4 @@ const Table = ({ data1, data2, data3, data4, data5 }) => {
   );
 };
         
-export default AbdullahiShehuJss1ThirdTermResult
+export default Test_Result_Sheet

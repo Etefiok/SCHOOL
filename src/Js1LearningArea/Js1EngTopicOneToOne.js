@@ -61,13 +61,23 @@ const Js1EngTopicOneToOne = ({ updateScore }) => {
       id: 3,
       question: 'Where is the Great Wall of China located?',
       correctAnswer: 'China'
-    }
+    },
+    {
+      id: 2,
+      question: 'What is the currency of Japan?',
+      correctAnswer: 'Yen'
+    },
+    {
+      id: 3,
+      question: 'Where is the Great Wall of China located?',
+      correctAnswer: 'China'
+    },
   ];
 
   const handleAnswer = (answer) => {
     setAnswers([...answers, answer]);
     if (answer === questions[currentQuestion].correctAnswer) {
-      const updatedScore = examScore ? examScore + 10 : 10; // Initialize score if null
+      const updatedScore = examScore ? examScore + 2 : 2; // Initialize score if null
       localStorage.setItem("Js1EngTopicOneToOneScore", JSON.stringify(updatedScore));
       setExamScore(updatedScore);
       updateScore(updatedScore);
@@ -90,7 +100,7 @@ const Js1EngTopicOneToOne = ({ updateScore }) => {
         <div className='GoodLuck'>
           <div className='GoodLuckButton'>
             <p>Total Score: {examScore}%</p>
-            <p>Good Luck!</p>
+            <p>Congratulation</p>
             <button onClick={() => { window.location.href = "./LearnEnglish"; }}>Next Topic</button>
           </div>
         </div>

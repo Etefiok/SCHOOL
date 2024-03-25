@@ -44,6 +44,7 @@ import AdmissionForm from './Forms/AdmissionForm';
 import LearnEnglish from './Js1LearningArea/LearnEnglish';
 import School_Calendar_Page from './School_Calendar_Page';
 import English from './Jss1ExamsFolder/English';
+import Test_Result_Sheet from './Js1_English_Test_ResultSheet_folder/Test_Result_Sheet';
 
 function App() {
 
@@ -134,7 +135,7 @@ function App() {
     <div>
  
       <Routes>
- 
+      <Route path='Test_Result_Sheet' element={<Test_Result_Sheet />} />
       {/* <Route path='/' element={<HomePage users={details}/>} />  */}
 
       <Route path='' element={<HomePage_out />} /> 
