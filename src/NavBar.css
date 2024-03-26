@@ -17,13 +17,35 @@ margin-left: 5%;
   animation-delay: 0.5s; */
 }
 
+.Navbar{
+  position:sticky;
+  top: 0;
+  /* z-index: 1000; */
+  /* background-color: aqua; */
+  width: 100%;
+}
+
+.Navbar img{
+
+  display: block;
+  margin: auto; 
+  width: 70px;
+  /* border: 2px solid red; */
+
+
+}
+
 @media screen and (max-width:780px){
 .Navbar{
-  position: absolute;
+  /* position: absolute; */
   /* background-color: rgb(230, 35, 35); */
   background: transparent;
   backdrop-filter: blur(10px);
-  width: 100%;
+  width: 94%;
+
+  position:fixed;
+  top: 0px;
+  z-index: 1000;
 
 }
 
@@ -100,21 +122,7 @@ margin-left: 5%;
   }
 }
 
-.Navbar img{
 
-  display: block;
-  margin: auto; 
-  width: 70px;
-  /* border: 2px solid red; */
-
-
-}
-
-.Navbar{
-    position: sticky;
-  top: 0;
-  z-index: 100;
-}
 
 .flex{
   display: grid;
