@@ -78,6 +78,12 @@ function SideNavBar() {
         </Offcanvas.Body>
       </Offcanvas>
     </>
+
+
+
+
+
+
   );
 }
 

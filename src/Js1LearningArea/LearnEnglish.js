@@ -91,7 +91,7 @@ const js1English = Js1EnglishData[0];
 
       <Offcanvas  show={show} onHide={handleClose}>
         <Offcanvas.Header className="Offcanvas" closeButton>
-          <Offcanvas.Title className="card-body1" style={{ width: "15rem", margin: "10px", textAlign: "center", lineHeight: "10px" }}>
+          <Offcanvas.Title className="card-body1" >
           <h5>{js1English.Subject}</h5>
 
 

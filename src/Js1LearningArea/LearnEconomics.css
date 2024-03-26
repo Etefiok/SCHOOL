@@ -5,9 +5,14 @@
   z-index: 999;
   right: 20px;
   bottom: 20px;
-  /* margin-left: 300px; */
+    /* margin-left: 300px; */
 
 }
+
+.Side-Bar-Nav button{ 
+  font-weight: bold;
+  font-size: 20px;
+  }
 
 @media screen and (min-width:780px) {
   .Side-Bar-Nav{
@@ -19,7 +24,7 @@
 
 
 .Offcanvas{
-  background-color: #0400ff;
+  background-color: #0D6EFD;
   height: 40px;
 }
 
@@ -69,10 +74,24 @@
   
 
   .card-body1{
-    margin: 0px;
+    width: 18rem;
+    margin: 10px;
+    text-Align: center;
+    line-Height: 10px;
+  }
+
+  @media screen and (min-width: 780px) {
+    .card-body1{  
+      width: 15rem;
+      margin: 10px;
+      text-Align: center;
+      line-Height: 10px;
+
+    }
   }
 
  .card-body1 h5 {
+      margin-left: 50px;
       font-weight: bold;
       /* background-image: repeating-linear-gradient(to right, red, red 40%, blue 60%, blue); */
       color: white;
