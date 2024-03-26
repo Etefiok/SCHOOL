@@ -6,8 +6,6 @@ import "./Homepage.css";
 import Notification from './notification';
 import TodoApp from './TodoApp';
 import SidebarWithTabs from './SideBarWithTabs';
-import ImageCarousel from './ImageCarousel';
-import AutoScrollImage from './ImageCarousel';
 import School_Calendar from './School_Calendar_on_front';
 import School_Calendar_on_front from './School_Calendar_on_front';
 import Slider from './SliderComponent/Slider/Slider';

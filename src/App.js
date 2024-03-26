@@ -8,7 +8,6 @@ import LoginForExams from './LoginForExams';
 import { Routes, Route } from 'react-router-dom';
 import Adding from './AddDetailsPage';
 import NavBar from './NavBar';
-import HomePage from './HomePage'; 
 import ClassesForExams from './Js1LearningArea/ClassesForExams';
 import Subjects from './SubjectPage';
 import Performance from './Performance';
@@ -45,6 +44,9 @@ import LearnEnglish from './Js1LearningArea/LearnEnglish';
 import School_Calendar_Page from './School_Calendar_Page';
 import English from './Jss1ExamsFolder/English';
 import Test_Result_Sheet from './Js1_English_Test_ResultSheet_folder/Test_Result_Sheet';
+
+
+import SideNavBar from './SideNavBar/SideNavBar';
 
 function App() {
 
@@ -165,6 +167,11 @@ function App() {
         <Route path='/login2' element = {<Login2 />} />
         <Route path='/ApplicationForm' element = {<ApplicationForm />} />
         <Route path='/AdmissionForm' element = {<AdmissionForm />} />
+
+        
+         <Route path='/SideNavBar' element = {<SideNavBar />} /> {/*side nav bar */}
+        
+        
         
         
            

@@ -9,11 +9,21 @@
 }
 
 .page-cont > .content-wrapper > #foodpic{
-    width: 350px;
-    margin: 25px 40px 20px 0px;
+    width: 250px;
+    margin: 25px 20px 20px 40px;
     float: left;
     border: 1px solid #cea135;
     
+}
+
+@media screen and (min-width: 780px) {
+    .page-cont > .content-wrapper > #foodpic{
+        width: 350px;
+        margin: 25px 40px 20px 0px;
+        float: left;
+        border: 1px solid #cea135;
+        
+    }
 }
 
 .page-cont > .content-wrapper p{

@@ -9,7 +9,6 @@ import Exams from './Exams';
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Performance from './Performance';
-import HomePage from './HomePage';
 import LoginForExams from './LoginForExams';
 import { useState } from 'react';
 // import Loginforparent from './Loginforparent'

@@ -16,7 +16,6 @@ import NavBar_Student from './NavBar_Student';
 
 
 const AbdullahiShehu = () => {
-
 // const [showResult, setShowResult] = useState(false)
 
 const [activeTab, setActiveTab] = useState('Tab1');

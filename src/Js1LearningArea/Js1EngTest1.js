@@ -44,7 +44,7 @@ const Question = (props) => {
               placeholder="Write your answer here"
             />
           </form>
-          <div className="Submit">
+          <div className="GoodLuckButton">
             <button onClick={handleSubmit} disabled={!writtenAnswer}>
               Submit
             </button>
@@ -115,7 +115,7 @@ const Js1EngTest1 = ({updateScore}) => {
         
           <div className='GoodLuck'>
                   <div className='GoodLuckButton'>
-                      <p>Total Score: {examScore}%</p>
+                      <p>Total Score: {examScore}10%</p>
                       <p>Congratulation</p>
                      <button onClick={() =>{ window.location.href = "./LearnEnglish";}}>Next Topic</button>
                   </div>

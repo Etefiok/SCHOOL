@@ -10,6 +10,7 @@ background-size: cover;
 
 }
 
+
 .Exams{
     display: grid;
     row-gap: 10px;
@@ -17,11 +18,40 @@ background-size: cover;
     align-items: center;
     justify-content: center;
     /* background-color: white; */
-    width: 800px;
-    font-size: 16px;
-    
-    
-   
+    width: 300px;
+    font-size: 16px;   
+}
+
+
+
+@media screen and (min-width: 780px) {
+    .Exams{
+        display: grid;
+        row-gap: 10px;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        /* background-color: white; */
+        width: 800px;
+        font-size: 16px;   
+    }
+}
+
+.Exams h5{
+    font-size: 18px;
+}
+
+
+.text-Area{
+    width: 300px;
+    height: 100px;
+}
+
+@media screen and (min-width: 780px) {
+    .text-Area{
+        width: 600px;
+        height: 100px;
+    }
 }
 
 .Instruction{
@@ -57,9 +87,31 @@ font-size: 20px;
 
 
 .GoodLuckButton button{
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    background-color: #007bff;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     }
 
+.GoodLuckButton button:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+.GoodLuckButton button:active {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
 
 .GoodLuckButton p{
     padding-top: 0px;

@@ -6,9 +6,6 @@ import "./Homepage.css";
 import Notification from './notification';
 import TodoApp from './TodoApp';
 import SidebarWithTabs from './SideBarWithTabs';
-import ImageCarousel from './ImageCarousel';
-import AutoScrollImage from './ImageCarousel';
-import './Imagecarousel.css';
 import NavBar_Admin from './NavBar_Admin';
 // import DarkModePageToggle from './DarkModePageToggle';
 
@@ -86,7 +83,6 @@ const HomePage_Admin =({ users}) => {
 
       <div className="imageCarouse">
       <div className="imageCarousel">
-      <ImageCarousel images={item} />
       </div>
       </div>
 

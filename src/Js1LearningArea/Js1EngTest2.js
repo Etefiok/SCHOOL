@@ -37,14 +37,14 @@ const Question = (props) => {
                 ))}
               </div>
             ) : (
-              <textarea style={{width:"600px", height: "100px"}}
+              <textarea className="text-Area"
                 value={writtenAnswer}
                 onChange={handleAnswerChange}
                 placeholder="Write your answer here"
               />
             )}
           </form>
-          <div className="Submit">
+          <div className="GoodLuckButton">
             <button onClick={handleSubmit} disabled={!writtenAnswer}>
               Submit
             </button>
@@ -134,10 +134,10 @@ const Js1EngTest2 = ({ updateScore }) => {
       )}
       {currentQuestion === questions.length && (
         <div>
-          <NavBar_Student />
+          {/* <NavBar_Student /> */}
           <div className='GoodLuck'>
                   <div className='GoodLuckButton'>
-                      <p>Total Score: {examScore}%</p>
+                      <p>Total Score: {examScore}/10%</p>
                       <p>congratulation</p>
                      <button onClick={() =>{ window.location.href = "./LearnEnglish";}}>Back to Class</button>
                   </div>
