@@ -1,25 +1,48 @@
-
+/* body{
+    display: grid ;
+    justify-content: center;
+} */
 .Examsback{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-/* background-image: url("./images.jpg/LoginBackground2.jpg"); */
-background-color: rgb(235, 225, 225);
-background-size: cover;
+    width: auto;
+    /* position: fixed; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    /* background-image: url("./images.jpg/LoginBackground2.jpg"); */
+    background-color: rgb(235, 225, 225);
+    background-size: cover;
 
+}
+
+
+@media screen and (min-width: 780px) {
+    .Examsback{
+        width: auto;
+        position:relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: auto;
+        /* background-image: url("./images.jpg/LoginBackground2.jpg"); */
+        background-color: rgb(235, 225, 225);
+        background-size: cover;
+    
+    }
 }
 
 
 .Exams{
     display: grid;
-    row-gap: 10px;
+    row-gap: 5px;
     border: none;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     /* background-color: white; */
-    width: 300px;
-    font-size: 16px;   
+    width: 100%;
+    font-size: 14px;   
 }
 
 
@@ -35,6 +58,8 @@ background-size: cover;
         width: 800px;
         font-size: 16px;   
     }
+
+
 }
 
 .Exams h5{
@@ -55,18 +80,40 @@ background-size: cover;
 }
 
 .Instruction{
+    text-align: left;
     display: grid;
-    row-gap: 10px;
+    row-gap: 5px;
     border: none;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     /* background-color: white; */
-    text-align: left;
-    width: 800px;
-    font-size: 16px;
+    width: 100%;
+    font-size: 14px;
+    padding-left: 10px; 
+    padding-right: 10px;
+
+}
+
+
+@media screen and (min-width: 780px) {
+     .Instruction{
+        display: grid;
+        row-gap: 10px;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        /* background-color: white; */
+        text-align: left;
+        width: 800px;
+        font-size: 16px;
+
+
+        
+        
+       
+    }
     
-    
-   
+
 }
 
 .GoodLuck{

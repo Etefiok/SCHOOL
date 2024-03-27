@@ -11,7 +11,7 @@ function ClassesForExams() {
  const Navigate = useNavigate();
 
     function Subjects(){
-        Navigate("./Subjects")
+        Navigate("./Subjects_For_Exams")
     };
 
 
@@ -25,12 +25,12 @@ function ClassesForExams() {
         
             <div className="Classesbutton">
                 <span>
-                <button onClick={() => { window.location.href = "./Subjects"; }}>JS1</button>
+                <button onClick={() => { window.location.href = "./Subjects_For_Exams"; }}>JS1</button>
                 <button>JS2</button>
                 <button>JS3</button>
                 <button>SS1</button>
                 <button>SS2</button>
-                <button>Sl7</button>
+                <button>SS3</button>
                 </span>
             </div>
         </div>

@@ -32,7 +32,9 @@ const InstructionLitInEnglishExams = () =>{
                             {/* <h3>TOPIC: DETERMINERS</h3>
         <p>DIRECTION: Choose the correct answer from the lettered options.</p>
         <h4>Fill in the blank space with the most appropriate option</h4> */}
-                    <button onClick={() => { window.location.href = "./LitInEnglish";}}>start</button>
+                    <div className="GoodLuckButton">
+                        <button onClick={() => { window.location.href = "./LitInEnglish";}}>start</button>
+                    </div>
                 </div>
             </div>
     </div>

@@ -44,7 +44,7 @@ const Question = (props) => {
               />
             )}
           </form>
-          <div className="Submit">
+          <div className="GoodLuckButton">
             <button onClick={handleSubmit} disabled={!writtenAnswer}>
               Submit
             </button>

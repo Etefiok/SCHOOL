@@ -1,20 +1,23 @@
 .SubjectContainer {
   display: grid;
   justify-content: center;
-  align-items: center;
+  align-items:normal;
+  margin-top: 52px;
   width: 100%;
   height: 800px;
   background-image: url(./images.jpg/EXAMS.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+
    
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (min-width: 780px) {
   .SubjectContainer {
+  
   display: grid;
   justify-content: center;
-  align-items:normal;
+  align-items: center;
   width: 100%;
   height: 800px;
   background-image: url(./images.jpg/EXAMS.jpg);

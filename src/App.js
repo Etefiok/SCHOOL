@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import Adding from './AddDetailsPage';
 import NavBar from './NavBar';
 import ClassesForExams from './Js1LearningArea/ClassesForExams';
-import Subjects from './SubjectPage';
+import Subjects_For_Exams from './SubjectPage_For_Exams';
 import Performance from './Performance';
 import SignUp from './SignUp';
 import ForgetPassword from './ForgetPassword';
@@ -147,7 +147,7 @@ function App() {
       
       <Route path='/details/:idnumber' element={<details users={details} />} /> 
       <Route path="/performance" element={<Performance />} />  
-      <Route path="/subjects" element={<Subjects />} />
+      <Route path="/Subjects_For_Exams" element={<Subjects_For_Exams />} />
         <Route path="/loginforexams" element={<LoginForExams />} />
         <Route path='/loginforparent' element={< Loginforparent/>} />
         <Route path='ClassesForExams' element={<ClassesForExams />} />

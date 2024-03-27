@@ -20,7 +20,7 @@ margin-left: 5%;
 .Navbar{
   position:sticky;
   top: 0;
-  /* z-index: 1000; */
+  z-index: 1000;
   /* background-color: aqua; */
   width: 100%;
 }
@@ -29,10 +29,22 @@ margin-left: 5%;
 
   display: block;
   margin: auto; 
-  width: 70px;
+  width: 50px;
   /* border: 2px solid red; */
 
 
+}
+
+@media screen and (min-width:780px) {
+  .Navbar img{
+
+    display: block;
+    margin: auto; 
+    width: 70px;
+    /* border: 2px solid red; */
+  
+  
+  }
 }
 
 @media screen and (max-width:780px){
@@ -41,8 +53,8 @@ margin-left: 5%;
   /* background-color: rgb(230, 35, 35); */
   background: transparent;
   backdrop-filter: blur(10px);
-  width: 94%;
-
+  width: 100%;
+  margin: 0%;
   position:fixed;
   top: 0px;
   z-index: 1000;

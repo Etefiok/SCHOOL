@@ -6,7 +6,7 @@ import NavBar_Student from './NavBar_Student';
 
 
 
-function Subjects() {
+function Subjects_For_Exams() {
     return(
         <div>
         <NavBar_Student />
@@ -43,4 +43,4 @@ function Subjects() {
     )
 }
 
-export default Subjects
+export default Subjects_For_Exams

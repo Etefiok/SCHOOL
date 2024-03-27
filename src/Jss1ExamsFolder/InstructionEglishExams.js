@@ -15,7 +15,9 @@ const InstructionEnglishExams = () =>{
                     <h3>TOPIC: DETERMINERS</h3>
 <p>DIRECTION: Choose the correct answer from the lettered options.</p>
 <h4>Fill in the blank space with the most appropriate option</h4>
+        <div className="GoodLuckButton">
             <button onClick={() => { window.location.href = "./English";}}>start</button>
+        </div>
         </div>
     </div>
     )
