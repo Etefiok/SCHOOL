@@ -21,10 +21,10 @@ margin-left: 5%;
   /* display: flex; */
   position:fixed;
   /* justify-content:space-between; */
-    /* background-color: rgb(230, 35, 35); */
-    background: transparent;
-    backdrop-filter: blur(10px);
-    width: 90%;
+    background-color: rgb(230, 35, 35);
+    /* background: transparent;
+    backdrop-filter: blur(10px); */
+    width: 100%;
     margin: 0%;
     
     top: 0px;
