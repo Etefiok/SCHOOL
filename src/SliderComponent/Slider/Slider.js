@@ -69,8 +69,8 @@ let intervalTime = 10000;
                                 <img src={slide.image} alt="" />
 
                                 <div className='calender'>
-                                <School_Calendar_on_front />
-                            </div>
+                                    <School_Calendar_on_front />
+                                </div>
 
                                 <div className="content">
                                     <h4>{slide.heading}</h4>

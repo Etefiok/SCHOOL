@@ -13,6 +13,7 @@
         position: relative;
         overflow: hidden;
         margin-top: 0px;
+        
     }
 }
 
@@ -71,6 +72,7 @@
     padding-top: 1rem;
     background: rgba(0, 0, 0, 0.555);
     animation: fadeIn 1s ease forwards;
+    z-index: 9999;
 }
 
 @keyframes fadeIn {
@@ -159,15 +161,17 @@ hr {
 }
 
 .calender{
-    position: absolute;
-    top: 20px;
-    right: 50px;
+    /* opacity: 0; */
     z-index: 1;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (min-width: 780px) {
     .calender{
-        opacity: 0;
+        
+        position: absolute;
+        top: 20px;
+        right: 100px;
+        z-index: 1;
     }
 }
 
