@@ -21,21 +21,21 @@ margin-left: 5%;
   /* display: flex; */
   position:fixed;
   /* justify-content:space-between; */
-    background-color: rgb(230, 35, 35);
-    /* background: transparent;
-    backdrop-filter: blur(10px); */
+    /* background-color: rgb(230, 35, 35); */
+    background: transparent;
+    backdrop-filter: blur(10px);
     width: 100%;
     margin: 0%;
     
     top: 0px;
-    z-index: 1000;
+    z-index: 100;
 }
 
 @media screen and (min-width: 780px) {
   .Navbar{
   position:sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
   /* background-color: aqua; */
   width: 100%;
   
@@ -73,7 +73,7 @@ margin-left: 5%;
   display: grid;
   margin-left: 5%;
   /* background-color: brown; */
-  margin-bottom: 107%;
+  margin-bottom: 200%;
   }
   
   .menu .nav-link {

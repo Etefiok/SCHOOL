@@ -22,7 +22,7 @@ const School_Calendar_on_front = () => {
   
     return (
       <div className="">
-        <h4>School Calendar</h4>
+        
         <Calendar_on_front activities={activities} getActivityForDate={getActivityForDate} />
         
       </div>

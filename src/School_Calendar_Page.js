@@ -2,6 +2,8 @@ import React from 'react';
 import "./School_Calendar_Page.css"
 import Calendar from './Calendar'; 
 import NavBar_Student from './NavBar_Student';
+import School_Calendar_on_front from './School_Calendar_on_front';
+import NavBar_out from './NavBar_out';
 
 
 const School_Calendar_Page = () => {
@@ -19,11 +21,17 @@ const School_Calendar_Page = () => {
 
   return (
     <div>
-        <NavBar_Student />
+        <NavBar_out />
+        <div className='Calender_for_media'>
+            <h1>School Calendar</h1>
+            <School_Calendar_on_front />
+            </div>
         <div className="Calendar_header">
         <h1>School Calendar</h1>
         <Calendar activities={activities} getActivityForDate={getActivityForDate} />
         </div>
+            
+        
     </div>
   );
 };

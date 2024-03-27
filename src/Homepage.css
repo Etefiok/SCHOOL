@@ -1,5 +1,6 @@
 body{
-    padding: 10px;
+    padding: 5px;
+    
 }
 
 .beforeFooter{
@@ -81,12 +82,15 @@ body{
 
     .activities-1-text{
         position: absolute;
+        display: grid;
+        justify-content: center;
+        text-align:right;
         /* background-color: rgba(48, 48, 47, 0.438); */
         width: 80%;
         margin: 30px;
         margin-top: 130px;
         margin-bottom: 0px;
-        margin-left: 150px;
+        margin-left: 60px;
         /* opacity: 0; */
         color: rgb(39, 59, 7);
         font-weight: light;
@@ -96,10 +100,13 @@ body{
 
     .activities-1-text p{
         opacity: 0;
+        
+        
     }
 
     .activities-1-text  button{
         position: absolute;
+        margin-left: 150px;
         top: 25px;
         border: none;
         border-radius: 10px;
@@ -178,12 +185,15 @@ body{
 
     .activities-1-text0{
         position: absolute;
+        display: grid;
+        justify-content: center;
+        text-align:right;
         /* background-color: rgba(48, 48, 47, 0.438); */
         width: 80%;
         margin: 30px;
         margin-top: 130px;
         margin-bottom: 0px;
-        margin-left: 150px;
+        margin-left: 60px;
         /* opacity: 0; */
         color: rgb(39, 59, 7);
         font-weight: light;
@@ -197,6 +207,7 @@ body{
     }
 
     .activities-1-text0  button{
+        margin-left: 150px;
         position: absolute;
         top: 25px;
         border: none;
@@ -243,7 +254,7 @@ height: 400px;
     justify-content: center;
     margin-top: 20px;
     /* background-color: aqua; */
-    gap: 200px;
+    gap: 2%;
 }
 .foot1{
     /* background-color: red; */

@@ -1,20 +1,53 @@
 .Calendar_header{
 text-align: center;
+opacity: 0;
+
+}
+
+@media screen and (min-width: 780px) {
+  .Calendar_header {
+    opacity: inherit;
+      
+    }
+}
+  
+
+.Calender_for_media{
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 53px;
+  /* background-color: red; */
+  
+}
+
+@media screen and (min-width: 780px) {
+  .Calender_for_media{
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    opacity: 0;
+    top: 0px;   
+    
+  }
 }
 
 .calendar_Page {
-    display: grid;
-    justify-content: center;
-    width: fit-content;
-    font-family: Arial, sans-serif;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px auto;
-    background-image: url('./images.jpg/sirin.jpg') ;
-    background-size: cover;
+  display: grid;
+  justify-content: center;
+  width: fit-content;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px auto;
+  background-image: url('./images.jpg/sirin.jpg') ;
+  background-size: cover;
   }
   
+
+    
+
   .monthsgrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

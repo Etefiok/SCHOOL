@@ -47,6 +47,7 @@ import Test_Result_Sheet from './Js1_English_Test_ResultSheet_folder/Test_Result
 
 
 import SideNavBar from './SideNavBar/SideNavBar';
+import School_Calendar_on_front from './School_Calendar_on_front';
 
 function App() {
 
@@ -172,7 +173,11 @@ function App() {
          <Route path='/SideNavBar' element = {<SideNavBar />} /> {/*side nav bar */}
         
         
-        
+         <Route path='/School_Calendar_on_front' element = {<School_Calendar_on_front />} />
+         <Route path='/School_Calendar_Page' element = {<School_Calendar_Page />} />
+         
+               
+
         
            
         
@@ -214,7 +219,6 @@ function App() {
 <Route path='/LearnEnglish' element = {<LearnEnglish updateScore={updateScore}/>} />
 
 
-<Route path='/School_Calendar_Page' element = {<School_Calendar_Page/>} />
 
 
 

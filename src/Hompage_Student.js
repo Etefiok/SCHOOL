@@ -76,7 +76,7 @@ const HomePage_Student =({ users}) => {
 
 
   return (
-    <div>
+    <div >
 
       <nav>
         <NavBar_Student />
