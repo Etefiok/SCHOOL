@@ -59,6 +59,7 @@ const Navba = () => {
             <NavDropdown.Item onClick={() => { window.location.href = "./circular";}}>Circular</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./session";}}>Session</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./ContactForm";}}>Contact Us</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => { window.location.href = "./ContactForm";}}>Galary</NavDropdown.Item>
               
               
             <NavDropdown.Divider />

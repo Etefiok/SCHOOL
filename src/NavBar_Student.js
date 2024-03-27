@@ -68,7 +68,7 @@ const handleSearch = () =>{
             <NavDropdown.Item onClick={() => { window.location.href = "./Classes"; }}><DescriptionIcon />Learning</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./Performance";}}><EmojiEventsIcon />Performance</NavDropdown.Item>
         
-            <NavDropdown.Divider />
+         
  
             <NavDropdown title={<span><VideoLibraryIcon /> session</span>}>
                 <div>
@@ -81,7 +81,7 @@ const handleSearch = () =>{
                 </div>
             </NavDropdown>  
           
-            <NavDropdown.Divider />
+       
 
               <NavDropdown.Item href="Activities"><DirectionsRunIcon />Activities</NavDropdown.Item>
               <NavDropdown.Item onClick={() => { window.location.href = "./ContactForm";}}><ContactMailIcon /> Contact Us</NavDropdown.Item>
@@ -105,11 +105,11 @@ const handleSearch = () =>{
                 <NavDropdown.Item onClick={() => { window.location.href = "./AbdullahiShehu"; }}><AccountCircleIcon />Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => { window.location.href = "./Performance";}}><EmojiEventsIcon />Performance</NavDropdown.Item>
 
-                <NavDropdown.Divider />
+           
 
                 <NavDropdown.Item onClick={() => { window.location.href = "";}}><FaCog /> Settings</NavDropdown.Item>
 
-                <NavDropdown.Divider />
+            
 
                 <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ "; }}><LogoutIcon /> Logout</NavDropdown.Item>
 
