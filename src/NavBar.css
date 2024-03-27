@@ -18,11 +18,29 @@ margin-left: 5%;
 }
 
 .Navbar{
+  /* display: flex; */
+  position:fixed;
+  /* justify-content:space-between; */
+    /* background-color: rgb(230, 35, 35); */
+    background: transparent;
+    backdrop-filter: blur(10px);
+    width: 370px;
+    margin: 0%;
+    
+    top: 0px;
+    z-index: 1000;
+}
+
+@media screen and (min-width: 780px) {
+  .Navbar{
   position:sticky;
   top: 0;
   z-index: 1000;
   /* background-color: aqua; */
   width: 100%;
+  
+  }
+  
 }
 
 .Navbar img{
@@ -30,6 +48,7 @@ margin-left: 5%;
   display: block;
   margin: auto; 
   width: 50px;
+  /* margin-right:100px; */
   /* border: 2px solid red; */
 
 
@@ -48,18 +67,6 @@ margin-left: 5%;
 }
 
 @media screen and (max-width:780px){
-.Navbar{
-  /* position: absolute; */
-  /* background-color: rgb(230, 35, 35); */
-  background: transparent;
-  backdrop-filter: blur(10px);
-  width: 100%;
-  margin: 0%;
-  position:fixed;
-  top: 0px;
-  z-index: 1000;
-
-}
 
 .menu{
   /* position: absolute; */

@@ -31,6 +31,7 @@ const NavBar_out = () => {
       <div>
               <img src={require("./images.jpg/schoollogo.jpeg")}alt="logo" />
           </div>
+          
         <Navbar.Toggle aria-controls="" />
         <Navbar.Collapse id="">
 

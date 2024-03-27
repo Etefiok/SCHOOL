@@ -75,7 +75,7 @@ function ApplicationForm () {
             <label htmlFor="Message">Your message here</label>
           </div>
 
-          <div className="centerbtn">
+          <div className="GoodLuckButton">
             <button onClick={HomePage} type="submit">Submit</button>
            
           </div>
