@@ -86,6 +86,7 @@ const HomePage_out =({ users}) => {
       <p><h2><FontAwesomeIcon icon={faInfoCircle} /> ABOUT US</h2>[School Name] is a leading secondary school focused on academic excellence, character development, and community engagement. They aim to empower students to become critical thinkers and responsible global citizens through a comprehensive education. With high academic standards, holistic development programs, dedicated faculty, state-of-the-art facilities, and a variety of extracurricular activities, the school provides a nurturing environment for students to excel. For admission inquiries or general information, contact the admissions office at [Contact Number] or visit their website.</p>
 </div>
 
+
     <div className='activities-container'>
         <img src= {require("./images.jpg/award2.jpg")} />
         <div className='activities-1-text'>
@@ -95,7 +96,6 @@ const HomePage_out =({ users}) => {
        <button>Know More</button>
         </div> 
     </div>
-
 
     <div className='activities-container0'>
         <img src= {require("./images.jpg/award2.jpg")} />
