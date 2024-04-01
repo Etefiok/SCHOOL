@@ -1,0 +1,157 @@
+
+.ClassContainer {
+  display: grid;
+  position: fixed;
+  justify-content: center;
+  align-items:normal;
+  width: 100%;
+  height: 600px;
+  margin-top: 53px;
+  background: rgba(0, 0, 0, 0.664) url(../images.jpg/EXAMS.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: darken;
+
+
+     
+  }
+
+  @media screen and (min-width: 780px) {
+    .ClassContainer {
+    
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    background: rgba(0, 0, 0, 0.664) url(../images.jpg/EXAMS.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+
+     
+  }
+  }
+
+  .ClassContainer h1{
+    text-align: center;
+    font-weight: bolder;
+    backdrop-filter: blur(15px);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.5);
+    color: #ECF0F1;
+    padding: 10px 20px;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 2px;
+  
+  }
+
+  @media screen and (max-width: 780px) {
+    .ClassContainer h1{
+      text-align: center;
+      font-weight: bolder;
+      /* background-color: red; */
+      height: 50px;
+      backdrop-filter: blur(15px);
+      text-shadow: 2px 2px 4px #000000;
+      border-radius: 10px;
+      box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.5);
+      color: #ECF0F1;
+      padding: 5px;
+      font-family: 'Times New Roman', serif;
+      letter-spacing: 2px;
+      /* margin-top: 60px; */
+    
+    }
+  
+  }
+
+  
+  .Classesbutton span{
+    justify-content: center;
+    align-items: center;
+   border-radius: 10px;
+    padding: 10px 20px;
+   display: grid;
+  width: fit-content;
+  gap: 20px;
+  background-color:none;
+  grid-template-columns: auto auto auto;
+  
+
+  }
+
+  @media screen and (max-width: 780px) {
+
+    .Classesbutton {
+      position: absolute;
+      /* background-color: blue; */
+     width: fit-content;
+     height:fit-content;
+     margin-top: 100px;
+     margin-left: 60px;
+   }
+
+    .Classesbutton span{
+      justify-content: center;
+      align-items: center;
+     border-radius: 10px;
+      padding: 10px 20px;
+     display: grid;
+    width: fit-content;
+    /* margin-left: 70px; */
+    gap: 20px;
+    /* background-color:red; */
+    grid-template-columns: auto auto;
+    
+  
+    }
+
+ 
+  }
+  
+
+  .Classesbutton span button{
+    padding: 70px;
+    font-size: 40px;
+    font-weight: bolder;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
+    font-family: 'Times New Roman', serif;
+  }
+
+  @media screen and (max-width: 780px) {
+    .Classesbutton span button{
+      padding: 20px;
+      font-size: 30px;
+      font-weight: lighter;
+      background-color: white;
+      backdrop-filter: none;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+      color: rgb(0, 0, 0);
+      font-family: 'Times New Roman', serif;
+    }
+  
+  }
+  
+
+  .Classesbutton button:hover{
+    backdrop-filter: blur(15px);
+    text-shadow: 2px 2px 4px #000000;
+
+  }
+
+  .Classesbutton button:active{
+   
+    box-shadow: 4px 4px 5px rgba(255, 255, 255, 0.5);
+    background-color: rgb(179, 151, 116);
+  }
+
+
+  

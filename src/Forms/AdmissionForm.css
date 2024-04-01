@@ -1,0 +1,393 @@
+
+.body{
+    display: grid;
+    justify-content: center;
+    background-color: aquamarine;
+    /* align-items: center; */
+
+}
+
+/* .FormBody{
+    display:grid;
+    border-radius: 10px;
+    border: 1px solid rgb(209, 209, 209);
+    width: fit-content;
+    height: fit-content;
+    margin:auto;
+}  */
+
+.FormBody{
+    display:grid;
+    border-radius: 10px;
+    border: 1px solid rgb(209, 209, 209);
+    width: fit-content;
+    height: fit-content;
+    margin:auto;
+} 
+
+@media screen and (max-width: 768px) {
+.FormBody{
+    display: block;
+    border-radius: 0;
+    border: none;
+    width: auto;
+    height: auto;
+    margin-top: 60px;
+} 
+}
+
+/* 
+    border-radius: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block; */
+ 
+
+
+.FormContainer{
+    display:flex;    
+    justify-content: center;
+    background-color: rgb(240, 240, 240);
+    width: 900px;
+    height: 110%;
+    gap: 60px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+   
+}
+
+@media screen and (max-width: 780px) {
+    .FormContainer{
+        padding: 0px;
+        display:grid;    
+        justify-content: center;
+        justify-items: center;
+        /* background-color: rgb(226, 24, 24); */
+        width: 100%;
+        height: none;
+        gap: 0px;
+        border-top-right-radius: none;
+        border-top-left-radius: none;
+   
+    }
+}
+
+
+.Formimage img{
+    width: 70px;
+    /* margin-top: 30px; */
+}
+.SchoolName{
+    margin-top:10px;
+    /* background-color: blanchedalmond; */
+    color: red;
+    height: fit-content;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bolder;
+}
+.RegistrationNumber{
+    display: grid;
+    justify-content: right;
+    /* background-color: blueviolet; */
+}
+
+.tablet {
+    
+    padding-left: 18.6%;
+    /* background-color: blue; */
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    font-family: "Times New Roman", Times, serif;
+
+  }
+  
+  .table td {
+    border: 1px solid #000000;
+    text-align: left;
+    /* padding: 8px; */
+  }
+  
+  /* hr {
+    border: none;
+    border-top: 1px solid #dddddd;
+    margin: 20px 0;
+  } */
+
+.passport{
+    background-color: rgb(255, 255, 255);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    margin-top: 30px;
+}
+.passport p{
+    margin: 20px;
+}
+
+.Date{
+    margin-top: 16px;
+}
+
+.FormHeading{
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: fit-content;
+    margin-left: 40%;
+}
+.FormHeading p{
+    /* text-align: center; */
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(132, 0, 255);
+    font-weight: bolder;
+
+    /* width: fit-content; */
+    
+}
+
+@media screen and (max-width: 780px) {
+    
+    .FormBody{
+        /* background-color: blue; */
+        margin-top: none;
+    }    
+    
+    .Formimage img{
+        width: 80px;
+        
+    }
+    .SchoolName{
+        margin-top:10px;
+        /* background-color: blanchedalmond; */
+        color: red;
+        height: fit-content;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bolder;
+        font-size: 15px;
+    }
+
+    .SchoolName p{
+        margin: 0px;
+    }
+    .RegistrationNumber{
+        display: grid;
+        justify-content: center;
+        width: fit-content;
+        /* background-color: blueviolet; */
+        margin: auto;
+        padding: auto;
+    }
+    .RegistrationNumber p{
+        padding: 0px;
+        margin: 0px;
+        font-size: 15px;
+       
+    }
+    
+    
+      
+      .table td {
+        border: 1px solid #000000;
+        text-align: left;
+        /* padding: 8px; */
+      }
+      
+   
+    .passport{
+        background-color: rgb(255, 255, 255);
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        margin-top: 0px;
+         }
+    
+    
+    .Date{
+        margin-top: 16px;
+    }
+    
+    .FormHeading{
+        /* justify-content: center; */
+        /* align-items: center; */
+        width: fit-content;
+        margin: auto;
+    }
+    .FormHeading p{
+        /* text-align: center; */
+        border: 1px solid red;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 5px;
+        font-family: "Times New Roman", Times, serif;
+        color: rgb(132, 0, 255);
+        font-weight: bolder;
+    
+        /* width: fit-content; */
+        
+    }
+
+}
+
+
+/* ADMISSION FORM SECTION */
+.formAdd{
+    /* justify-content: center; */
+    background-color: #f1f1f1;
+    width:70%;
+    margin:auto;
+    /* padding: 20px; */
+    
+  
+}
+
+.Names{
+    display: flex;
+    justify-content: center;
+}
+.formNames{
+    margin-left: 10px;
+    margin-top:10px ;
+   
+}
+
+.formName{
+    margin-left: 10px;
+    /* margin-top:10px ; */
+}
+
+.formEmail{
+    margin-left: 50px; 
+}
+
+.formAdd input{
+    /* font-size: 1.5rem; */
+    font-family: inherit;
+    color: inherit;
+    padding: 5px 1rem;
+    border-radius: 2px;
+    border: none;
+    /* border-bottom: 3px solid #000000; */
+    width: 90.6%;
+    display: block;
+    transition: all 0.3s;
+}
+
+.formAdd input:focus{
+    outline:none;
+    box-shadow: 0 1rem 1rem rgb(196, 192, 192);
+    border-bottom: 2px solid #cea135;
+}
+
+.formAdd input::-webkit-input-placeholder, .form textarea::-webkit-input-placeholder{
+    /* color: #11122b; */
+}
+
+.formAdd input:focus::-webkit-input-placeholder, .formAdd textarea:focus::-webkit-input-placeholder{
+    color:transparent;
+    
+
+}
+
+.formAdd textarea{
+margin: none;
+width: 90.6%;
+height: 100px;
+border-radius: 3px;
+border: none;
+/* border: 3px solid #11122b; */
+font-size:large;
+font-family:'Times New Roman', Times, serif;
+color: color;
+padding: 1.5rem 2rem;
+transition: all 0.3s;
+}
+
+.formAdd textarea:focus{
+outline:none;
+    box-shadow: 0 1rem 1rem rgb(196, 192, 192);
+    
+}
+
+.formAdd label{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    /* margin-top: 0.70rem; */
+    display: block;
+    transition: all 0.3s;
+    color: #cea135;
+    visibility: hidden;
+    opacity:0;
+    font-size: 15px;
+   
+}
+
+.formAdd input:focus + label, .formAdd textarea:focus + label{
+    opacity: 2;
+    visibility: visible;
+    margin-top: none;
+    /* transform: translateY(1rem); */
+}
+
+.Statefile{
+    display: flex;
+    gap: 10px;
+    background-color: #f1f1f1;
+    justify-content: center;
+    font-size: small;
+    margin-left: 16%;
+    margin-right: 14%;
+    
+}
+
+.Statefile2{
+    display: flex;
+    gap: 10px;
+    background-color: #f1f1f1;
+    justify-content: center;
+    font-size: small;
+    margin-left: 16%;
+    margin-right: 14%;
+    padding-bottom: 1%;
+}
+
+.Disability{
+    display: flex;
+    gap: 10px;
+    background-color: #f1f1f1;
+    /* justify-content: center; */
+    /* font-size: small; */
+    margin-left: 16%;
+    margin-right: 14%;
+    padding-top: 1%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+}
+
+.MedicalInformation{
+    display: flex;
+    gap: 10px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+    justify-content: center;
+    margin-left: 16%;
+    margin-right: 14%;
+    font-size:large;
+    font-family:'Times New Roman', Times, serif;
+   
+}
+.No-Refund{
+    text-align: center;
+}
+
+.No-Refund p{
+    margin: 0px;
+}

@@ -1,0 +1,215 @@
+.slider{
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: 53px;
+}
+
+@media screen and (min-width:780px) {
+    .slider{
+        width: 100%;
+        height: 70vh;
+        position: relative;
+        overflow: hidden;
+        margin-top: 0px;
+        
+    }
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(-50);
+    transition: all 0.5s ease;
+}
+
+@media screen and (min-width: 780px){
+    .slide img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    
+}
+
+@media screen and (max-width: 780px){
+    .slide {
+        position: absolute;
+        /* top: 40px; */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: translateX(-50);
+        transition: all 0.5s ease;
+    }
+
+    .slider{
+        width: 100%;
+        height: 50vh;
+        position: relative;
+        overflow: hidden;
+    }
+    
+}
+
+.slide img {
+    height: 100%;
+}
+
+.content {
+    position: absolute;
+    justify-content: center;
+    display: grid;
+    top: 4rem;
+    left: 5rem;
+    /* opacity: 0; */
+    width: 60%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    background: rgba(0, 0, 0, 0.555);
+    animation: fadeIn 1s ease forwards;
+    z-index: 9999;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-400px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.content h4{
+    font-size: 20px;
+    text-align: center;
+}
+
+.content > *{
+    color: #fff;
+    margin-bottom: 1rem;
+    padding-top: 0;
+    
+}
+
+.current {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.corrent .content{
+    opacity: 1;
+}
+
+@media screen and (min-width: 780px){
+    .content {
+       
+    position: absolute;
+    justify-content: center;
+    display: grid;
+    top: 20%;
+    left: 35%;
+    /* opacity: 0; */
+    width: 30%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    background: rgba(0, 0, 0, 0.555);
+    animation: fadeIn 1s ease forwards;
+    z-index: 9999;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(-400px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .content h4{
+        font-size: 35px;
+        font-family:;
+        text-align: center;
+    }
+}
+
+
+.arrow {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 35% ;
+    z-index: 999;
+}
+
+.arrow:hover {
+    background:  #fff;
+    color: #777;
+}
+
+.next {
+
+    right: 1.5rem;
+}
+
+.prev {
+    left: 1.5rem;
+}
+
+hr {
+    height: 2px;
+    background: #fff;
+    width: 50%;
+}
+
+.content button{
+    background-color: rgb(2, 128, 44);
+    border-radius: 5px;
+    border: 0;
+    padding: 10px;
+    
+    
+}
+
+.herotext{
+   
+    text-align: center;
+    padding: 8px;
+    background-color: rgb(248, 248, 248);
+  
+}
+
+.calender{
+    /* opacity: 0; */
+    z-index: 1;
+}
+
+@media screen and (min-width: 780px) {
+    .calender{
+        
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 1;
+    }
+}
+

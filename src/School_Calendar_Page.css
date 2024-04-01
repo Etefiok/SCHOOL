@@ -1,0 +1,108 @@
+.Calendar_header{
+text-align: center;
+opacity: 0;
+
+}
+
+@media screen and (min-width: 780px) {
+  .Calendar_header {
+    opacity: inherit;
+      
+    }
+}
+  
+
+.Calender_for_media{
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 53px;
+  /* background-color: red; */
+  
+}
+
+@media screen and (min-width: 780px) {
+  .Calender_for_media{
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    opacity: 0;
+    top: 0px;   
+    
+  }
+}
+
+.calendar_Page {
+  display: grid;
+  justify-content: center;
+  width: fit-content;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px auto;
+  background-image: url('./images.jpg/sirin.jpg') ;
+  background-size: cover;
+  }
+  
+
+    
+
+  .monthsgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+  
+  .months {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #ccc;
+
+  }
+  
+  .weekdaysPP {
+    display: flex;
+    justify-content: space-between;
+    background-color: #adadad;
+    padding: 5px 0;
+    
+  }
+  
+  .weekdaysPP div {
+    text-align: center;
+  }
+  
+  .Days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    padding-left: 0px;
+    margin-left: 0px;
+    
+  }
+  
+  .Day {
+    padding: 0px 0;
+    /* background-color: aqua; */
+    display: inline-block;
+    width: 36px;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #000000;
+  }
+  
+  .Empty_Empty {
+    visibility: hidden;
+  }
+  
+  .activity {
+    background-color: yellow;
+    font-size: 10px;
+    text-align:center;
+    font-weight: bolder;
+    padding-top: 10px;
+    margin-top: 12px;
+}

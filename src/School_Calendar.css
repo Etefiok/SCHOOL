@@ -1,0 +1,80 @@
+.calendar {
+    background-color: #ccc;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+   
+    /* margin: 0 auto; */
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .header button{
+    border: none;
+  }
+  
+  .weekdays {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #f2f2f2; */
+    padding: 5px 0;
+    gap:10px;
+  }
+  
+  .weekdays div {
+    text-align: center;
+  }
+  
+  .days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    padding-left: 0px;
+    margin-left: 0px;
+    
+    
+  }
+  
+  .dayy {
+    padding: 0px 0;
+    /* background-color: aqua; */
+    display: inline-block;
+    width: 36px;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #000000;
+    
+  }
+  
+  .empty {
+    visibility: hidden;
+  }
+  
+
+  .day {
+    
+  }
+  
+  .today {
+    background-color: #ffc107; /* Yellow background color for today's date */
+    color: #333; /* Text color for today's date */
+    font-weight:bolder; /* Bold text for today's date */
+    
+  }
+
+  .activity_front {
+    background-color: yellow;
+    font-size: 10px;
+    text-align:center;
+    font-weight: bolder;
+    padding-top: 10px;
+    margin-top: 12px;
+  }

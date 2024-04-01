@@ -1,0 +1,142 @@
+
+.sessionbody{
+    /* display: grid; */
+    /* justify-content: center; */
+    background-color: rgb(201, 201, 201);
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 6px;
+}
+.session{
+    
+    width: fit-content;
+    margin: 20px;
+    font-weight: bolder;
+}
+
+.SubjectTop_container{
+    /* width: fit-content; */
+    justify-content: center;
+    /* background-color: blue; */
+    padding-left: 10px;
+}
+
+
+.SubjectTop {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+    background-color: whitesmoke;
+    display: inline-block;
+    /* text-decoration: none; */
+  
+}
+
+.SubjectTop::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4%;
+    background-color:#005be4;
+    transform: scaleX(0);
+
+  }
+  
+  .SubjectTop:focus {
+    transform: scaleX(1);
+    background-color: rgb(201, 201, 201);
+  }
+
+  .SubjectTop:focus::after {
+    transform: scaleX(1);
+    background-color: rgb(180, 0, 0);
+  }
+  .SubjectTop:hover::after {
+    transform: scaleX(1);
+    background-color:#22ac00; 
+
+  }
+
+/* 
+  .SubjectTop:active {
+    transform: scaleX(1);
+    background-color:#005be4; 
+    color: white;
+    cursor: pointer;
+  } */
+
+.session-title{
+
+    background-color: white;
+    border: 1px solid rgb(218, 218, 218);
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 2px;
+    padding:10px;
+    
+    
+}
+
+.session-title p{
+    font-weight: bolder;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 24px;
+    
+}
+
+.session-title h6{
+    font-weight: bolder;
+    margin: 0;
+}
+.sessionSub-title {
+    font-size: 12px;
+   
+}
+
+.SubSection{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid rgb(218, 218, 218);
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+}
+.SubSection p{
+    margin: 0;
+    padding: 0;
+    line-height: none;
+}
+.SubSection button{
+    padding: 5px;
+    color: rgb(5, 151, 0);
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: rgba(13, 151, 0, 0.171);
+    border: none;
+}
+
+
+
+/* Icon Section */
+.icon {
+    display: grid; 
+    grid-template-columns: auto auto;
+    text-align: left;
+    /* background-color: #005be4; */
+}
+
+.break-gap{
+    line-height: 0px;
+    width: 0px;
+}
+

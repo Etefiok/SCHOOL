@@ -1,0 +1,287 @@
+/* .ResultBod{
+    margin-left: 600px;
+    margin-right: 600px;
+
+} */
+
+.FormContain{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(219, 219, 219);
+    justify-items: center;
+    
+}
+
+@media screen and (max-width: 780px) {
+    .FormContain{
+        display: grid;
+        justify-content: center;
+        background-color: rgb(219, 219, 219);
+        justify-items: center;
+        width: 100%;
+        
+    }
+}
+
+.FormLogo img{
+    width: 80px;
+}
+
+.SchoolLogo{
+    /* background-color: red; */
+    /* margin-right: 20px; */
+    width: 240px;
+    text-align: right;
+    color: red;
+    font-weight: bold;
+
+}
+
+.RegistrationNum{
+    text-align: right;
+    /* background-color: red; */
+
+}
+@media screen and (max-width: 780px) {
+    .SchoolLogo{
+        /* margin-top:10px; */
+        /* background-color: blanchedalmond; */
+        color: red;
+        height: fit-content;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bolder;
+        font-size: 15px;
+    }
+
+    .SchoolLogo p{
+        margin: 0px;
+    }
+
+    .RegistrationNum{
+        text-align: center;
+        width: auto;
+    }
+}
+
+.tab table {
+    text-align: right;
+    /* background-color: red; */
+    justify-content: right;
+    margin-left: 160px;
+    justify-items: right;
+
+}
+
+.tab td{
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 780px) {
+    .tab table {
+        text-align: right;
+        /* background-color: red; */
+        justify-content: center;
+        margin:auto;
+        justify-items: center;
+    
+    }
+ 
+}
+
+.passport{
+    width: 100px;
+}
+
+
+
+.ResultStyle{
+    display: grid;
+    background-color: rgb(240, 240, 240);
+    /* justify-content: center; */
+    text-align: center;
+    margin-top: 2px;
+/* justify-items: center; */
+}
+.ResultStyle p{
+    padding: 0;
+    margin: 0;
+}
+
+.name{
+    background-color: rgb(240, 240, 240);
+}
+.PaymentStatus{
+    background-color: rgb(219, 219, 219);
+}
+.PaymentDate{
+    background-color: rgb(240, 240, 240);
+
+}
+.feepurpose{
+    background-color: rgb(219, 219, 219);
+    font-weight: bold;
+}
+
+
+.table-container{
+    background-color: rgba(143, 143, 143, 0.479);
+    font-size: 12px;
+}
+
+.table{
+/* background-color: rgb(201, 180, 180); */
+/* border: 2px solid black; */
+}
+
+.table1-2Container{
+    display: flex;
+    background-color: rgb(240, 240, 240);
+    gap: 10px;
+    justify-content: center;
+}
+
+.TotalScores-container{
+/* background-color: red; */
+display: flex;
+}
+
+.table01{
+    background-color: rgb(165, 165, 164);
+    width: 345px;
+}
+
+.Co-Scholastic{
+    display: grid;
+    /* background-color: red; */
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.Remark{
+    display: flex;
+    background-color: rgba(143, 143, 143, 0.479);
+    gap: 200px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.AbdulResultCheck{
+   
+    align-content: center;
+    margin-top: 10px;
+    display: grid;
+    
+}
+
+.FirstHeader button{
+font-weight: bold;
+}
+
+tr td button{
+    /* background-color: blue; */
+
+}
+
+.AbdulResultCheck tr{
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #dddddd;
+}
+
+.AbdulResultCheck button{
+    /* background-color: blue; */
+   border: none;
+}
+
+.AbdulResult {
+    /* border: none; */
+    padding: 10px 20px;
+    /* font-weight: bold; */
+    /* margin-bottom: 20px; */
+    /* position: relative; */
+    background-color: whitesmoke;
+    /* cursor: pointer; */
+justify-content: center;
+    position: relative;
+  display: flex;
+ 
+  text-decoration: none;
+ 
+  
+  
+  }
+
+  .AbdulResult{
+    color: red;
+    gap: 30px;
+    display: flex;
+  }
+  
+  .Empty{
+    border: none;
+
+  }
+
+
+
+  
+.session-tit{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid rgb(218, 218, 218);
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 2px;
+    padding:10px;
+    
+    
+}
+.session-tit p{
+    font-weight: bolder;
+    margin: 0;
+    
+}
+
+.SubSect{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid rgb(218, 218, 218);
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+}
+.SubSect p{
+    margin: 0;
+    padding: 0;
+    line-height: none;
+}
+
+.Details-Button button{
+    padding: 5px;
+    color: rgb(5, 151, 0);
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: rgba(13, 151, 0, 0.171);
+    border: none;
+}
+

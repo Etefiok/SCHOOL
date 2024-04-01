@@ -1,0 +1,175 @@
+/* body{
+    display: grid ;
+    justify-content: center;
+} */
+.Examsback{
+    width: auto;
+    /* position: fixed; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    /* background-image: url("./images.jpg/LoginBackground2.jpg"); */
+    background-color: rgb(235, 225, 225);
+    background-size: cover;
+    
+
+}
+
+
+@media screen and (min-width: 780px) {
+    .Examsback{
+        width: auto;
+        position:relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: auto;
+        /* background-image: url("./images.jpg/LoginBackground2.jpg"); */
+        background-color: rgb(235, 225, 225);
+        background-size: cover;
+    
+    }
+}
+
+
+.Exams{
+    display: grid;
+    row-gap: 5px;
+    border: none;
+    align-items: center;
+    justify-content: center; 
+    /* background-color: white; */
+    width: 100%;
+    font-size: 14px;   
+}
+
+
+
+@media screen and (min-width: 780px) {
+    .Exams{
+        display: grid;
+        row-gap: 10px;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        /* background-color: white; */
+        width: 800px;
+        font-size: 16px;   
+    }
+
+
+}
+
+.Exams h5{
+    font-size: 18px;
+}
+
+
+.text-Area{
+    width: 300px;
+    height: 100px;
+}
+
+@media screen and (min-width: 780px) {
+    .text-Area{
+        width: 600px;
+        height: 100px;
+    }
+}
+
+.Instruction{
+    text-align: left;
+    display: grid;
+    row-gap: 5px;
+    border: none;
+    align-items: center;
+    justify-content: center; 
+    /* background-color: white; */
+    width: 100%;
+    font-size: 14px;
+    padding-left: 10px; 
+    padding-right: 10px;
+
+}
+
+
+@media screen and (min-width: 780px) {
+     .Instruction{
+        display: grid;
+        row-gap: 10px;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        /* background-color: white; */
+        text-align: left;
+        width: 800px;
+        font-size: 16px;
+
+
+        
+        
+       
+    }
+    
+
+}
+
+.GoodLuck{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-image: url("./images.jpg/LoginBackground2.jpg"); */
+    background-color: rgb(235, 225, 225);
+    background-size: cover;
+
+}
+
+.GoodLuckButton{
+text-align: center;
+font-size: 20px;
+}
+
+
+.GoodLuckButton button{
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+.GoodLuckButton button:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+.GoodLuckButton button:active {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.GoodLuckButton p{
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.Submit{
+    height: fit-content;
+    color: red;
+}
+
+

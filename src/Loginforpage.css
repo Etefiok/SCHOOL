@@ -1,0 +1,84 @@
+.Logiback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    background-image: url("./images.jpg/loginBackground.jpg");
+    background-size: cover;
+    
+  }
+
+  @media screen and (min-width: 768px) {
+    .Logiback {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url("./images.jpg/loginBackground.jpg");
+      background-size: cover;
+      
+    }
+  }
+  
+  .formcontain {
+    display: grid;
+    row-gap: 10px;
+    border: none;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 30px;
+       
+  }
+
+  .blur{
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    /* border: none; */
+    border-radius: 20px;
+    border-top: none;
+    line-height: 30px;
+    border-color: black;
+
+  }
+
+  .Logiback input{
+padding-left: 20px;
+  }
+
+  .sign{
+    text-align: center;
+    text-decoration: none;
+    /* background-color: red; */
+  }
+
+
+  .sign a{
+    
+    text-decoration: none;
+    
+  }
+
+  .sign button{
+    margin-top: 5px;
+    padding: 3px 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 10px;
+  }
+
+  .sign button:hover{
+    /* background-color:  rgb(255, 255, 255); */
+    border-right: 1px solid green;
+    border-bottom: 1px solid green;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+  }
+
+  .sign button:active{
+   
+    border-right: 1px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
+
+  }

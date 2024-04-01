@@ -1,0 +1,178 @@
+
+
+.page-container{
+    display: flex;
+    justify-content: center;
+    background-color:rgb(226, 240, 235) ;
+    align-items: center;
+    height: 90vh;
+    margin-top: 60px;
+   
+}
+
+@media screen and (min-width:768px) {
+    .page-container{
+        display: flex;
+        justify-content: center;
+        background-image: url('./images.jpg/loginBackground.jpg');
+        align-items: center;
+        height: 90vh;
+        margin-top: 0px;
+    }
+}
+
+.contact-grid-wrapper{
+    width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 100px;
+    background-color: red;
+}
+
+.company-data-bar > .comapny-logo-on-side img{
+width: 100%;
+margin-bottom: 20px;
+}
+.company-data-bar > .companydetails-contact-wrapper{
+    font-weight:700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    font-size: 1.25em;
+    
+}
+
+.companydetails-contact-wrapper i {
+    color: #cea135;
+   }
+
+/* form section */
+
+.newaccounttext{
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.form{
+    /* display: grid; */
+    justify-content: center;
+    background-color: #f1f1f1;
+    padding-bottom: 30px;
+    width: 40%;
+    margin-top: 100px;
+    
+    
+}
+
+@media screen and (min-width:768px) {
+    .form{
+        /* display: grid; */
+        justify-content: center;
+        background-color: #f1f1f1;
+        padding-bottom: 30px;
+        width: 400px;
+        margin-top: 0px;
+    }
+}
+.form > .form-group{
+   
+     /* margin-left: 40px;
+     margin-right: 40px; */
+     /* background-color: #cea135; */
+    
+    
+    
+}
+
+.form input{
+    /* font-size: 20px; */
+    font-family: inherit;
+    color: inherit;
+    padding: 5px;
+    border-radius:  5px;
+    border: none;
+    /* border-bottom: 3px solid #000000; */
+    width: 90.6%;
+    display: block;
+    transition: all 0.3s;
+    margin-left: 15px;
+}
+
+.form input:focus{
+    outline:none;
+    box-shadow: 0 1rem 1rem rgb(196, 192, 192);
+    border-bottom: 3px solid #cea135;
+}
+
+.form input::-webkit-input-placeholder, .form textarea::-webkit-input-placeholder{
+    /* color: #11122b; */
+}
+
+.form input:focus::-webkit-input-placeholder, .form textarea:focus::-webkit-input-placeholder{
+    color:transparent;
+}
+
+.form textarea:focus{
+outline:none;
+    box-shadow: 0 1rem 1rem rgb(196, 192, 192);
+}
+
+.form label{
+    font-size: 1.2rem;
+    font-weight: 500;
+    /* margin-bottom: 10px; */
+    /* margin-top: 0.70rem; */
+    display: block;
+    transition: all 0.3s;
+    color: #cea135;
+    visibility: hidden;
+    opacity:0;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.form input:focus + label, .form textarea:focus + label{
+    opacity: 2;
+    visibility: visible;
+    /* transform: translateY(1rem); */
+    margin-top: none;
+}
+
+.btn:active{
+    outline:none;
+    box-shadow: 0 1rem 1rem rgb(196, 192, 192);
+
+}
+.center-btn{
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+.center-btn button{
+    margin-top: none;
+    padding: 3px 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: none;
+    
+}
+
+.Alreadyhaveaccount{
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+.Alreadyhaveaccount a{
+    text-decoration: none;
+    line-height: 30px;
+}
+

@@ -1,0 +1,9 @@
+.blinking-stars {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { color: white; }
+  50% { color: yellow; }
+  100% { color: white; }
+}
