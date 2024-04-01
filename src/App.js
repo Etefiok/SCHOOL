@@ -201,7 +201,6 @@ function App() {
          <Route path='/School_Calendar_on_front' element = {<School_Calendar_on_front />} />
          <Route path='/School_Calendar_Page' element = {<School_Calendar_Page />} />
          
-               
 
         
            

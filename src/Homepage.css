@@ -22,6 +22,26 @@ body{
     border-radius: 5px ;
 }
 
+.calender{
+    position: absolute;
+    top: 10%;
+    opacity: 0;
+    z-index: -1;
+
+}
+
+@media screen and (min-width: 780px) {
+   .calender{
+    position: absolute;
+    top: 10%;
+    opacity: 1;
+    z-index: 1;
+
+
+}
+}
+
+
 .herotext h2{
     display: grid;
     justify-items: center;

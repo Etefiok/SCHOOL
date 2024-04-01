@@ -113,13 +113,13 @@ const wordsLeft = maxWords - message.split(/\s+/).filter(word => word !== '').le
                             <form id="myForm" action="/submit-form"
                             // onSubmit={handleSubmit}
                             >
-                            {/* <label htmlFor="dateInput">Date:&nbsp; </label>
+                            <label htmlFor="dateInput">Date:&nbsp; </label>
                             <input
                                 type="date"
                                 id="dateInput"
                                 value={selectedDate}
                                 onChange={handleDateChange} required
-                            /> */}
+                            />
                             {/* <button type="submit">Submit</button> */}
                             </form>
                 </div>

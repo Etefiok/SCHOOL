@@ -9,7 +9,10 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import ImageSlide from './ImageSlideFolder/ImageSlide';
 import { AccountCircle } from '@mui/icons-material';
 import Mission from './MissionFolder/Mission';
-
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Dropdown from 'react-bootstrap/Dropdown';
+import School_Calendar_on_front from './School_Calendar_on_front';
 
 
 const HomePage_out =({ users}) => {
@@ -66,6 +69,28 @@ const HomePage_out =({ users}) => {
   };
 
 
+  //for side bar navigation 
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState('');
+  
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+      href="#"
+      ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      {children}
+      &#x25bc;
+    </a>
+  ));
+
+
   return (
     <div className='Homepage'>
 
@@ -77,6 +102,27 @@ const HomePage_out =({ users}) => {
     <Notification />
     <Slider />
     <Mission />
+
+    <div className='calender'>
+                                <>
+                 
+                                    <Button variant="primary" onClick={handleShow}>School Calender</Button>
+
+                                    <Offcanvas show={show} onHide={handleClose}>
+         <Offcanvas.Header closeButton>
+           {/* <Offcanvas.Title>Sign Up</Offcanvas.Title> */}
+         </Offcanvas.Header>
+         <Offcanvas.Body>
+           <Dropdown>           
+           <School_Calendar_on_front />
+           </Dropdown>
+         </Offcanvas.Body>
+       </Offcanvas>
+     </>
+
+
+                                </div>
+
     <ImageSlide />
 
 

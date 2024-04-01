@@ -5,7 +5,7 @@
     justify-content: center;
     background-color:rgb(226, 240, 235) ;
     align-items: center;
-    height: 90vh;
+    /* height: 500px; */
     margin-top: 60px;
    
 }
@@ -22,17 +22,39 @@
 }
 
 .contact-grid-wrapper{
-    width: 1000px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 100px;
-    background-color: red;
+    margin-top: 0px;
+}
+
+@media screen and (min-width:768px) {
+    .contact-grid-wrapper{
+        width: 1000px;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-gap: 100px;
+        /* background-color: red; */
+    }
+}
+
+.company-data-bar{
+    z-index: -1;
+}
+
+@media screen and (min-width: 768px) {
+    .company-data-bar{
+        z-index: 1;
+    }
 }
 
 .company-data-bar > .comapny-logo-on-side img{
 width: 100%;
 margin-bottom: 20px;
+
 }
+
 .company-data-bar > .companydetails-contact-wrapper{
     font-weight:700;
     display: flex;
@@ -59,11 +81,12 @@ margin-bottom: 20px;
 
 .form{
     /* display: grid; */
+    position: absolute;
     justify-content: center;
     background-color: #f1f1f1;
     padding-bottom: 30px;
-    width: 40%;
-    margin-top: 100px;
+    width: 100%;
+    margin-top: 0px;
     
     
 }
@@ -71,6 +94,7 @@ margin-bottom: 20px;
 @media screen and (min-width:768px) {
     .form{
         /* display: grid; */
+        position:relative;
         justify-content: center;
         background-color: #f1f1f1;
         padding-bottom: 30px;

@@ -1,6 +1,7 @@
 .Calendar_header{
 text-align: center;
 opacity: 0;
+z-index: -1;
 
 }
 
