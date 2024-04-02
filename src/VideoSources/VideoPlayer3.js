@@ -17,7 +17,8 @@ function VideoPlayer3() {
   return (
     <div>
       <video ref={videoRef} width="400" controls>
-        Your browser does not support the video tag.
+      <source src={require("../Videos.mp4/TestVideo3.webm")} type="video/mp4" />
+
       </video>
       {/* <button onClick={handlePlayPause}>
         {isPlaying ? 'Pause' : 'Play'}

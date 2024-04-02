@@ -7,6 +7,8 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import PersonIcon from '@mui/icons-material/Person';
 import DescriptionIcon from '@mui/icons-material/Description';
 import VideoPlayer1 from "../VideoSources/VideoPlayer1";
+import VideoPlayer2 from "../VideoSources/VideoPlayer2";
+import VideoPlayer3 from "../VideoSources/VideoPlayer3";
 
 
 const Lightbox = ({ isOpen, onClose, children }) => {
@@ -27,14 +29,18 @@ const Jss1MathsSessions = () => {
     // }const [isVideoOpen, setIsVideoOpen] = useState(false);
 
     const [isVideoOpen, setIsVideoOpen] = useState(false);
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
-    const openVideo = () => {
-      setIsVideoOpen(true);
-    };
-  
-    const closeVideo = () => {
-      setIsVideoOpen(false);
-    };
+
+    const openVideo = (video) => {
+    setSelectedVideo(video);
+    setIsVideoOpen(true);
+  };
+
+  const closeVideo = () => {
+    setSelectedVideo(null);
+    setIsVideoOpen(false);
+  };
 
 
     return (
@@ -67,14 +73,12 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div className="lightbox" onClick={closeVideo}>
-              <div className="content" onClick={(e) => e.stopPropagation()}>
-                <VideoPlayer1 /> {/* Replace <VideoPlayer /> with your actual video component */}
-              </div>
-            </div>
-          )}
+                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session</button>
+        {isVideoOpen && selectedVideo === <VideoPlayer1 /> && (
+          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+            {selectedVideo}
+          </Lightbox>
+        )}
                 </div>
             </div>
 
@@ -105,14 +109,12 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div className="lightbox" onClick={closeVideo}>
-              <div className="content" onClick={(e) => e.stopPropagation()}>
-                <VideoPlayer1 /> {/* Replace <VideoPlayer /> with your actual video component */}
-              </div>
-            </div>
-          )}
+                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session</button>
+        {isVideoOpen && selectedVideo === <VideoPlayer2 /> && (
+          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+            {selectedVideo}
+          </Lightbox>
+        )}
                 </div>
             </div>
 
@@ -144,14 +146,12 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div className="lightbox" onClick={closeVideo}>
-              <div className="content" onClick={(e) => e.stopPropagation()}>
-                <VideoPlayer1 /> {/* Replace <VideoPlayer /> with your actual video component */}
-              </div>
-            </div>
-          )}
+                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session</button>
+        {isVideoOpen && selectedVideo === <VideoPlayer3 /> && (
+          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+            {selectedVideo}
+          </Lightbox>
+        )}
                 </div>
             </div>
 
@@ -188,7 +188,7 @@ const Jss1MathsSessions = () => {
           {isVideoOpen && (
             <div className="lightbox" onClick={closeVideo}>
               <div className="content" onClick={(e) => e.stopPropagation()}>
-                <VideoPlayer1 /> {/* Replace <VideoPlayer /> with your actual video component */}
+                <VideoPlayer1 /> 
               </div>
             </div>
           )}
@@ -227,7 +227,7 @@ const Jss1MathsSessions = () => {
           {isVideoOpen && (
             <div className="lightbox" onClick={closeVideo}>
               <div className="content" onClick={(e) => e.stopPropagation()}>
-                <VideoPlayer1 /> {/* Replace <VideoPlayer /> with your actual video component */}
+                <VideoPlayer1 /> 
               </div>
             </div>
           )}
@@ -266,7 +266,7 @@ const Jss1MathsSessions = () => {
 {isVideoOpen && (
 <div className="lightbox" onClick={closeVideo}>
   <div className="content" onClick={(e) => e.stopPropagation()}>
-    <VideoPlayer1 /> {/* Replace <VideoPlayer /> with your actual video component */}
+    <VideoPlayer1 />
   </div>
 </div>
 )}
