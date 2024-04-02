@@ -150,20 +150,20 @@ const tabContent = {
 
 {/*  media query section */}
    
-                 <div className='Session_For_Media'>
+                 <div className='Side-Bar-Nav'>
             <>
 
                 <Button variant="primary" onClick={handleShow}>+</Button>
 
                 <Offcanvas show={show} onHide={handleClose}>
-              <Offcanvas.Header closeButton>
+       
+              <Offcanvas.Header className="Offcanvas" closeButton><p>JSS1 Sessions History</p>
                 {/* <Offcanvas.Title>Sign Up</Offcanvas.Title> */}
               </Offcanvas.Header>
+
               <Offcanvas.Body>
                 <Dropdown>           
-                <div className="session_media">
-                <p>JSS1 Sessions History</p>
-            </div>
+              
             <div className="SubjectTop_container_media">
                 <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
                     onClick={() => handleTabClick('Tab1')}>Maths</button>

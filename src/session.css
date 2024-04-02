@@ -2,10 +2,11 @@
 .sessionbody{
     /* display: grid; */
     /* justify-content: center; */
+    
     background-color: rgb(201, 201, 201);
-    padding: 10px;
+    padding: 0px;
     margin-left: 10px;
-    margin-right: 6px;
+    margin-right: 10px;
     position: absolute;
     top: 100px;
     z-index: 0;
@@ -188,38 +189,17 @@
 }
 
 
-.Session_For_Media{
-    position: fixed;
-    z-index: 999;
-    right: 20px;
-    bottom: 70px;
-    
-    
-
-}
-
-@media screen and (min-width: 768px) {
-   .Session_For_Media{
-    position: absolute;
-    opacity:0;
-
-
-}
-}
-
-.Session_For_Media button{
-    font-weight: bold;
-    font-size: 20px;
-
-}
 
 .SubjectTop_container_media{
     display: grid;
-    background-color: red;
+    /* background-color: red; */
+    margin-left: 10px;
+    margin-top: 0px;
+    gap: 2px;
 
 
 }
-
+/* 
 @media screen and (min-width: 768px) {
     .SubjectTop_container_media{
         display: grid;
@@ -227,9 +207,12 @@
         
     
     }
-}
+} */
 
 .session_media{
-    font-weight: bolder;
+   
+    
+    
 
 }
+

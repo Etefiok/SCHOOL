@@ -22,10 +22,23 @@
   }
 }
 
-
 .Offcanvas{
   background-color: #0D6EFD;
   height: 40px;
+  margin-bottom: 0px;
+ 
+
+}
+
+.Offcanvas p{
+  
+  font-weight: bolder;
+  margin-top: 8px;
+  padding-bottom: 0px;
+  color: white;
+  margin-left: 110px;
+  /* background-color: #22ac00; */
+  
 }
 
   /* STUDENT CARD SECTION */
