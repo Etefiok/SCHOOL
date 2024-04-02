@@ -16,6 +16,7 @@ function VideoPlayer1() {
 
   return (
     <div>
+      
       <video ref={videoRef} width="400" controls>
         {/* <source src={require("../Videos/video.mp4")} type="video/mp4" /> */}
       
