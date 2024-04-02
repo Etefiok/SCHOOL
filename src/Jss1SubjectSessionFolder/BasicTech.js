@@ -20,7 +20,9 @@ const Jss1_Basic_Tech_Sessions = () => {
 
     return (
         <div className="sessionbody">
-
+            <div className="title">
+                <p>Basic Tech</p>
+            </div>
         <div className="session-title">
                             <h6><DescriptionIcon />Your Session Title Here</h6>
                             <p>Session SubTitle Here</p>

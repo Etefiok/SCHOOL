@@ -21,7 +21,9 @@ const Jss1_Auto_Mech_Sessions = () => {
 
     return (
         <div className="sessionbody">
-
+            <div className="title">
+                <p>Auto Mech</p>
+            </div>
         <div className="session-title">
                             <h6><DescriptionIcon />Your Session Title Here</h6>
                             <p>Session SubTitle Here</p>

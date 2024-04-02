@@ -20,8 +20,10 @@ const Jss1_Lit_EnglishSessions = () => {
 
     return (
         <div className="sessionbody">
-
-<div className="session-title">
+            <div className="title">
+                <p>Lit in English</p>
+            </div>
+            <div className="session-title">
                     <h6><DescriptionIcon />Your Session Title Here</h6>
                     <p>Session SubTitle Here</p>
             </div>

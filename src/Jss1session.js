@@ -23,6 +23,12 @@ import Jss1_Technical_Drawing_Sessions from "./Jss1SubjectSessionFolder/Technica
 import Jss1_Auto_Mech_Sessions from "./Jss1SubjectSessionFolder/AutoMech";
 
 
+
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Dropdown from 'react-bootstrap/Dropdown';
+import School_Calendar_on_front from './School_Calendar_on_front';
+
 const Jss1session = () => {
     // const navigate = useNavigate();
 
@@ -31,9 +37,10 @@ const Jss1session = () => {
     // }
 
     const [activeTab, setActiveTab] = useState('Tab1');
-const handleTabClick = (tabName) => 
+const handleTabClick = (tabName) => {
 setActiveTab(tabName);
-
+handleClose();
+}
 const tabContent = {
   Tab1: <Jss1MathsSessions />,
   Tab2: <Jss1EnglishSessions /> ,
@@ -54,6 +61,27 @@ const tabContent = {
   Tab17: <Jss1_Auto_Mech_Sessions />,
   
 };
+
+ //for side bar navigation 
+ const [show, setShow] = useState(false);
+ const [value, setValue] = useState('');
+ 
+ const handleClose = () => setShow(false);
+ const handleShow = () => setShow(true);
+ 
+ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+   <a
+     href="#"
+     ref={ref}
+     onClick={(e) => {
+       e.preventDefault();
+       onClick(e);
+     }}
+   >
+     {children}
+     &#x25bc;
+   </a>
+ ));
 
     return (
         <div>
@@ -117,6 +145,86 @@ const tabContent = {
             </div>
 
                  {tabContent[activeTab]}
+
+
+
+{/*  media query section */}
+   
+                 <div className='Session_For_Media'>
+            <>
+
+                <Button variant="primary" onClick={handleShow}>+</Button>
+
+                <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton>
+                {/* <Offcanvas.Title>Sign Up</Offcanvas.Title> */}
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Dropdown>           
+                <div className="session_media">
+                <p>JSS1 Sessions History</p>
+            </div>
+            <div className="SubjectTop_container_media">
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab1')}>Maths</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab2')}>English</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab3')}>Lit in English</button>
+            
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab4')}>Social Stodies</button>
+                
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab5')}>Economics</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab6')}>Computer Studies</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab7')}>Basic Technology</button>
+                
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab8')}>Agriculture</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab9')}>Biology</button>
+                
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab10')}>Yeroba</button>
+                
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab11')}>Chemistry</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab12')}>Government</button>
+                
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab13')}>CRK</button>
+                
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab14')}>Physics</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab15')}>Science</button>
+
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab16')}>Technical Drawing</button>
+                
+                <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
+                    onClick={() => handleTabClick('Tab17')}>Auto Mech</button>
+            </div>
+                </Dropdown>
+              </Offcanvas.Body>
+            </Offcanvas>
+          </>
+    </div>
+
+
         </div>
             
      

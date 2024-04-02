@@ -104,24 +104,22 @@ const HomePage_out =({ users}) => {
     <Mission />
 
     <div className='calender'>
-                                <>
-                 
-                                    <Button variant="primary" onClick={handleShow}>School Calender</Button>
+            <>
 
-                                    <Offcanvas show={show} onHide={handleClose}>
-         <Offcanvas.Header closeButton>
-           {/* <Offcanvas.Title>Sign Up</Offcanvas.Title> */}
-         </Offcanvas.Header>
-         <Offcanvas.Body>
-           <Dropdown>           
-           <School_Calendar_on_front />
-           </Dropdown>
-         </Offcanvas.Body>
-       </Offcanvas>
-     </>
+                <Button variant="primary" onClick={handleShow}>School Calender</Button>
 
-
-                                </div>
+                <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton>
+                {/* <Offcanvas.Title>Sign Up</Offcanvas.Title> */}
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Dropdown>           
+                <School_Calendar_on_front />
+                </Dropdown>
+              </Offcanvas.Body>
+            </Offcanvas>
+          </>
+    </div>
 
     <ImageSlide />
 

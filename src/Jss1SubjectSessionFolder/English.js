@@ -20,7 +20,9 @@ const Jss1EnglishSessions = () => {
 
     return (
         <div className="sessionbody">
-
+            <div className="title">
+                <p>English</p>
+            </div>
             <div className="session-title">
                     <h6><DescriptionIcon />Your Session Title Here</h6>
                     <p>Session SubTitle Here</p>
