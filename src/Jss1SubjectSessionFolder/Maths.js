@@ -14,7 +14,7 @@ const Lightbox = ({ isOpen, onClose, children }) => {
     <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
       <div className="content" onClick={(e) => e.stopPropagation()}>
         {children}
-        <button onClick={onClose} className="close-button">Close</button>
+        <button onClick={onClose} className="close-button">X</button>
       </div>
     </div>
   );
@@ -66,12 +66,23 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session 1</button>
+                    {/* <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session 1</button>
         {isVideoOpen && selectedVideo === <VideoPlayer1 /> && (
           <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
             {selectedVideo}
           </Lightbox>
-        )}
+        )} */}
+
+
+<button onClick={openVideo}>Watch Session</button>
+          {isVideoOpen && (
+            <div className="content" onClick={(e) => e.stopPropagation()}>
+            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+            <VideoPlayer1 />
+          </Lightbox>
+              
+            </div>
+          )}
                 </div>
             </div>
 
@@ -102,12 +113,15 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={() => openVideo(<VideoPlayer2 />)}>Watch Session 2</button>
-        {isVideoOpen && selectedVideo === <VideoPlayer2 /> && (
-          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-            {selectedVideo}
+                    <button onClick={openVideo}>Watch Session</button>
+          {isVideoOpen && (
+            <div className="content" onClick={(e) => e.stopPropagation()}>
+            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+            <VideoPlayer2 />
           </Lightbox>
-        )}
+              
+            </div>
+          )}
                 </div>
             </div>
 
@@ -141,11 +155,12 @@ const Jss1MathsSessions = () => {
                     <VideoLibraryIcon />
                     <button onClick={openVideo}>Watch Session</button>
           {isVideoOpen && (
-          <div className="lightbox" onClick={closeVideo}>
             <div className="content" onClick={(e) => e.stopPropagation()}>
-              <VideoPlayer2 />
+            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+            <VideoPlayer3 />
+          </Lightbox>
+              
             </div>
-          </div>
           )}
                 </div>
             </div>
@@ -181,11 +196,12 @@ const Jss1MathsSessions = () => {
                     <VideoLibraryIcon />
                     <button onClick={openVideo}>Watch Session</button>
           {isVideoOpen && (
-          <div className="lightbox" onClick={closeVideo}>
             <div className="content" onClick={(e) => e.stopPropagation()}>
-              <VideoPlayer1 />
+            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+            <VideoPlayer1 />
+          </Lightbox>
+              
             </div>
-          </div>
           )}
                 </div>
             </div>
