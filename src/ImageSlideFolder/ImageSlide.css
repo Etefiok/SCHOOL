@@ -3,7 +3,8 @@
     width: 100%;
     overflow: auto;
     white-space: nowrap;
-    margin-top: 960px;
+    margin-top: 880px;
+    border: 1px solid rgba(0, 0, 0, 0.281);
     
 }
 
@@ -16,11 +17,10 @@
     margin-left: 10px;
     border-radius: 10px;
     overflow: hidden;
+    background-color: #4CAF50;
+
    
 }
-
-
-
 
 /* .image-container img {
     max-width: 180px;
@@ -36,7 +36,7 @@
    
     .image-container {
         /* background-color: aqua; */
-        margin-top: 200px;
+        margin-top: 185px;
         margin-left: 70px;
         width: 90%;
         height: 400px;
@@ -54,6 +54,9 @@
         margin-left: 10px;
         border-radius: 10px;
         overflow: hidden;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 20px;
        
     }
     

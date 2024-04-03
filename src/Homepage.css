@@ -112,10 +112,11 @@ body{
 
 .activities-1-text{
     /* background-color: blanchedalmond; */
-    width: 40%;
+    width: 60%;
     margin: 30px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
 }
 
 
@@ -123,8 +124,6 @@ body{
     border-radius: 30px;
     width: 35%;
 }
-
-
 
 @media screen and (max-width: 780px) {
     .activities-container{
@@ -146,7 +145,7 @@ body{
     .activities-1-text{
         position: absolute;
         display: grid;
-        justify-content: center;
+        /* justify-content: center; */
         text-align:right;
         /* background-color: rgba(48, 48, 47, 0.438); */
         width: 80%;
@@ -170,7 +169,7 @@ body{
     .activities-1-text  button{
         position: absolute;
         margin-left: 150px;
-        top: 25px;
+        top: 50px;
         border: none;
         border-radius: 10px;
         padding: 8px; 
@@ -260,7 +259,7 @@ body{
     .activities-1-text0{
         position: absolute;
         display: grid;
-        justify-content: center;
+        /* justify-content: center; */
         text-align:right;
         /* background-color: rgba(48, 48, 47, 0.438); */
         width: 80%;
