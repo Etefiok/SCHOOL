@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "../session.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EventIcon from '@mui/icons-material/Event';
@@ -10,30 +9,25 @@ import VideoPlayer1 from "../VideoSources/VideoPlayer1";
 import VideoPlayer2 from "../VideoSources/VideoPlayer2";
 import VideoPlayer3 from "../VideoSources/VideoPlayer3";
 
-
 const Lightbox = ({ isOpen, onClose, children }) => {
-    return (
-      <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
-        <div className="content" onClick={(e) => e.stopPropagation()}>
-          {children}
-        </div>
+  return (
+    <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
+      <div className="content" onClick={(e) => e.stopPropagation()}>
+        {children}
+        <button onClick={onClose} className="close-button">Close</button>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 const Jss1MathsSessions = () => {
-    // const navigate = useNavigate();
-
-    // function videoPlayer1() {
-    //     navigate("/VideoPlayer1");
-    // }const [isVideoOpen, setIsVideoOpen] = useState(false);
-
-    const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const openVideo = (videoComponent) => {
     setSelectedVideo(videoComponent);
     setIsVideoOpen(true);
+    console.log("open video is working")
   };
 
   const closeVideo = () => {
@@ -72,17 +66,12 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <>
-      <button onClick={() => openVideo(<VideoPlayer2 />)}>Watch Session</button>
-      {isVideoOpen && selectedVideo === VideoPlayer2  && (
-        <div className="lightbox">
-          <div className="video-container">
+                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session 1</button>
+        {isVideoOpen && selectedVideo === <VideoPlayer1 /> && (
+          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
             {selectedVideo}
-          </div>
-          <button onClick={closeVideo} className="close-button">Close</button>
-        </div>
-      )}
-    </>
+          </Lightbox>
+        )}
                 </div>
             </div>
 
@@ -113,7 +102,7 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={() => openVideo(<VideoPlayer2 />)}>Watch Session</button>
+                    <button onClick={() => openVideo(<VideoPlayer2 />)}>Watch Session 2</button>
         {isVideoOpen && selectedVideo === <VideoPlayer2 /> && (
           <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
             {selectedVideo}
@@ -150,12 +139,14 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={() => openVideo(<VideoPlayer3 />)}>Watch Session</button>
-        {isVideoOpen && selectedVideo === <VideoPlayer3 /> && (
-          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-            {selectedVideo}
-          </Lightbox>
-        )}
+                    <button onClick={openVideo}>Watch Session</button>
+          {isVideoOpen && (
+          <div className="lightbox" onClick={closeVideo}>
+            <div className="content" onClick={(e) => e.stopPropagation()}>
+              <VideoPlayer2 />
+            </div>
+          </div>
+          )}
                 </div>
             </div>
 
@@ -190,11 +181,11 @@ const Jss1MathsSessions = () => {
                     <VideoLibraryIcon />
                     <button onClick={openVideo}>Watch Session</button>
           {isVideoOpen && (
-            <div className="lightbox" onClick={closeVideo}>
-              <div className="content" onClick={(e) => e.stopPropagation()}>
-                <VideoPlayer1 /> 
-              </div>
+          <div className="lightbox" onClick={closeVideo}>
+            <div className="content" onClick={(e) => e.stopPropagation()}>
+              <VideoPlayer1 />
             </div>
+          </div>
           )}
                 </div>
             </div>
@@ -227,14 +218,14 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div className="lightbox" onClick={closeVideo}>
-              <div className="content" onClick={(e) => e.stopPropagation()}>
-                <VideoPlayer1 /> 
-              </div>
-            </div>
-          )}
+                    {/* <button onClick={openVideo}>Watch Session</button>
+                    {isVideoOpen && (
+                    <div className="lightbox" onClick={closeVideo}>
+                      <div className="content" onClick={(e) => e.stopPropagation()}>
+                        <VideoPlayer3 />
+                      </div>
+                    </div>
+                    )} */}
                 </div>
             </div>
 
@@ -266,14 +257,14 @@ const Jss1MathsSessions = () => {
 
     <div>
         <VideoLibraryIcon />
-        <button onClick={openVideo}>Watch Session</button>
-{isVideoOpen && (
-<div className="lightbox" onClick={closeVideo}>
-  <div className="content" onClick={(e) => e.stopPropagation()}>
-    <VideoPlayer1 />
-  </div>
-</div>
-)}
+        {/* <button onClick={openVideo}>Watch Session</button>
+          {isVideoOpen && (
+          <div className="lightbox" onClick={closeVideo}>
+            <div className="content" onClick={(e) => e.stopPropagation()}>
+              <VideoPlayer1 />
+            </div>
+          </div>
+          )} */}
     </div>
 </div>
 
