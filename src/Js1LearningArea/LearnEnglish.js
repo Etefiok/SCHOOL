@@ -89,7 +89,7 @@ const js1English = Js1EnglishData[0];
         +
       </Button>
 
-      <Offcanvas  show={show} onHide={handleClose}>
+      <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header className="Offcanvas" closeButton>
           <Offcanvas.Title className="card-body1" >
           <h5>{js1English.Subject}</h5>

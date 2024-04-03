@@ -29,11 +29,10 @@ const Jss1MathsSessions = () => {
     // }const [isVideoOpen, setIsVideoOpen] = useState(false);
 
     const [isVideoOpen, setIsVideoOpen] = useState(false);
-    const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-
-    const openVideo = (video) => {
-    setSelectedVideo(video);
+  const openVideo = (videoComponent) => {
+    setSelectedVideo(videoComponent);
     setIsVideoOpen(true);
   };
 
@@ -73,12 +72,17 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session</button>
-        {isVideoOpen && selectedVideo === <VideoPlayer1 /> && (
-          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+                    <>
+      <button onClick={() => openVideo(<VideoPlayer2 />)}>Watch Session</button>
+      {isVideoOpen && selectedVideo === VideoPlayer2  && (
+        <div className="lightbox">
+          <div className="video-container">
             {selectedVideo}
-          </Lightbox>
-        )}
+          </div>
+          <button onClick={closeVideo} className="close-button">Close</button>
+        </div>
+      )}
+    </>
                 </div>
             </div>
 
@@ -109,7 +113,7 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session</button>
+                    <button onClick={() => openVideo(<VideoPlayer2 />)}>Watch Session</button>
         {isVideoOpen && selectedVideo === <VideoPlayer2 /> && (
           <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
             {selectedVideo}
@@ -146,7 +150,7 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session</button>
+                    <button onClick={() => openVideo(<VideoPlayer3 />)}>Watch Session</button>
         {isVideoOpen && selectedVideo === <VideoPlayer3 /> && (
           <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
             {selectedVideo}
