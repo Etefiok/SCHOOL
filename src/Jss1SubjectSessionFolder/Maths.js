@@ -11,11 +11,14 @@ import VideoPlayer3 from "../VideoSources/VideoPlayer3";
 
 const Lightbox = ({ isOpen, onClose, children }) => {
   return (
-    <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
-      <div className="content" onClick={(e) => e.stopPropagation()}>
-        {children}
-        <button onClick={onClose} className="close-button">Close</button>
-      </div>
+    <div className="video-lightbox">
+      <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
+        <div className="content" onClick={(e) => e.stopPropagation()}>
+          {children}
+          
+            <button onClick={onClose} className="close-button">X</button>
+          </div>
+        </div>
     </div>
   );
 };

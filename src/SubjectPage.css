@@ -4,12 +4,16 @@
   align-items:normal;
   margin-top: 52px;
   width: 100%;
-  height: 800px;
-  background-image: url(./images.jpg/EXAMS.jpg);
+  /* height: 800px; */
   background-repeat: no-repeat;
   background-size: cover;
 
    
+}
+
+.Subject_Contain{
+  background-color: #0092c74f;
+  height: 800px;
 }
 
 @media screen and (min-width: 780px) {
@@ -19,9 +23,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 800px;
+  /* height: 800px; */
   margin-top: 0px;
-  background-image: url(./images.jpg/EXAMS.jpg);
   background-repeat: no-repeat;
   background-size: cover;
    
@@ -31,10 +34,11 @@
 .SubjectContainer h1{
   text-align: center;
   font-weight: bolder;
-  backdrop-filter: blur(15px);
+  background-color: #0091C7;
+  /* backdrop-filter: blur(15px); */
   text-shadow: 2px 2px 4px #000000;
   border-radius: 10px;
-  box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 2px 5px rgb(0, 0, 0);
   color: #ECF0F1;
   padding: 10px 20px;
   font-family: 'Times New Roman', serif;
@@ -46,12 +50,12 @@
   .SubjectContainer h1{
     text-align: center;
     font-weight: bolder;
-    /* background-color: red; */
+    background-color: #0091C7;
     height: 50px;
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */
     text-shadow: 2px 2px 4px #000000;
     border-radius: 10px;
-    box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
     color: #ECF0F1;
     padding: 5px;
     font-family: 'Times New Roman', serif;
@@ -110,7 +114,7 @@
   backdrop-filter: blur(10px);
   border: none;
   border-radius: 20px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
   color: rgb(0, 0, 0);
   font-family: 'Times New Roman', serif;
 }
@@ -124,7 +128,7 @@
     backdrop-filter: none;
     border: none;
     border-radius: 5px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
     color: rgb(0, 0, 0);
     font-family: 'Times New Roman', serif;
     margin: 0px;
@@ -134,15 +138,16 @@
 
   .Subject button:hover{
    backdrop-filter: blur(15px);
-  text-shadow: 4px 4px 5px rgba(255, 255, 255, 0.5);
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 
   }
 
 
   .Subject button:active{
-    box-shadow: 4px 4px 5px rgba(255, 255, 255, 0.5);
-    background-color:blanchedalmond;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    background-color: #0091C7;
+    color: white;
   }
 
 
