@@ -1,7 +1,28 @@
+
+.Space{
+  height: 55px;
+}
 .choose{
   
-background-color: beige;
-height: 99vh;
+background-color: #0092c74f;
+height: 90vh;
+/* margin-top: 53px; */
+
+}
+
+@media screen and (min-width:768px) {
+  .choose{
+  
+    background-color: #0092c74f;
+    height: 99vh;
+    /* margin-top: 0px; */
+
+    }
+    
+    .Space{
+      height: 0px;
+      
+    }
 }
 
 .choose_class_container{

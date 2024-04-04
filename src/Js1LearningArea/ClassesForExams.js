@@ -16,8 +16,12 @@ function ClassesForExams() {
 
 
     return(
-    <div className='choose'>
+    <div>
             <NavBar_Student />
+            <div className='Space'>
+
+            </div>
+            <div className='choose'>
         <div className='choose_class_container'>
             <div className='choose_class'>
                 <p>
@@ -33,6 +37,7 @@ function ClassesForExams() {
                 <button>SS3</button>
             </div>
         </div>
+    </div>
     </div>
     )
     
