@@ -214,6 +214,8 @@
 .lightbox {
     position: fixed;
     top: 10%;
+    margin-left: 5px;
+    margin-right:5px;
     left: 0;
     width: 100%;
     /* height: 100%%; */

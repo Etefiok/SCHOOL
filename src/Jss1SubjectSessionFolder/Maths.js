@@ -24,20 +24,20 @@ const Jss1MathsSessions = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const openVideo1 = (VideoPlayer1) => {
-    setSelectedVideo(VideoPlayer1);
+  const openVideo1 = () => {
+    setSelectedVideo();
     setIsVideoOpen(true);
     console.log("VideoPlayer1")
   };
 
-  const openVideo2 = (VideoPlayer2) => {
-    setSelectedVideo(VideoPlayer2);
+  const openVideo2 = () => {
+    setSelectedVideo();
     setIsVideoOpen(true);
     console.log("VideoPlayer2")
   };
 
-  const openVideo3 = (VideoPlayer3) => {
-    setSelectedVideo(VideoPlayer3);
+  const openVideo3 = () => {
+    setSelectedVideo();
     setIsVideoOpen(true);
     console.log("VideoPlayer3")
   };

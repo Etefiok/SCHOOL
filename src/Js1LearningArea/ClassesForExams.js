@@ -8,30 +8,29 @@ import './Classes.css';
 
 function ClassesForExams() {
 
- const Navigate = useNavigate();
+//  const Navigate = useNavigate();
 
-    function Subjects(){
-        Navigate("./Subjects_For_Exams")
-    };
+//     function Subjects(){
+//         Navigate("./Subjects_For_Exams")
+//     };
 
 
     return(
-    <div>
+    <div className='choose'>
             <NavBar_Student />
-            
-           
-        <div className='ClassContainer'>
-        <h1>CHOOSE CLASS</h1>
-        
-            <div className="Classesbutton">
-                <span>
-                <button onClick={() => { window.location.href = "./Subjects_For_Exams"; }}>JS1</button>
+        <div className='choose_class_container'>
+            <div className='choose_class'>
+                <p>
+                    CHOOSE CLASS
+                </p>
+            </div>
+            <div className='Classes'>
+            <button onClick={() => { window.location.href = "./Subjects_For_Exams"; }}>JS1</button>
                 <button>JS2</button>
                 <button>JS3</button>
                 <button>SS1</button>
                 <button>SS2</button>
                 <button>SS3</button>
-                </span>
             </div>
         </div>
     </div>
@@ -40,3 +39,5 @@ function ClassesForExams() {
 }
 
 export default ClassesForExams
+
+
