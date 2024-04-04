@@ -18,7 +18,7 @@ function VideoPlayer1() {
     <div>
       
       <video ref={videoRef} width="400" controls>
-        <source src={require("../Videos.mp4/testVideo.webm")} type="video/mp4" />
+        <source src={require("../Videos.mp4/TestVideo2.webm")} type="video/mp4" />
       
       </video>
       {/* <button onClick={handlePlayPause}>

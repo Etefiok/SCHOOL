@@ -24,10 +24,22 @@ const Jss1MathsSessions = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const openVideo = (videoComponent) => {
-    setSelectedVideo(videoComponent);
+  const openVideo1 = (VideoPlayer1) => {
+    setSelectedVideo(VideoPlayer1);
     setIsVideoOpen(true);
-    console.log("open video is working")
+    console.log("VideoPlayer1")
+  };
+
+  const openVideo2 = (VideoPlayer2) => {
+    setSelectedVideo(VideoPlayer2);
+    setIsVideoOpen(true);
+    console.log("VideoPlayer2")
+  };
+
+  const openVideo3 = (VideoPlayer3) => {
+    setSelectedVideo(VideoPlayer3);
+    setIsVideoOpen(true);
+    console.log("VideoPlayer3")
   };
 
   const closeVideo = () => {
@@ -74,7 +86,7 @@ const Jss1MathsSessions = () => {
         )} */}
 
 
-<button onClick={openVideo}>Watch Session</button>
+<button onClick={openVideo1}>Watch Session</button>
           {isVideoOpen && (
             <div className="content" onClick={(e) => e.stopPropagation()}>
             <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
@@ -113,7 +125,7 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
+                    <button onClick={openVideo2}>Watch Session</button>
           {isVideoOpen && (
             <div className="content" onClick={(e) => e.stopPropagation()}>
             <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
@@ -153,7 +165,7 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
+                    <button onClick={openVideo3}>Watch Session</button>
           {isVideoOpen && (
             <div className="content" onClick={(e) => e.stopPropagation()}>
             <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
@@ -194,7 +206,7 @@ const Jss1MathsSessions = () => {
 
                 <div>
                     <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
+                    <button onClick={openVideo1}>Watch Session</button>
           {isVideoOpen && (
             <div className="content" onClick={(e) => e.stopPropagation()}>
             <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
