@@ -11,6 +11,7 @@ import { AccountCircle } from '@mui/icons-material';
 import Mission from './MissionFolder/Mission';
 import NavBar_Student from './NavBar_Student';
 import Dictionary from './ImageSlideFolder/Dictionary/Dictionary';
+import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
 
 
@@ -80,7 +81,8 @@ const HomePage_Student =({ users}) => {
     <Slider />
     <Mission />
     <ImageSlide />
-    <Dictionary />
+    {/* <Dictionary /> */}
+    <JAMB_Recomended_TextBook />
 
 
     <div className='activities-container'>

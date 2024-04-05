@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Dropdown from 'react-bootstrap/Dropdown';
 import School_Calendar_on_front from './School_Calendar_on_front';
+import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
 
 const HomePage_out =({ users}) => {
@@ -99,9 +100,12 @@ const HomePage_out =({ users}) => {
       </nav>
  
       
-    <Notification />
+      <Notification />
     <Slider />
     <Mission />
+    <ImageSlide />
+    {/* <Dictionary /> */}
+    <JAMB_Recomended_TextBook />
 
     <div className='calender'>
             <>
@@ -121,7 +125,7 @@ const HomePage_out =({ users}) => {
           </>
     </div>
 
-    <ImageSlide />
+    {/* <ImageSlide /> */}
 
 
     <div className='activities-container'>

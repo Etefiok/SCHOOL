@@ -78,7 +78,7 @@ const HomePage_Admin =({ users}) => {
     <Notification />
     <Slider />
     <Mission />
-    <ImageSlide />
+    {/* <ImageSlide /> */}
 
 
     <div className='activities-container'>

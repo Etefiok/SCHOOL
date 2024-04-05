@@ -51,6 +51,7 @@ import School_Calendar_on_front from './School_Calendar_on_front';
 import About_Us_Page from './About_Us_Folder/About_Us_Page';
 import HomePage_Admin from './HomePage_Admin';
 import StarBlink from './StarBlink';
+// import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
 function App() {
 
@@ -203,7 +204,7 @@ function App() {
          <Route path='/School_Calendar_Page' element = {<School_Calendar_Page />} />
          
 
-        
+         {/* <Route path='/JAMB_Recomended_TextBook' element = {<JAMB_Recomended_TextBook />} /> */}
            
         
         <Route path='/AbdullahiShehuJss1ThirdTermResult' element = {<AbdullahiShehuJss1ThirdTermResult />} />
