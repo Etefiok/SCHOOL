@@ -81,6 +81,7 @@ const HomePage_Student =({ users}) => {
     <Slider />
     <Mission />
     <ImageSlide />
+    <br></br>
     {/* <Dictionary /> */}
     <JAMB_Recomended_TextBook />
 
