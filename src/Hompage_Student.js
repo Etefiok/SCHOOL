@@ -10,10 +10,11 @@ import ImageSlide from './ImageSlideFolder/ImageSlide';
 import { AccountCircle } from '@mui/icons-material';
 import Mission from './MissionFolder/Mission';
 import NavBar_Student from './NavBar_Student';
+import Dictionary from './ImageSlideFolder/Dictionary/Dictionary';
 
 
 
-const HomePage_out =({ users}) => {
+const HomePage_Student =({ users}) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const containerRef = useRef(null);
@@ -79,6 +80,7 @@ const HomePage_out =({ users}) => {
     <Slider />
     <Mission />
     <ImageSlide />
+    <Dictionary />
 
 
     <div className='activities-container'>
@@ -142,6 +144,6 @@ const HomePage_out =({ users}) => {
   );
 }
 
-export default HomePage_out
+export default HomePage_Student
 
 
