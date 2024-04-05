@@ -104,6 +104,7 @@ const HomePage_out =({ users}) => {
     <Slider />
     <Mission />
     <ImageSlide />
+    <br></br>
     {/* <Dictionary /> */}
     <JAMB_Recomended_TextBook />
 

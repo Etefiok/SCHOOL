@@ -211,7 +211,7 @@
 .video-lightbox .lightbox{
     
     /* background-color: red; */
-    width:fit-content;
+    width:98%;
     margin-left:auto;
     
 
@@ -250,10 +250,11 @@
     position: absolute;
     color: rgb(255, 255, 255);
     font-size: 15px;
-    right: 15px;
+    right: 20px;
     top: 10px;
     background-color: rgba(255, 255, 255, 0.288);
     cursor: pointer;
+    z-index: 1000;
 
     
 }
@@ -280,6 +281,7 @@
         top: 10px;
         background-color: rgba(255, 255, 255, 0.288);
         cursor: pointer;
+        z-index: 1000;
     
         
     }
