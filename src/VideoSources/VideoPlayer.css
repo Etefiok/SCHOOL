@@ -1,0 +1,9 @@
+.session-videoplayer{
+    width:400px;
+}
+
+@media screen and (min-width:768px) {
+    .session-videoplayer{
+        width:200px;
+    }
+}

@@ -166,11 +166,11 @@ function App() {
       <Route path='Test_Result_Sheet' element={<Test_Result_Sheet />} />
       {/* <Route path='/' element={<HomePage users={details}/>} />  */}
 
-      <Route path='' element={<HomePage_out />} /> 
-      <Route path='Login_Student' element={<Login_Student />} /> 
-      <Route path='Login_Admin' element={<Login_Admin />} />
-      <Route path='Homepage_Student' element={<HomePage_Student />} /> 
-      <Route path='HomePage_Admin' element={<HomePage_Admin />} />
+      <Route exact path='/' element={<HomePage_out />} /> 
+      <Route path='/Login_Student' element={<Login_Student />} /> 
+      <Route path='/Login_Admin' element={<Login_Admin />} />
+      <Route path='/Homepage_Student' element={<HomePage_Student />} /> 
+      <Route path='/HomePage_Admin' element={<HomePage_Admin />} />
 
 
       <Route path='/details/:idnumber' element={<details users={details} />} /> 

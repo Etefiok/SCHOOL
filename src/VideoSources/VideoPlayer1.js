@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import "./VideoPlayer.css"
 
 function VideoPlayer1() {
   const videoRef = useRef(null);
@@ -17,8 +18,8 @@ function VideoPlayer1() {
   return (
     <div>
       
-      <video ref={videoRef} width="400" controls>
-        <source src={require("../Videos.mp4/TestVideo2.webm")} type="video/mp4" />
+      <video className='session-videoplayer' ref={videoRef} controls>
+        <source src={require("../Videos.mp4/testVideo.webm")} type="video/mp4" />
       
       </video>
       {/* <button onClick={handlePlayPause}>

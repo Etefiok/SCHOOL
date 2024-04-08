@@ -62,7 +62,7 @@ const {username, idnumber, password}= useSelector(store => store.school );
             <div className='Logiback'>
             <form onSubmit={loginUser} className="formcontain">
             
-            <h2>Enter your details to Login</h2>
+            <h2>Login</h2>
             <input className="blur" value={username} type="text" placeholder=" username" name="username" onChange={handleUsernameChange} /> 
 
             {/* <input className="blur" value={idnumber} type="text" placeholder="ID number" name="idnumber" onChange={handleIdnumberChange} /> */}

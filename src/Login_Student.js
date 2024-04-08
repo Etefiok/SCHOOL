@@ -79,9 +79,8 @@ function Login_Student() {
 
             
                 <a href="http://localhost:3000/forgetpassword">Forget password?</a>
-        <br></br><br></br>
-        click on the Sign Up Botton to Register<br></br>
-        <button onClick={signupuser}>Sign Up</button>
+        <br></br>
+        Don't have an account? <a href="http://localhost:3000/Signup">Signup</a>
         </div>
             </form>
             </div>

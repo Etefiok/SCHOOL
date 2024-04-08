@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NavBar_out from "./NavBar_out";
 import "./Homepage.css";
+import { Container } from "react-bootstrap";
 import Notification from './notification';
 import Slider from './SliderComponent/Slider/Slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -93,6 +94,7 @@ const HomePage_out =({ users}) => {
 
 
   return (
+
     <div className='Homepage'>
 
       <nav className='NavBarFloat'>

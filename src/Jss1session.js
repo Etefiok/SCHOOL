@@ -86,10 +86,13 @@ const tabContent = {
     return (
         <div>
             <NavBar_Student />
+            {/* <div className="session">
+                <p>JSS1 Sessions History</p> */}
+            {/* </div> */}
+            <div className="SubjectTop_container">
             <div className="session">
                 <p>JSS1 Sessions History</p>
-            </div>
-            <div className="SubjectTop_container">
+                </div>
                 <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
                     onClick={() => handleTabClick('Tab1')}>Maths</button>
 
@@ -143,10 +146,10 @@ const tabContent = {
                 <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
                     onClick={() => handleTabClick('Tab17')}>Auto Mech</button>
             </div>
-
-                 {tabContent[activeTab]}
-
-
+            {/* </div> */}
+                <div className="Screen-Controle-content">
+                    {tabContent[activeTab]}
+                 </div>            
 
 {/*  media query section */}
    

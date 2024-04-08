@@ -7,6 +7,8 @@ import NavBar_out from './NavBar_out';
 
 
 
+
+
 function SignUp () {
   
   const Navigate = useNavigate();
@@ -88,10 +90,10 @@ return (
           {/* </div> */}
           
          <div className="center-btn">
-            <button onClick={loginuser} type="submit" >Sign Up</button>
+            <button onClick={loginuser} type="submit" >Signup</button>
           </div>
 <div className="Alreadyhaveaccount">
-    <a href="http://localhost:3001/LoginForExams">Already have an account?</a>
+    <p>Already have an account? <a href="http://localhost:3000/Login_Student">Login</a></p>
     
 </div>
 </div> 
