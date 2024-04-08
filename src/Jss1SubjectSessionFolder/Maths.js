@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../session.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EventIcon from '@mui/icons-material/Event';
@@ -15,37 +15,43 @@ const Lightbox = ({ isOpen, onClose, children }) => {
       <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
         <div className="content" onClick={(e) => e.stopPropagation()}>
           {children}
-          
-            <button onClick={onClose} className="close-button">X</button>
-          </div>
+          <button onClick={onClose} className="close-button">X</button>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const VideoButton = ({ videoComponent, onOpen }) => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const openVideo = () => {
+    setIsVideoOpen(true);
+    onOpen(videoComponent);
+  };
+
+  const closeVideo = () => {
+    setIsVideoOpen(false);
+  };
+
+  return (
+    <div>
+      <VideoLibraryIcon />
+      <button onClick={openVideo}>Watch Session</button>
+      {isVideoOpen && (
+        <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+          {videoComponent}
+        </Lightbox>
+      )}
     </div>
   );
 };
 
 const Jss1MathsSessions = () => {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(null);
-
-  const openVideo = () => {
-    console.log("VideoPlayer1")
-    setSelectedVideo();
-    setIsVideoOpen(true);
-    
+  const openVideo = (videoComponent) => {
+    console.log(`Opening video: ${videoComponent}`);
+    // You can perform any other actions related to opening the video here
   };
-
-  const closeVideo = () => {
-    setSelectedVideo(null);
-    setIsVideoOpen(false);
-  };
-
-  // useEffect(() => {
-  //   if (isVideoOpen) {
-  //     setIsVideoOpen(true);
-  //   } else {
-  //     setIsVideoOpen(false);
-  //   }
-  // }, [isVideoOpen]);
 
 
     return (
@@ -77,24 +83,7 @@ const Jss1MathsSessions = () => {
                 </div>
 
                 <div>
-                    <VideoLibraryIcon />
-                    {/* <button onClick={() => openVideo(<VideoPlayer1 />)}>Watch Session 1</button>
-        {isVideoOpen && selectedVideo === <VideoPlayer1 /> && (
-          <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-            {selectedVideo}
-          </Lightbox>
-        )} */}
-
-
-<button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div >
-            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-            <VideoPlayer1 />
-          </Lightbox>
-              
-            </div>
-          )}
+                <VideoButton videoComponent={<VideoPlayer3 />} onOpen={openVideo} />
                 </div>
             </div>
 
@@ -124,16 +113,8 @@ const Jss1MathsSessions = () => {
                 </div>
 
                 <div>
-                    <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div  >
-            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-            <VideoPlayer2 />
-          </Lightbox>
-              
-            </div>
-          )}
+                <VideoButton videoComponent={<VideoPlayer1 />} onOpen={openVideo} />
+  
                 </div>
             </div>
 
@@ -164,16 +145,8 @@ const Jss1MathsSessions = () => {
                 </div>
 
                 <div>
-                    <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div  >
-            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-            <VideoPlayer3 />
-          </Lightbox>
-              
-            </div>
-          )}
+                <VideoButton videoComponent={<VideoPlayer2 />} onOpen={openVideo} />
+
                 </div>
             </div>
 
@@ -205,16 +178,8 @@ const Jss1MathsSessions = () => {
                 </div>
 
                 <div>
-                    <VideoLibraryIcon />
-                    <button onClick={openVideo}>Watch Session</button>
-          {isVideoOpen && (
-            <div  >
-            <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-            <VideoPlayer1 />
-          </Lightbox>
-              
-            </div>
-          )}
+                <VideoButton videoComponent={<VideoPlayer3 />} onOpen={openVideo} />
+
                 </div>
             </div>
 

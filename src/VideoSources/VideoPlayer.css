@@ -1,9 +1,15 @@
 .session-videoplayer{
-    width:400px;
+    width:98%;
+    margin-left: 8px;
+    margin-right: 5px;
+    
 }
 
 @media screen and (min-width:768px) {
     .session-videoplayer{
-        width:200px;
+        width:100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        box-sizing: border-box;
     }
 }

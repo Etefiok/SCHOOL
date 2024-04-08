@@ -16,7 +16,7 @@ function VideoPlayer2() {
 
   return (
     <div>
-      <video ref={videoRef} width="400" controls>
+      <video className='session-videoplayer' ref={videoRef} controls>
       <source src={require("../Videos.mp4/TestVideo2.webm")} type="video/mp4" />
 
       </video>

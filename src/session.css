@@ -127,6 +127,8 @@
         box-sizing: border-box; 
         margin-top: 122px;
     }
+
+   
   }
 
 /* 
@@ -241,7 +243,7 @@
         background-color: rgb(34, 31, 31);
         width:39%;
         height: 50vh;
-        top: 33%;
+        top: 35%;
         margin-left: 60%;
         box-sizing: border-box;
     

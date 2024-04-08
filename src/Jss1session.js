@@ -146,6 +146,7 @@ const tabContent = {
                 <button className={`SubjectTop ${activeTab === 'Tab1' ? 'active' : ''}`}
                     onClick={() => handleTabClick('Tab17')}>Auto Mech</button>
             </div>
+
             {/* </div> */}
                 <div className="Screen-Controle-content">
                     {tabContent[activeTab]}
