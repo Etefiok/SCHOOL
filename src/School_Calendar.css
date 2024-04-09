@@ -42,17 +42,7 @@
     
   }
   
-  .dayy {
-    padding: 0px 0;
-    /* background-color: aqua; */
-    display: inline-block;
-    width: 36px;
-    height: 40px;
-    line-height: 30px;
-    text-align: center;
-    border: 1px solid #000000;
-    
-  }
+ 
   
   .empty {
     visibility: hidden;
@@ -77,4 +67,32 @@
     font-weight: bolder;
     padding-top: 10px;
     margin-top: 12px;
+    cursor: pointer;
+    /* z-index: -1; */
   }
+
+  .day {
+    padding: 0px 0;
+    /* background-color: aqua; */
+    display: inline-block;
+    width: 36px;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    /* border: 1px solid #000000; */
+  }
+  
+  .today {
+    /* Styles for the current date */
+    background-color: #ffcc00; /* Yellow background */
+    color: #fff; /* White text */
+    font-weight: bold; /* Bold text */
+    border: 2px solid #ffcc00; /* Yellow border */
+    border-radius: 50%; /* Rounded border */
+  }
+
+ .active{
+  /* background: transparent;
+  border: none; */
+  /* z-index: 1000; */
+ }

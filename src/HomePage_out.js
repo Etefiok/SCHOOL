@@ -16,7 +16,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import School_Calendar_on_front from './School_Calendar_on_front';
 import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
-
 const HomePage_out =({ users}) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -55,7 +54,6 @@ const HomePage_out =({ users}) => {
       slides[currentSlide - 1].style.display = "block";
       dots[currentSlide - 1].className += " active";
     };
-
 
 
   useEffect(() => {
@@ -107,20 +105,17 @@ const HomePage_out =({ users}) => {
     <Mission />
     <ImageSlide />
     <br></br>
-    {/* <Dictionary /> */}
     <JAMB_Recomended_TextBook />
 
     <div className='calender'>
             <>
-
-                <Button variant="primary" onClick={handleShow}>School Calender</Button>
-
+                <button onClick={handleShow}>School Calendar</button>
                 <Offcanvas show={show} onHide={handleClose}>
               <Offcanvas.Header closeButton>
                 {/* <Offcanvas.Title>Sign Up</Offcanvas.Title> */}
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Dropdown>           
+                <Dropdown className='Dropdown'>           
                 <School_Calendar_on_front />
                 </Dropdown>
               </Offcanvas.Body>
@@ -147,7 +142,7 @@ const HomePage_out =({ users}) => {
         <strong>SCHOOL ACTIVITIES </strong><br></br>
         <p>klfdlknvownivowinviin wfiwrofi wpirhwir wpijwpogwp pwog wpogjp pw vowinvowinoivnin invowinoivnwoinvi dggerer ertert ert ert  poubkjd wufubcubcwi wufwiubv
          fveiurb8ijrtk4fiu eruifho48fn34io4ufno o4ofnoinoino oirhgo8eonvoui orgh89</p>
-       <button>Know More</button>
+       <Button>Know More</Button>
         </div> 
     </div>
 

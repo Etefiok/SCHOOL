@@ -4,7 +4,7 @@ body{
 }
 
 .Homepage{
-    background-color: rgb(243, 252, 255);
+    background-color: #B0DDEE;
 
 }
 
@@ -36,9 +36,36 @@ body{
     top: 90px;
     opacity: 1;
     z-index: 1;
-
-
 }
+
+.calender button{
+    background-color:#4CAF50;
+    padding:10px 15px 10px 15px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: white;
+}
+
+.calender button:hover{
+    background-color:#52a556;
+    
+}
+
+.calender button:active{
+    background-color:#002fff;
+    
+}
+
+.Dropdown {
+    display: grid;
+    justify-content: center;
+    background-color: #B0DDEE;
+    width: 100%;
+    padding: 20px;
+  }
+  
 }
 
 

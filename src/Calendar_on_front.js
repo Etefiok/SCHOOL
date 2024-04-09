@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./School_Calendar.css";
 
-const School_Calendar_on_front = ({ activities }) => {
+const Calendar_on_front = ({ activities }) => {
   const months = Array.from({ length: 12 }, (_, i) => new Date(new Date().getFullYear(), i, 1));
 
   const [date, setDate] = useState(new Date());
@@ -33,19 +33,24 @@ const School_Calendar_on_front = ({ activities }) => {
     // const isToday = currentDate.toDateString() === today.toDateString();
 
     const isToday =
-  currentDate.getDate() === today.getDate() &&
-  currentDate.getMonth() === today.getMonth() &&
-  currentDate.getFullYear() === today.getFullYear();
+    currentDate.getDate() === today.getDate() &&
+    currentDate.getMonth() === today.getMonth() &&
+    currentDate.getFullYear() === today.getFullYear();
 
     const className = isToday ? 'day today' : 'day';
-
+    // const activityDetails = getActivityForDate(currentDate);
 
 
       days.push(
-        <div key={i} className="dayy">
-          {i}
+        <div key={i} className={className}>
+          
+          {i} 
+          
           {getActivityForDate(new Date(date.getFullYear(), date.getMonth(), i)) && (
+            // <button className='active'> 
             <div className="activity_front">{getActivityForDate(new Date(date.getFullYear(), date.getMonth(), i))}</div>
+            //  </button>
+           
           )}
 
 
@@ -56,6 +61,12 @@ const School_Calendar_on_front = ({ activities }) => {
     }
     return days;
   };
+
+  // const handleActivityClick = (activityDetails) => {
+    // Implement the logic to show full details of the activities when a date button is clicked
+    // You can use state to control the visibility of the activity details
+    // For example, you can use useState to track the selected activity and conditionally render the details
+  // };
 
   return (
     <div className="calendar">
@@ -91,4 +102,4 @@ const School_Calendar_on_front = ({ activities }) => {
   );
 };
 
-export default School_Calendar_on_front;
+export default Calendar_on_front;
