@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     height: 98vh;
-    background-image: url("./images.jpg/loginBackground.jpg");
-    background-size: cover;
+    background-color:#B0DDEE ;
+    /* background-size: cover; */
     
   }
 
@@ -14,8 +14,8 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: url("./images.jpg/loginBackground.jpg");
-      background-size: cover;
+      background-color: #B0DDEE;
+      /* background-size: cover; */
       
     }
   }
@@ -24,25 +24,35 @@
     display: grid;
     row-gap: 10px;
     border: none;
-    background-color: transparent;
-    backdrop-filter: blur(10px);
+    background-color:#BCEDFF;
+    /* backdrop-filter: blur(10px); */
     padding: 30px;
     /* margin: 0px; */
     border-radius: 30px;
-    /* width: 30px; */
+    width: 90%;
        
   }
 
-  .blur{
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    /* border: none; */
-    border-radius: 20px;
-    border-top: none;
-    line-height: 30px;
-    border-color: black;
-  
+  @media screen and (min-width: 768px) {
+    .formcontain {
+      display: grid;
+      row-gap: 10px;
+      border: none;
+      background-color:#BCEDFF;
+      /* backdrop-filter: blur(10px); */
+      padding: 30px;
+      /* margin: 0px; */
+      border-radius: 30px;
+      width: 20%;
+         
+    }
+  }
 
+  .blur{
+    border-radius: 20px;
+    border: none;
+    line-height: 30px;
+  
   }
 
   .Logiback input{
@@ -69,6 +79,7 @@ padding-left: 20px;
     border: none;
     border-radius: 5px;
     border-bottom: 10px;
+    background-color:#ffffff;
   }
 
   .sign button:hover{

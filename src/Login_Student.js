@@ -75,12 +75,12 @@ function Login_Student() {
 
             
             <div className='sign'>
-            <button onClick={() => { window.location.href = "./HomePage_Student";}}>Log In</button><br />
+            <button onClick={() => { window.location.href = "./HomePage_Student";}}>Login</button><br />
 
             
-                <a href="http://localhost:3000/forgetpassword">Forget password?</a>
+                <button onClick={() => { window.location.href = "./forgetpassword";}}>Forget password?</button>
         <br></br>
-        Don't have an account? <a href="http://localhost:3000/Signup">Signup</a>
+        Don't have an account? <br></br><button onClick={()=> {window.location.href ="./Signup"}}>Signup</button>
         </div>
             </form>
             </div>

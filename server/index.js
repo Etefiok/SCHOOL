@@ -8,24 +8,24 @@ const SignUp = require('./'); // Assuming your SignUp component is in a file cal
 
 const app = express();
 
-// app.get('/SignUp', (req, res) => {
-  // Render the SignUp component to a string
+app.get('/SignUp', (req, res) => {
+  //Render the SignUp component to a string
   // const signUpComponent = ReactDOMServer.renderToString(React.createElement(SignUp));
 
-  // Send the rendered component as a response
-//   res.send(`
-//     <html>
-//       <head>
-//         <title>Sign Up Page</title>
-//         <!-- Include any CSS or other dependencies here -->
-//       </head>
-//       <body>
-//         <div id="root">${signUpComponent}</div>
-//         <script src="SignUp.js"></script> <!-- Include your client-side JS bundle here -->
-//       </body>
-//     </html>
-//   `);
-// });
+  //Send the rendered component as a response
+  res.send(`
+    <html>
+      <head>
+        <title>Sign Up Page</title>
+        <!-- Include any CSS or other dependencies here -->
+      </head>
+      <body>
+      <h1>this is the signup page</h1>
+        <script src="SignUp.js"></script> <!-- Include your client-side JS bundle here -->
+      </body>
+    </html>
+  `);
+});
 
 const port = 5001;
 app.listen(port, () => {

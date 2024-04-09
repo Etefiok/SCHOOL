@@ -18,7 +18,7 @@ function loginuser(){
 }
 
 return (
-  <div>
+  <div >
           <NavBar_out />      
 
        <div className="page-container">
@@ -27,7 +27,7 @@ return (
         <div className="company-data-bar">
           <div className="comapny-logo-on-side">
           <img src={require("./images.jpg/schoollogo.jpeg")} alt="logo" />
-          </div>
+          
 
           <div className="companydetails-contact-wrapper">
             <i className="fa fa-map-marker"></i>
@@ -43,6 +43,7 @@ return (
             <i className="fas fa-clock"></i>
             123 am
           </div>
+        </div>
         </div>
 
         {/* Form section */}
@@ -92,15 +93,15 @@ return (
          <div className="center-btn">
             <button onClick={loginuser} type="submit" >Signup</button>
           </div>
-<div className="Alreadyhaveaccount">
-    <p>Already have an account? <a href="http://localhost:3000/Login_Student">Login</a></p>
-    
+          <div className="Alreadyhaveaccount">
+              <p>Already have an account? <a href="http://localhost:3000/Login_Student">Login</a></p>
+          </div>
 </div>
 </div> 
         </div>
       </div>
     </div>
-    </div>
+   
   );
 };
 

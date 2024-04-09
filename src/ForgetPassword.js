@@ -2,6 +2,7 @@ import React from 'react';
 import './SignUp.css';
 import { useNavigate } from 'react-router-dom';
 import Navba from './NavBar';
+import NavBar_out from './NavBar_out';
 
 
 
@@ -17,15 +18,15 @@ function ForgetPassword () {
 
 return (
   <div>
-          <Navba />      
+          <NavBar_out />      
 
        <div className="page-container">
         
       <div className="contact-grid-wrapper">
-        <div className="company-data-bar">
+      <div className="company-data-bar">
           <div className="comapny-logo-on-side">
           <img src={require("./images.jpg/schoollogo.jpeg")} alt="logo" />
-          </div>
+          
 
           <div className="companydetails-contact-wrapper">
             <i className="fa fa-map-marker"></i>
@@ -42,11 +43,12 @@ return (
             123 am
           </div>
         </div>
+        </div>
 
         {/* Form section */}
         <div className="form">
             <div className="newaccounttext"><br></br>
-                <h5 >Correct details used when sign up</h5>
+                <h5>Reset Password</h5>
             </div>  <br></br>
 
           <div className="form-group">
@@ -77,7 +79,7 @@ return (
           </div> */}
 
           <div className="center-btn">
-            <button onClick={loginuser} type="submit" className="btn">Save</button>
+            <button onClick={loginuser} type="submit" className="btn">Reset</button>
           </div>
 <div className="Alreadyhaveaccount">
     <a href="http://localhost:3000/Login_Student">Already have an account?</a>
