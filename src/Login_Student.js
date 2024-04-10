@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Loginforpage.css';
 import NavBar_Student from "./NavBar_out";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Login_Student() {
     const [formData, setFormData] = useState({

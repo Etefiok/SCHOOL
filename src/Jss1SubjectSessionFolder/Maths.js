@@ -9,42 +9,71 @@ import VideoPlayer1 from "../VideoSources/VideoPlayer1";
 import VideoPlayer2 from "../VideoSources/VideoPlayer2";
 import VideoPlayer3 from "../VideoSources/VideoPlayer3";
 
+
+
+
+
+
 const Lightbox = ({ isOpen, onClose, children }) => {
+  
+  
   return (
+     
     <div className="video-lightbox">
-      <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
-        <div className="content" onClick={(e) => e.stopPropagation()}>
-          {children}
-          <button onClick={onClose} className="close-button">X</button>
-        </div>
-      </div>
-    </div>
+ <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
+                <div className="content" onClick={(e) => e.stopPropagation()}>
+                  {children}
+                  <button onClick={onClose} className="close-button">X</button>
+                </div>
+              </div>
+    </div> 
   );
 };
 
 const VideoButton = ({ videoComponent, onOpen }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
+  const [show, setShow] = useState(false);
+  
   const openVideo = () => {
-    setIsVideoOpen(true);
+    setShow(true);
+    // setIsVideoOpen(true);
     onOpen(videoComponent);
   };
 
   const closeVideo = () => {
-    setIsVideoOpen(false);
+    // setIsVideoOpen(false);
+    setShow(false);
   };
 
-  return (
-    <div>
-      <VideoLibraryIcon />
-      <button onClick={openVideo}>Watch Session</button>
-      {isVideoOpen && (
-        <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
-          {videoComponent}
-        </Lightbox>
-      )}
-    </div>
-  );
+//   return (
+//     <div>
+//       <VideoLibraryIcon />
+//       <button onClick={openVideo}>Watch Session</button>
+      
+//       {isVideoOpen && (
+//         <Lightbox isOpen={isVideoOpen} onClose={closeVideo}>
+//           {videoComponent}
+//         </Lightbox>
+//       )}
+//     </div>
+//   );
+// };
+
+return (
+  <div>
+    <VideoLibraryIcon />
+    <button onClick={show ? closeVideo : openVideo}>
+      {show ? 'Close' : 'Watch Session'}
+    </button>
+
+    {show && (
+      <Lightbox isOpen={show} onClose={closeVideo}>
+        {videoComponent}
+      </Lightbox>
+    )}
+  </div>
+);
 };
 
 const Jss1MathsSessions = () => {
@@ -52,7 +81,6 @@ const Jss1MathsSessions = () => {
     console.log(`Opening video: ${videoComponent}`);
     // You can perform any other actions related to opening the video here
   };
-
 
     return (
         <div className="sessionbody">
@@ -260,7 +288,6 @@ const Jss1MathsSessions = () => {
           )} */}
     </div>
 </div>
-
 
         </div>
     );
