@@ -1,56 +1,29 @@
 const express = require('express');
-// const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const SignUp = require('./'); // Assuming your SignUp component is in a file called SignUp.js
-// const path = require('path');
-// const bcrypt = require('bcrypt');
-
+const mongoose = require('mongoose');
+const cors = require('cors');
+const RegisterModel = require('./models/Register');
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
-app.get('/SignUp', (req, res) => {
-  //Render the SignUp component to a string
-  // const signUpComponent = ReactDOMServer.renderToString(React.createElement(SignUp));
+mongoose.connect('mongodb://localhost:27017/test');
 
-  //Send the rendered component as a response
-  res.send(`
-    <html>
-      <head>
-        <title>Sign Up Page</title>
-        <!-- Include any CSS or other dependencies here -->
-      </head>
-      <body>
-      <h1>this is the signup page</h1>
-        <script src="SignUp.js"></script> <!-- Include your client-side JS bundle here -->
-      </body>
-    </html>
-  `);
+app.post('/register', (req, res) => {
+  const { Firstname, password, confirmpassword } = req.body;
+  RegisterModel.findOne({ Firstname: Firstname })
+    .then(user => {
+      if (user) {
+        res.json({ message: "already have an account" });
+      } else {
+        RegisterModel.create({ Firstname: Firstname, password: password, confirmpassword: confirmpassword })
+          .then(result => res.json({ message: "Account created" }))
+          .catch(err => res.json({ error: err }));
+      }
+    })
+    .catch(err => res.json({ error: err }));
 });
 
-const port = 5001;
-app.listen(port, () => {
-  console.log(`Server started on port ${port}...`)
+app.listen(5000, () => {
+  console.log('Server is Running in port 5000');
 });
-
-// const express = require('express');
-// const app = express();
-// const path = require('path');
-// const bcrypt = require('bcrypt');
-
-// Set the view engine to use EJS
-// app.set('view engine', 'ejs');
-
-// app.get('/', (req, res) => {
-//   res.render("Login");
-// });
-
-// app.get('/SignUp', (req, res) => {
-//   res.render("signup");
-// });
-
-// const port = 5000;
-// app.listen(port, () => {
-//   console.log(`Server started on port ${port}...`)
-// });
-
-

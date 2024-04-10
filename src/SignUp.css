@@ -1,7 +1,9 @@
 .page-container{
     display: flex;
     justify-content: center;
-    background-color: #B0DDEE;
+    background-image: url("./images.jpg/loginBackground.jpg");
+    background-size: cover;
+    /* background-color: #B0DDEE; */
     align-items: center;
     min-height: 100vh; 
     margin: 0;
@@ -12,7 +14,7 @@
     .page-container{
         display: flex;
         justify-content: center;
-        background-color: #B0DDEE;
+        /* background-color: #B0DDEE; */
         align-items: center;
         min-height: 100vh; 
         margin: 0;
@@ -91,10 +93,10 @@ margin-bottom: 20px;
     /* display: grid; */
     position: absolute;
     justify-content: center;
-    /* background-color: #f1f1f1; */
-    padding-bottom: 30px;
+    background-color: #BCEDFF;
+    padding-bottom: 20px;
     width: 85%;
-    top: 25%;
+    top: 10%;
     left: 8%;
     
     
@@ -105,7 +107,7 @@ margin-bottom: 20px;
         /* display: grid; */
         position:relative;
         justify-content: center;
-        /* background-color: #f1f1f1; */
+        background-color: none;
         padding-bottom: 30px;
         width: 400px;
         margin-top: 0px;
@@ -200,7 +202,7 @@ outline:none;
 .center-btn{
     display: flex;
     justify-content: center;
-    
+        
 
 }
 
@@ -213,6 +215,7 @@ outline:none;
     background-color: rgb(255, 255, 255);
     margin-bottom: none;
     
+    
 }
 
 .Alreadyhaveaccount{
@@ -223,6 +226,14 @@ outline:none;
 
 .Alreadyhaveaccount a{
     text-decoration: none;
-    line-height: 30px;
+    line-height: 25px;
+    margin-bottom: 0px;
+
 }
 
+.Alreadyhaveaccount p{
+    text-decoration: none;
+    line-height: 0px;
+    margin-bottom: 0px;
+    /* background-color: #cea135; */
+}

@@ -3,6 +3,8 @@
     justify-content: center;
     align-items: center;
     height: 98vh;
+    /* background-image: url("./images.jpg/green-education-background.webp");
+    background-size: cover; */
     background-color:#B0DDEE ;
     /* background-size: cover; */
     
@@ -43,10 +45,17 @@
       padding: 30px;
       /* margin: 0px; */
       border-radius: 30px;
-      width: 20%;
+      width: 25%;
          
     }
   }
+
+
+  .label{
+    display: grid;
+    font-weight: bold;
+  }
+
 
   .blur{
     border-radius: 20px;
@@ -63,6 +72,7 @@ padding-left: 20px;
     text-align: center;
     text-decoration: none;
     /* background-color: red; */
+   
   }
 
 
@@ -73,11 +83,13 @@ padding-left: 20px;
   }
 
   .sign button{
-    margin-top: 5px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 3px 10px;
     font-size: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     border-bottom: 10px;
     background-color:#ffffff;
   }

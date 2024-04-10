@@ -69,10 +69,17 @@ function Login_Student() {
             <form onSubmit={loginUser}  className="formcontain">
             
             <h2>Login</h2>
+            <label className="label">Username
             <input className="blur" value={formData.username} type="text" placeholder=" Username" name="username" onChange={handleChange} /> 
+            </label>
+
+            <label className="label">ID number
             <input className="blur" value={formData.idnumber} type="number" placeholder=" ID number" name="idnumber" onChange={handleChange} />
+            </label>
+
+            <label className="label">Password
             <input className="blur" value={formData.password} type="password" placeholder=" Password" name="password" onChange={handleChange} />
-           
+            </label>
 
             
             <div className='sign'>
