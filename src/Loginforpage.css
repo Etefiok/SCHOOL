@@ -2,9 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 98vh;
-    /* background-image: url("./images.jpg/green-education-background.webp");
-    background-size: cover; */
+    height: 100vh;
+    background-image: url("./images.jpg/blueblue.png");
+    background-size: cover;
     background-color:#B0DDEE ;
     /* background-size: cover; */
     
@@ -14,6 +14,8 @@
     .Logiback {
       display: flex;
       justify-content: center;
+      background-image: url("./images.jpg/blueblue.png");
+      background-size: cover;
       align-items: center;
       height: 100vh;
       background-color: #B0DDEE;
@@ -45,7 +47,7 @@
       padding: 30px;
       /* margin: 0px; */
       border-radius: 30px;
-      width: 25%;
+      width: 30%;
          
     }
   }
