@@ -239,3 +239,20 @@ outline:none;
     margin-bottom: 0px;
     /* background-color: #cea135; */
 }
+
+.password-input-container {
+    position: relative;
+  }
+  
+  .password-input-container input {
+    padding-right: 40px; /* Ensure space for the button */
+  }
+  
+  .password-input-container .show-password-button {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    border: none;
+  }
+  

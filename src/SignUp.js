@@ -5,6 +5,7 @@ import NavBar_out from './NavBar_out';
 import axios from "axios";
 
 function SignUp() {
+  const [showPassword, setShowPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -96,13 +97,21 @@ return (
           />
             <label htmlFor="Phone Number">Role</label>
  
+            <div className="password-input-container">
             <input 
-            type="text" 
-            id="" 
-            placeholder="Password" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+                type={showPassword ? "text" : "password"}  
+                id="" 
+                placeholder="Password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
             />
+            <button 
+                onClick={() => setShowPassword(!showPassword)}
+                className="show-password-button"
+            >
+                {showPassword ? "Hide" : "Show"}
+            </button>
+        </div>
             <label htmlFor="Password">Password</label>
 
           <input 
@@ -111,6 +120,7 @@ return (
           placeholder="Confirm Pasword" 
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)} 
+          style={{ font: "black", WebkitTextSecurity: "disc" }}
           />
             <label htmlFor="Password">Confirm Pasword</label>
           
