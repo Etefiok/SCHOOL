@@ -55,18 +55,15 @@ const HomePage_out =({ users}) => {
       dots[currentSlide - 1].className += " active";
     };
 
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode);
-  };
+    const handlePrevYear = () => {
+      setSelectedYear(selectedYear - 1);
+    };
+  
+    const handleNextYear = () => {
+      setSelectedYear(selectedYear + 1);
+    };
 
 
   //for side bar navigation 
@@ -115,7 +112,7 @@ const HomePage_out =({ users}) => {
                 {/* <Offcanvas.Title>Sign Up</Offcanvas.Title> */}
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Dropdown className='Dropdown'>           
+                <Dropdown className='Dropdown'>    
                 <School_Calendar_on_front />
                 </Dropdown>
               </Offcanvas.Body>

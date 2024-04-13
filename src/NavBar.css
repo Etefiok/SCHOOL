@@ -56,6 +56,16 @@ margin-left: 5%;
 
 }
 
+.school_Calender{
+  display: block;
+
+}
+
+@media screen and (min-width:780px) {
+.school_Calender{
+  display: none;
+}
+}
 
 @media screen and (min-width:780px) {
   .Navbar img{

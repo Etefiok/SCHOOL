@@ -24,6 +24,23 @@ const Calendar_on_front = ({ activities }) => {
 
   const startDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
 
+  const handlePrevMonth = () => {
+    setDate(new Date(date.getFullYear(), date.getMonth() - 1, 1));
+  };
+
+  const handleNextMonth = () => {
+    setDate(new Date(date.getFullYear(), date.getMonth() + 1, 1));
+  };
+
+  const handlePrevYear = () => {
+    setDate(new Date(date.getFullYear() - 1, date.getMonth(), 1));
+  };
+
+  const handleNextYear = () => {
+    setDate(new Date(date.getFullYear() + 1, date.getMonth(), 1));
+  };
+
+
   const renderCalendar = () => {
     const days = [];
     const today = new Date();
@@ -62,22 +79,14 @@ const Calendar_on_front = ({ activities }) => {
     return days;
   };
 
-  // const handleActivityClick = (activityDetails) => {
-    // Implement the logic to show full details of the activities when a date button is clicked
-    // You can use state to control the visibility of the activity details
-    // For example, you can use useState to track the selected activity and conditionally render the details
-  // };
-
   return (
     <div className="calendar">
       <div className="header">
-        <button onClick={() => setDate(new Date(date.getFullYear(), date.getMonth() - 1, 1))}>
-        &lt;
-        </button>
+      <button onClick={handlePrevYear}>&lt;&lt;</button>
+        <button onClick={handlePrevMonth}>&lt;</button>
         <h6>{date.toLocaleString('default', { month: 'long' })} {date.getFullYear()}</h6>
-        <button onClick={() => setDate(new Date(date.getFullYear(), date.getMonth() + 1, 1))}>
-        &gt;
-        </button>
+        <button onClick={handleNextMonth}>&gt;</button>
+        <button onClick={handleNextYear}>&gt;&gt;</button>
       </div>
       <div className="weekdays">
         <div>Sun</div>
