@@ -45,7 +45,7 @@ const NavBar_out = () => {
               <NavDropdown.Item onClick={() => { window.location.href = "./circular";}}>Circular</NavDropdown.Item>
               <NavDropdown.Item href="#action5">Activities</NavDropdown.Item>
               <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./applicationform";}}>Application Form</NavDropdown.Item>
-              <NavDropdown.Item className='school_Calender' onClick={() => { window.location.href = "";}}>School Calender</NavDropdown.Item>
+              <NavDropdown.Item className='school_Calender' onClick={() => { window.location.href = "./School_Calendar_Page";}}>School Calender</NavDropdown.Item>
               <NavDropdown.Item onClick={() => { window.location.href = "./Galary";}}>Galary</NavDropdown.Item>
               <NavDropdown.Item onClick={() => { window.location.href = "./ContactForm";}}>Contact Us</NavDropdown.Item>
             </NavDropdown>
