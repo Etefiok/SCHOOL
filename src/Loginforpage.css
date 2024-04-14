@@ -63,7 +63,18 @@
     border-radius: 20px;
     border: none;
     line-height: 30px;
+    width: 280px;
   
+  }
+  @media screen and (min-width:768px) {
+    .blur{
+      border-radius: 20px;
+      border: none;
+      line-height: 30px;
+      width: 510px;;
+    
+    }
+    
   }
 
   .Logiback input{
@@ -74,6 +85,8 @@ padding-left: 20px;
     text-align: center;
     text-decoration: none;
     /* background-color: red; */
+    /* margin-top: 10px; */
+
    
   }
 
@@ -110,3 +123,23 @@ padding-left: 20px;
     border-bottom: 1px solid rgb(255, 255, 255);
 
   }
+
+  .password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 2.5em; /* Ensure space for the toggle button */
+}
+
+.toggle-password-button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    /* background: none; */
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+

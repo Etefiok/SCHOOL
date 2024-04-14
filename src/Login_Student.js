@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Loginforpage.css';
 import NavBar_Student from "./NavBar_out";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 function Login_Student() {
     const [formData, setFormData] = useState({
@@ -12,7 +13,9 @@ function Login_Student() {
         idnumber: ''
     });
 
+    const [showPassword, setShowPassword] = useState(false);
 
+    const [error, setError] = useState(null);
 
     const navigate = useNavigate();
 
@@ -23,77 +26,72 @@ function Login_Student() {
             [name]: value
         });
     }
-    
-// function loginUser(e) {
-//     e.preventDefault();
-//     setFormData({
-//         username: '',
-//         idnumber:'',
-//         password: '',
-//     });
 
-//     navigate("/ss1profilemap");
-    
-// }
-
-
-    
-    function loginUser(e) {
+    async function loginUser(e) {
         e.preventDefault();
-        if(formData.username === 'samuel' &&
-           formData.idnumber === '3454' && 
-           formData.password === 'Onelove@2??'        
-        )
-        {
-        navigate("/Homepage_Student");
-        console.log( formData.username, formData.password, formData.idnumber)
-        }
-        else{
-            alert("Invalid username, ID number, or password. Please try again.")
+        try {
+            const response = await axios.post('http://localhost:5000/Login', {
+                username: formData.username,
+                idnumber: formData.idnumber,
+                password: formData.password
+            });
+            // If login is successful, redirect to the homepage
+            navigate("/Homepage_Student");
+        } catch (error) {
+            // If login fails, display an error message
+            alert("Invalid username, ID number, or password. Please try again.");
         }
     }
-
-
 
     function signupuser() {
-        navigate ('/Signup');
+        navigate('/Signup');
     }
-
-    // const Navigate = useNavigate();
-    
 
     return (
         <div>
+            {error && <div>{error}</div>}
             <NavBar_Student />
             <div className='Logiback'>
-            <form onSubmit={loginUser}  className="formcontain">
-            
-            <h2>Login</h2>
-            <label className="label">Username
-            <input className="blur" value={formData.username} type="text" placeholder=" Username" name="username" onChange={handleChange} /> 
-            </label>
+                <form onSubmit={loginUser} className="formcontain">
+                    <h2>Login</h2>
+                    <label className="label">Username
+                        <input className="blur" value={formData.username} type="text" placeholder=" Username" name="username" onChange={handleChange} />
+                    </label>
+                    <label className="label">ID number
+                        <input className="blur" value={formData.idnumber} type="number" placeholder=" ID number" name="idnumber" onChange={handleChange} />
+                    </label>
+                    <label className="label">Password
+    <div className="password-input">
+        <input
+            className="blur"
+            value={formData.password}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            name="password"
+            onChange={handleChange}
+        />
+        <button
+            type="button"
+            className="toggle-password-button"
+            onClick={() => setShowPassword(prevShowPassword => !prevShowPassword)}
+        >
+            {showPassword ? "Hide" : "Show"}
+        </button>
+    </div>
+</label>
 
-            <label className="label">ID number
-            <input className="blur" value={formData.idnumber} type="number" placeholder=" ID number" name="idnumber" onChange={handleChange} />
-            </label>
+                    <div className='sign'>
+                        <button type="submit">Login</button><br />
+                        <button type="button" onClick={() => { window.location.href = "./forgetpassword"; }}>Forget password?</button>
+                        <br></br>
+                        Don't have an account? <br></br>
 
-            <label className="label">Password
-            <input className="blur" value={formData.password} type="password" placeholder=" Password" name="password" onChange={handleChange} />
-            </label>
-
-            
-            <div className='sign'>
-            <button onClick={() => { window.location.href = "./HomePage_Student";}}>Login</button><br />
-
-            
-                <button onClick={() => { window.location.href = "./forgetpassword";}}>Forget password?</button>
-        <br></br>
-        Don't have an account? <br></br><button onClick={()=> {window.location.href ="./Signup"}}>Signup</button>
-        </div>
-            </form>
+                        <button type="button" onClick={() => { window.location.href = "./Signup" }}>Signup</button>
+                    </div>
+                </form>
             </div>
         </div>
     );
 }
 
-export default Login_Student
+export default Login_Student;

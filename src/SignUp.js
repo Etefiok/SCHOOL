@@ -6,18 +6,23 @@ import axios from "axios";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [Username, setUserName] = useState("");
+  const [Firstname, setFirstName] = useState("");
+  const [Lastname, setLastname] = useState("");
+  const [Password, setPassword] = useState("");
+  const [Confirmpassword, setConfirmpassword] = useState("");
+  const [IDnumber, setIDnumber] = useState("");
+  const [Phonenumber, setPhonenumber] = useState("");
+  const [Role, setRole] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/register', { firstName, password, confirmPassword })
+    axios.post('http://localhost:5000/register', { Username, Firstname, Lastname, Password, Confirmpassword, IDnumber, Phonenumber, Role})
       .then(result => {
-        console.log(result);
-        // Optionally, you can redirect the user to the login page after successful registration
-        navigate("/LoginForExams");
+        console.log({result});
+        navigate("./Login_Student");
       })
       .catch(err => console.log(err));
   };
@@ -57,12 +62,22 @@ return (
             <div className="newaccounttext">
                 <h3 >Create a new account</h3>
                 <p>it's quick and easy</p>
+
+                <input 
+            type="text" 
+            id="" 
+            placeholder="Username" 
+            value={Username}
+            onChange={(e) => setUserName(e.target.value)}
+            />
+
+            <label htmlFor="Username">Username</label>
  
             <input 
             type="text" 
             id="" 
             placeholder="First name" 
-            value={firstName}
+            value={Firstname}
             onChange={(e) => setFirstName(e.target.value)}
             />
 
@@ -72,6 +87,8 @@ return (
             type="text" 
             id="" 
             placeholder="Lastname"
+            value={Lastname}
+            onChange={(e) => setLastname(e.target.value)}
             />
             <label htmlFor="Lastname">Lastname</label>
 
@@ -80,6 +97,8 @@ return (
             type="text" 
             id="" 
             placeholder="ID Number" 
+            value={IDnumber}
+            onChange={(e) => setIDnumber(e.target.value)}
             />
             <label htmlFor="ID Number">ID Number</label>
  
@@ -87,13 +106,17 @@ return (
             type="Number" 
             id="" 
             placeholder="Phone Number" 
+            value={Phonenumber}
+            onChange={(e) => setPhonenumber(e.target.value)}
             />
             <label htmlFor="Phone Number">Phone Number</label>
 
           <input 
           type="text" 
           id="" 
-          placeholder="Role" 
+          placeholder="Role"
+          value={Role}
+          onChange={(e) => setRole(e.target.value)}
           />
             <label htmlFor="Phone Number">Role</label>
  
@@ -102,14 +125,15 @@ return (
                 type={showPassword ? "text" : "password"}  
                 id="" 
                 placeholder="Password" 
-                value={password}
+                value={Password}
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button 
-                onClick={() => setShowPassword(!showPassword)}
-                className="show-password-button"
+              type="button"
+              onClick={() => setShowPassword(prevShowPassword => !prevShowPassword)}
+              className="show-password-button"
             >
-                {showPassword ? "Hide" : "Show"}
+              {showPassword ? "Hide" : "Show"}
             </button>
         </div>
             <label htmlFor="Password">Password</label>
@@ -117,12 +141,12 @@ return (
           <input 
           type="text" 
           id="" 
-          placeholder="Confirm Pasword" 
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)} 
+          placeholder="Confirm Password" 
+          value={Confirmpassword}
+          onChange={(e) => setConfirmpassword(e.target.value)} 
           style={{ font: "black", WebkitTextSecurity: "disc" }}
           />
-            <label htmlFor="Password">Confirm Pasword</label>
+            <label htmlFor="Password">Confirm Password</label>
           
               <div className="center-btn">
                 <button type="submit" >Register</button>
