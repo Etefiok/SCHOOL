@@ -60,34 +60,51 @@ function Login_Student() {
                     <label className="label">ID number
                         <input className="blur" value={formData.idnumber} type="number" placeholder=" ID number" name="idnumber" onChange={handleChange} />
                     </label>
+
                     <label className="label">Password
-    <div className="password-input">
-        <input
-            className="blur"
-            value={formData.password}
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-        />
-        <button
-            type="button"
-            className="toggle-password-button"
-            onClick={() => setShowPassword(prevShowPassword => !prevShowPassword)}
-        >
-            {showPassword ? "Hide" : "Show"}
-        </button>
-    </div>
-</label>
+                        <div className="password-input">
+                            <input
+                                className="blur_password"
+                                value={formData.password}
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                name="password"
+                                onChange={handleChange}
+                            />
+                            <button
+                                type="button"
+                                className="toggle-password-button"
+                                onClick={() => setShowPassword(prevShowPassword => !prevShowPassword)}
+                            >
+                                {showPassword ? "Hide" : "Show"}
+                            </button>
+                        </div>
+                    </label>
 
                     <div className='sign'>
-                        <button type="submit">Login</button><br />
-                        <button type="button" onClick={() => { window.location.href = "./forgetpassword"; }}>Forget password?</button>
-                        <br></br>
-                        Don't have an account? <br></br>
+                        <button 
+                            className="border1" 
+                            type="submit"
+                            >Login
+                        </button>
 
-                        <button type="button" onClick={() => { window.location.href = "./Signup" }}>Signup</button>
+                        <button 
+                            className="border2"
+                            type="button" 
+                            onClick={() => { window.location.href = "./forgetpassword"; }}>
+                            Forget password?
+                        </button>
+                       
                     </div>
+
+                    <div className="forgetpassword">
+                    Don't have an account? 
+                    <button type="button" onClick={() => { window.location.href = "./Signup" }}>Signup</button>
+                        
+                       
+                    </div>
+                        
+                   
                 </form>
             </div>
         </div>

@@ -63,7 +63,7 @@
     border-radius: 20px;
     border: none;
     line-height: 30px;
-    width: 280px;
+    /* width: 280px; */
   
   }
   @media screen and (min-width:768px) {
@@ -71,7 +71,7 @@
       border-radius: 20px;
       border: none;
       line-height: 30px;
-      width: 510px;;
+      /* width: 510px;; */
     
     }
     
@@ -82,10 +82,13 @@ padding-left: 20px;
   }
 
   .sign{
+    display: flex;
+    /* grid-template-columns: auto auto; */
     text-align: center;
     text-decoration: none;
     /* background-color: red; */
     /* margin-top: 10px; */
+    /* gap: 20px; */
 
    
   }
@@ -104,7 +107,6 @@ padding-left: 20px;
     padding: 3px 10px;
     font-size: 15px;
     border: none;
-    border-radius: 15px;
     border-bottom: 10px;
     background-color:#ffffff;
   }
@@ -124,22 +126,82 @@ padding-left: 20px;
 
   }
 
+  .border1{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+
+  .border2{
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
   .password-input {
-    position: relative;
+    display: flex;
+    justify-content:flex-start;
+    /* position: relative; */
+    /* background-color: aqua; */
+
 }
 
 .password-input input {
-    padding-right: 2.5em; /* Ensure space for the toggle button */
+    width: 100%; 
 }
 
 .toggle-password-button {
-    position: absolute;
-    top: 50%;
-    right: 5px;
-    transform: translateY(-50%);
-    /* background: none; */
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
+   border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: white;
+
+
 }
 
+.blur_password{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+  line-height: 30px;
+  /* width: 280px; */
+
+}
+@media screen and (min-width:768px) {
+  .blur_password{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: none;
+    line-height: 30px;
+    /* width: 510px;; */
+  
+  }
+  
+}
+
+.forgetpassword{
+  display: grid;
+  /* background-color: aqua; */
+  justify-content: center;
+  
+}
+
+.forgetpassword button{
+border-radius: 20px;
+  border: none;
+  background-color: white;
+}
+
+
+.forgetpassword button:hover{
+  /* background-color:  rgb(255, 255, 255); */
+  border-right: 1px solid green;
+  border-bottom: 1px solid green;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+.forgetpassword button:active{
+ 
+  border-right: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+
+}
