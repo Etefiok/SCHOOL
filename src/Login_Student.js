@@ -92,7 +92,7 @@ function Login_Student() {
                             className="border2"
                             type="button" 
                             onClick={() => { window.location.href = "./forgetpassword"; }}>
-                            Forget password?
+                            <span>Forget password?</span>
                         </button>
                        
                     </div>
