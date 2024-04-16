@@ -1,83 +1,74 @@
-// import { useState, useEffect } from "react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Loginforpage.css';
 import NavBar_Student from "./NavBar_out";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Login_Student() {
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        idnumber: ''
-    });
-
     const [showPassword, setShowPassword] = useState(false);
+    const [username, setUsername] = useState('');
+    const [idnumber, setIdnumber] = useState();
+    const [password, setPassword] = useState();
 
-    const [error, setError] = useState(null);
+    const navigate = useNavigate ();
 
-    const navigate = useNavigate();
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:5000/login', {username, idnumber, password})
+        .then(result => {
+            console.log({result});
+            navigate("");
+          })
+          .catch(err => console.log(err));
 
-    function handleChange(e) {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
     }
 
-    async function loginUser(e) {
-        e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:5000/Login', {
-                username: formData.username,
-                idnumber: formData.idnumber,
-                password: formData.password
-            });
-            // If login is successful, redirect to the homepage
-            navigate("/Homepage_Student");
-        } catch (error) {
-            // If login fails, display an error message
-            alert("Invalid username, ID number, or password. Please try again.");
-        }
-    }
-
-    function signupuser() {
-        navigate('/Signup');
-    }
 
     return (
         <div>
-            {error && <div>{error}</div>}
+            
             <NavBar_Student />
             <div className='Logiback'>
-                <form onSubmit={loginUser} className="formcontain">
+                <form onSubmit={handleSubmit} 
+                    className="formcontain">
                     <h2>Login</h2>
                     <label className="label">Username
-                        <input className="blur" value={formData.username} type="text" placeholder=" Username" name="username" onChange={handleChange} />
+                        <input className="blur" 
+                        value={username} 
+                        type="text" 
+                        placeholder=" Username" 
+                        name="username" 
+                        onChange={(e)=> setUsername(e.target.value)} />
                     </label>
+
                     <label className="label">ID number
-                        <input className="blur" value={formData.idnumber} type="number" placeholder=" ID number" name="idnumber" onChange={handleChange} />
+                        <input className="blur" 
+                        value={idnumber} 
+                        type="number" 
+                        placeholder=" ID number" 
+                        name="idnumber" 
+                        onChange={(e)=> setIdnumber(e.target.value)} />
                     </label>
 
                     <label className="label">Password
                         <div className="password-input">
                             <input
                                 className="blur_password"
-                                value={formData.password}
+                                value={password}
                                 type={showPassword ? "text" : "password"}
                                 placeholder="Password"
                                 name="password"
-                                onChange={handleChange}
-                            />
-                            <button
+                                onChange={(e)=> setPassword(e.target.value)} />
+                            
+                            <span
                                 type="button"
                                 className="toggle-password-button"
                                 onClick={() => setShowPassword(prevShowPassword => !prevShowPassword)}
                             >
-                                {showPassword ? "Hide" : "Show"}
-                            </button>
+                                {showPassword ? <FaEyeSlash /> : <FaEye /> }
+                            </span>
                         </div>
                     </label>
 

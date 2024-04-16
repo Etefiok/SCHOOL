@@ -3,6 +3,7 @@ import './SignUp.css';
 import { useNavigate } from 'react-router-dom';
 import NavBar_out from './NavBar_out';
 import axios from "axios";
+import {FaEye, FaEyeSlash} from 'react-icons/fa';
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -128,13 +129,13 @@ return (
                 value={Password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button 
+            <span 
               type="button"
               onClick={() => setShowPassword(prevShowPassword => !prevShowPassword)}
               className="show-password-button"
             >
-              {showPassword ? "Hide" : "Show"}
-            </button>
+              {showPassword ? <FaEyeSlash />: <FaEye />}
+            </span>
         </div>
             <label htmlFor="Password">Password</label>
 

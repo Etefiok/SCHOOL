@@ -3,40 +3,38 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const RegisterModel = require('./models/Register');
 
-const bcrypt = require('bcrypt');
-const User = require("./models/Login");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/test');
+// mongoose.connect('mongodb://localhost:27017/Login');
 
-// mongoose.connect('mongodb://localhost:27017/test', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
-// .then(() => {
-//   console.log('MongoDB connected');
-// })
-// .catch(err => {
-//   console.error('MongoDB connection error', err);
+// const UserSchema = new mongoose.Schema({
+//   username: String, 
+//   password: String,
+//   idNumber: String, 
 // });
 
+// const UserModel = mongoose.model('Users', UserSchema);
 
-app.post('/login', async (req, res) => {
-  const { username, IDnumber, password } = req.body;
 
-  const user = await User.findOne({ username: username });
-
-  if (user && bcrypt.compareSync(password, IDnumber, user.password)) {
-      // User authenticated successfully
-      res.json('Login successful');
-  } else {
-      // Invalid credentials
-      res.status(401).json('Invalid username or password');
-  }
-});
+// app.post('/login', (req, res) => {
+//   const { username, IDnumber, password } = req.body;
+//   UserModel.findOne({ username: username })
+//   .then(user => {
+//     if(user) {
+//       if (user.password === password, user.idNumber === IDnumber) {
+//         res.json('Login successfully');
+//       }  else {
+//         res.json('Invalid username or password');
+//       }
+//     } else {
+//       res.json('No record existed')
+//     }
+//   })
+// });
 
 
 app.post('/register', (req, res) => {
