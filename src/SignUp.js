@@ -23,7 +23,7 @@ function SignUp() {
     axios.post('http://localhost:5000/register', { Username, Firstname, Lastname, Password, Confirmpassword, IDnumber, Phonenumber, Role})
       .then(result => {
         console.log({result});
-        navigate("./Login_Student");
+        // navigate("./Login_Student");
       })
       .catch(err => console.log(err));
   };
@@ -95,7 +95,7 @@ return (
 
           
             <input 
-            type="text" 
+            type="Number" 
             id="" 
             placeholder="ID Number" 
             value={IDnumber}

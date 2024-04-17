@@ -4,13 +4,14 @@ import './Loginforpage.css';
 import NavBar_Student from "./NavBar_out";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaTimes } from 'react-icons/fa';
 
 function Login_Student() {
     const [showPassword, setShowPassword] = useState(false);
     const [username, setUsername] = useState('');
     const [idnumber, setIdnumber] = useState();
     const [password, setPassword] = useState();
+    const [alertMessage, setAlertMessage] = useState('');
 
     const navigate = useNavigate ();
 
@@ -19,9 +20,19 @@ function Login_Student() {
         axios.post('http://localhost:5000/login', {username, idnumber, password})
         .then(result => {
             console.log({result});
-            navigate("");
-          })
-          .catch(err => console.log(err));
+            if (result.data === 'Login successfully') 
+            {
+                setAlertMessage('Login successful');
+            navigate("./Homepage_Student");
+            } else {
+                setAlertMessage(<span><FaTimes /> Invalid username or password</span>);
+            }
+          }
+          )
+          .catch(err => {
+            console.log(err);
+            setAlertMessage('An error occurred while processing your request');
+          });
 
     }
 
@@ -34,6 +45,8 @@ function Login_Student() {
                 <form onSubmit={handleSubmit} 
                     className="formcontain">
                     <h2>Login</h2>
+                    <div className="alert-message">{alertMessage}</div>
+
                     <label className="label">Username
                         <input className="blur" 
                         value={username} 

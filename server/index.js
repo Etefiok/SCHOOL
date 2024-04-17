@@ -11,30 +11,30 @@ app.use(express.json());
 mongoose.connect('mongodb://localhost:27017/test');
 // mongoose.connect('mongodb://localhost:27017/Login');
 
-// const UserSchema = new mongoose.Schema({
-//   username: String, 
-//   password: String,
-//   idNumber: String, 
-// });
+const UserSchema = new mongoose.Schema({
+  username: String, 
+  password: String,
+  idNumber: String, 
+});
 
-// const UserModel = mongoose.model('Users', UserSchema);
+const UserModel = mongoose.model('Users', UserSchema);
 
 
-// app.post('/login', (req, res) => {
-//   const { username, IDnumber, password } = req.body;
-//   UserModel.findOne({ username: username })
-//   .then(user => {
-//     if(user) {
-//       if (user.password === password, user.idNumber === IDnumber) {
-//         res.json('Login successfully');
-//       }  else {
-//         res.json('Invalid username or password');
-//       }
-//     } else {
-//       res.json('No record existed')
-//     }
-//   })
-// });
+app.post('/login', (req, res) => {
+  const { username, IDnumber, password } = req.body;
+  UserModel.findOne({ username: username })
+  .then(user => {
+    if(user) {
+      if (user.password === password, user.idNumber === IDnumber) {
+        res.json('Login successfully');
+      }  else {
+        res.json('Invalid username or password');
+      }
+    } else {
+      res.json('No record existed')
+    }
+  })
+});
 
 
 app.post('/register', (req, res) => {
