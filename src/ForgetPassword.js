@@ -12,7 +12,7 @@ function ForgetPassword () {
   const Navigate = useNavigate();
 
     function loginuser(){
-        Navigate("/LoginForExams")
+        Navigate("/Login_Student")
     
   }
 
