@@ -1,15 +1,18 @@
 .Login-Error-Message{
   /* background-color: rgb(255, 255, 255); */
-  padding: 10px;
-  border: 1px solid red;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border: 1px solid red; */
   color: red;
+  
   
 }
 
 .Login-successfull{
   /* background-color: #008140; */
-  padding: 10px;
-  border: 1px solid #008140;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border: 1px solid #008140; */
   color: #008140;
 }
 

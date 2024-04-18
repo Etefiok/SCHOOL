@@ -53,7 +53,8 @@ function Login_Student() {
                 })
                 .catch(err => {
                     console.log(err);
-                    setAlertMessage('An error occurred while processing your request');
+                    setAlertMessage(<span className="Login-Error-Message"><FaTimes /> &nbsp; &nbsp;An error occurred while processing your request</span>);
+                    
                 });
         }
     }
