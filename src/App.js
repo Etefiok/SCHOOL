@@ -6,7 +6,7 @@ import Exams from './Exams';
 import MyPicture from './MyPicture';
 import LoginForExams from './LoginForExams';
 import { Routes, Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import Adding from './AddDetailsPage';
 import NavBar from './NavBar';
 import ClassesForExams from './Js1LearningArea/ClassesForExams';
@@ -169,7 +169,7 @@ function App() {
 
       <Route exact path='/' element={<HomePage_out />} /> 
       <Route path='/Login_Student' element={<Login_Student />} /> 
-      <Redirect from="/" to="/Login_Student" />
+      {/* <Redirect from="/" to="/Login_Student" /> */}
       <Route path='/Login_Admin' element={<Login_Admin />} />
       <Route path='/Homepage_Student' element={<HomePage_Student />} /> 
       <Route path='/HomePage_Admin' element={<HomePage_Admin />} />

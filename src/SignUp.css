@@ -5,7 +5,7 @@
     background-size: cover;
     /* background-color: #B0DDEE; */
     align-items: center;
-    min-height: 100vh; 
+    min-height: 110vh; 
     margin: 0;
     padding: 0;
 }
@@ -26,7 +26,7 @@
 
 .contact-grid-wrapper{
     padding: 30px;
-    background-color:#BCEDFF;
+    background-color:transparent;
     display: flex;
     /* width: 90%; */
     /* margin-top: 50px; */
@@ -98,7 +98,7 @@ margin-bottom: 20px;
     background-color: #BCEDFF;
     padding-bottom: 20px;
     width: 85%;
-    top: 25%;
+    top: 12%;
     left: 8%;
     
     
@@ -109,7 +109,7 @@ margin-bottom: 20px;
         /* display: grid; */
         position:relative;
         justify-content: center;
-        background-color: none;
+        background-color: transparent;
         padding-bottom: 30px;
         width: 400px;
         top: 0%;

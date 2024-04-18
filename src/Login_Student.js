@@ -4,7 +4,7 @@ import './Loginforpage.css';
 import NavBar_Student from "./NavBar_out";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { FaEye, FaEyeSlash, FaTimes } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaTimes, FaCheck } from 'react-icons/fa';
 
 function Login_Student() {
     const [showPassword, setShowPassword] = useState(false);
@@ -22,10 +22,11 @@ function Login_Student() {
             console.log({result});
             if (result.data === 'Login successfully') 
             {
-                setAlertMessage('Login successful');
-            navigate("./Homepage_Student");
+                setAlertMessage(<span className="Login-successfull"><FaCheck /> &nbsp; &nbsp; Login successfull</span>);
+            // navigate("./Homepage_Student");
             } else {
-                setAlertMessage(<span><FaTimes /> Invalid username or password</span>);
+                
+                setAlertMessage(<span className="Login-Error-Message"><FaTimes /> &nbsp; &nbsp; Invalid username or password</span>);
             }
           }
           )
@@ -36,7 +37,6 @@ function Login_Student() {
 
     }
 
-
     return (
         <div>
             
@@ -45,8 +45,9 @@ function Login_Student() {
                 <form onSubmit={handleSubmit} 
                     className="formcontain">
                     <h2>Login</h2>
+                   
                     <div className="alert-message">{alertMessage}</div>
-
+                    
                     <label className="label">Username
                         <input className="blur" 
                         value={username} 
@@ -96,7 +97,7 @@ function Login_Student() {
                             className="border2"
                             type="button" 
                             onClick={() => { window.location.href = "./forgetpassword"; }}>
-                            <span>Forget password?</span>
+                            <span>Forgot password?</span>
                         </button>
                        
                     </div>
