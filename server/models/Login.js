@@ -1,20 +1,20 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
 
 
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/login');
+// mongoose.connect('mongodb://localhost:27017/login');
 
-const UserSchema = new mongoose.Schema({
-    username: String, 
-    password: String,
-    idNumber: String, 
-});
+// const UserSchema = new mongoose.Schema({
+//     username: String, 
+//     password: String,
+//     idNumber: String, 
+// });
 
 // const UserModel = mongoose.model('Users', UserSchema);
 
@@ -34,6 +34,6 @@ const UserSchema = new mongoose.Schema({
 //     })
 //   });
 
-  app.listen(5000, () => {
-    console.log('Server is Running in port 5000');
-  });
+  // app.listen(5000, () => {
+  //   console.log('Server is Running in port 5000');
+  // });
