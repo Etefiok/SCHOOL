@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Exams from './Exams';
 import MyPicture from './MyPicture';
 import LoginForExams from './LoginForExams';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 import Adding from './AddDetailsPage';
 import NavBar from './NavBar';
@@ -154,7 +154,7 @@ function App() {
 
   return (
     <div>
- 
+ {/* <BrowserRouter> */}
       <Routes>
 
       
@@ -255,7 +255,7 @@ function App() {
 
         
         </Routes>
- 
+        {/* </BrowserRouter> */}
         </div>
   );
 }
