@@ -89,6 +89,11 @@ margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
 }
+.formhead{
+    background-color: #cea135;
+    margin-top: 50px;
+    margin-left: 0px;
+}
 
 
 .form{
@@ -109,8 +114,8 @@ margin-bottom: 20px;
         /* display: grid; */
         position:relative;
         justify-content: center;
-        background-color: transparent;
-        padding-bottom: 30px;
+        /* background-color: blue; */
+        padding-bottom: 10px;
         width: 400px;
         top: 0%;
         left: 0%;

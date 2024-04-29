@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "dev": "nodemon server"
+    "start": "JWT_SECRET=jwttokenkey node server/index.js",
+  "dev": "nodemon server/index.js"
   },
   "author": "Samuel Efiok",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.0",
+    "nodemailer": "^6.9.13",
     "react-qr-reader": "^3.0.0-beta-1"
   },
   "devDependencies": {

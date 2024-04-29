@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import NavBar_out from "./NavBar_out";
 import "./Homepage.css";
 import Notification from './notification';
@@ -12,10 +14,53 @@ import Mission from './MissionFolder/Mission';
 import NavBar_Student from './NavBar_Student';
 import Dictionary from './ImageSlideFolder/Dictionary/Dictionary';
 import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
+import Cookies from 'js-cookie';
 
 
 
-const HomePage_Student =({ users}) => {
+const HomePage_Student =() => {
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const verifyUser = async () => { 
+      try {
+        // const token = localStorage.getItem('token');
+        const token = Cookies.get('token'); 
+        console.log({token})
+        if (token) {
+          navigate('/Homepage_Student');
+          return;
+        }
+        const response = await axios.get('http://localhost:5000/auth/verify', {
+          headers: {
+            Authorization: `Bearer ${token}` 
+          }
+        });
+        console.log('Verify response:', response.data);
+        if (response.data.status === true) {
+          navigate('/Homepage_Student');
+
+        } else {
+          navigate('/Login_Student');
+        }
+      } catch (error) {
+        console.error('Error verifying user:', error);
+        if (error.response) {
+          console.error('Server response:', error.response.data);
+        }
+ 
+        navigate('/Login_Student');
+      }
+    };
+
+    verifyUser();
+  }, [navigate]);
+
+
+    
+  
+    
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const containerRef = useRef(null);
@@ -54,6 +99,8 @@ const HomePage_Student =({ users}) => {
       dots[currentSlide - 1].className += " active";
     };
 
+
+    
 
 
   useEffect(() => {

@@ -19,6 +19,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ChatIcon from '@mui/icons-material/Chat';
 import { FaCog } from 'react-icons/fa';
 import Ss1profileData from './Ss1profileData';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 // import Loginforparent from './Loginforparent'
@@ -27,6 +29,19 @@ import Ss1profileData from './Ss1profileData';
 
 
 const NavBar_Student = () => {
+const navigate = useNavigate()
+axios.defaults.withCredentials = true;
+  const handlelogout = () => {
+    axios.get("http://localhost:5000/auth/logout")
+    .then(res => {
+      if(res.data.status) {
+        navigate("/")
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+    
+  }
 
   const Students = Ss1profileData[0];
   const [showNotice, setShowNotice] = useState(false);
@@ -111,10 +126,10 @@ const handleSearch = () =>{
 
             
 
-                <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ "; }}><LogoutIcon /> Logout</NavDropdown.Item>
+                <NavDropdown.Item href="#action5" onClick={handlelogout}><LogoutIcon /> Logout</NavDropdown.Item>
 
                 </NavDropdown>
-{/* profile for media queryends here */}
+{/* profile for media query ends here */}
         
         
         
@@ -151,7 +166,7 @@ const handleSearch = () =>{
 
                 <NavDropdown.Divider />
 
-                <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ "; }}><LogoutIcon /> Logout</NavDropdown.Item>
+                <NavDropdown.Item href="#action5" onClick={handlelogout}><LogoutIcon /> Logout</NavDropdown.Item>
 
                 </NavDropdown></p>
             </div>

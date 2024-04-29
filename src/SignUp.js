@@ -1,54 +1,72 @@
-  import React, { useState } from "react";
-  import "./SignUp.css";
-  import { useNavigate } from "react-router-dom";
-  import NavBar_out from "./NavBar_out";
-  import Axios from "axios";
-  import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
-  import { response } from "express";
-  
-  function SignUp() {
-    const [showPassword, setShowPassword] = useState(false);
-    const [Username, setUserName] = useState("");
-    const [Firstname, setFirstName] = useState("");
-    const [Lastname, setLastname] = useState("");
-    const [Password, setPassword] = useState("");
-    const [Confirmpassword, setConfirmpassword] = useState("");
-    const [IDnumber, setIDnumber] = useState("");
-    const [Phonenumber, setPhonenumber] = useState("");
-    const [Email, setEmail] = useState("");
-    // const [alertMessage, setAlertMessage] = useState(null);
-  
-    const navigate = useNavigate();
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
+import React, { useState } from "react";
+import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
+import NavBar_out from "./NavBar_out";
+import axios from "axios";
+import { FaCheck, FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+// import { respond } from "express";
 
-      if (Password !== Confirmpassword) {
-          console.log("Passwords do not match");
-        // setAlertMessage(<span className="Passwords do not match"><FaTimes /> &nbsp; &nbsp; Invalid Credentials</span>);
-        return; 
-      }
+const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [Username, setUsername] = useState("");
+  const [Firstname, setFirstname] = useState("");
+  const [Lastname, setLastname] = useState("");
+  const [Password, setPassword] = useState("");
+  const [Confirmpassword, setConfirmpassword] = useState("");
+  const [IDnumber, setIDnumber] = useState("");
+  const [Phonenumber, setPhonenumber] = useState("");
+  const [Email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-      // setAlertMessage(null);
+  const navigate = useNavigate();
 
-      Axios.post("http://localhost:5000/auth/signup", {
-        Username,
-        Firstname,
-        Lastname,
-        Password,
-        Confirmpassword,
-        IDnumber,
-        Phonenumber,
-        Email,
-      })
-        .then((response) => {
-          console.log(response.data);
-          // navigate("/Login_Student");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (Password !== Confirmpassword) {
+      setErrorMessage("Passwords do not match");
+      return;
+    }
+
+  axios.post("http://localhost:5000/auth/signup", {
+  Username: Username,
+  Firstname: Firstname,
+  Lastname: Lastname,
+  Password: Password,
+  Confirmpassword: Confirmpassword,
+  IDnumber: IDnumber,
+  Phonenumber: Phonenumber,
+  Email: Email
+})
+  .then((response) => {
+    console.log(response);
+    if (response.data.message === "User already exists") {       
+      setErrorMessage(<span className="Login-Error-Message">
+      <FaTimes /> &nbsp; &nbsp; User already exist
+    </span>);
+      
+     
+    } 
+    else {
+      // You may want to navigate to the login page here
+      setErrorMessage(<span className="Login-successfull">
+      <FaCheck /> &nbsp; &nbsp; Sign Up Successful ...
+    </span>);
+    setTimeout(() => {
+      navigate("/Login_Student");
+    }, 1500)
+      
+    }
+  })
+  .catch((error) => {
+    setErrorMessage("An error occurred while processing your request");
+    console.error(error);
+  });
+
+  };
+
+  
 
   return (
     <div>
@@ -82,13 +100,15 @@
             <div className="newaccounttext">
               <h3>Create a new account</h3>
               <p>it's quick and easy</p>
-
+              {errorMessage && (
+                <div className="error-message">{errorMessage}</div>
+              )}
               <input
                 type="text"
                 id=""
                 placeholder="Username"
                 value={Username}
-                onChange={(e) => setUserName(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               />
 
               <label htmlFor="Username">Username</label>
@@ -98,7 +118,7 @@
                 id=""
                 placeholder="First name"
                 value={Firstname}
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={(e) => setFirstname(e.target.value)}
               />
 
               <label htmlFor="Firstname">First name</label>
@@ -143,7 +163,7 @@
                 <input
                   type={showPassword ? "text" : "password"}
                   id=""
-                  placeholder="Password"
+                  placeholder="**********"
                   value={Password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -162,7 +182,7 @@
               <input
                 type="text"
                 id=""
-                placeholder="Confirm Password"
+                placeholder="**********"
                 value={Confirmpassword}
                 onChange={(e) => setConfirmpassword(e.target.value)}
                 style={{ font: "black", WebkitTextSecurity: "disc" }}
@@ -176,7 +196,8 @@
               <div className="Alreadyhaveaccount">
                 <p>
                   Already have an account?{" "}
-                  <a href="http://localhost:3000/Login_Student">Login</a>
+                  <Link to="/Login_Student">Login</Link>
+                  {/* <a href="http://localhost:3000/Login_Student">Login</a> */}
                 </p>
               </div>
             </div>
@@ -185,7 +206,7 @@
       </div>
     </div>
   );
-}
+};
 
 export default SignUp;
 

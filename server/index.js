@@ -1,46 +1,25 @@
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const RegisterModel = require('./models/Register');
-
-// import express from 'express';
-// import mongoose from 'mongoose';
-// import cors from 'cors';
-// import { UserRouter } from "./routes/user.js";
-// import dotenv from "dotenv";
-// dotenv.config()
-
-
-
-// const app = express();
-// app.use(cors());
-// app.use(express.json())
-// app.use('/auth', UserRouter)
-
-// mongoose.connect('mongodb://127.0.0.1:27017/authentication');
-
-
-// app.listen(5000, () => {
-//   console.log('Server is Running in port 5000');
-// });
-
-
-
-
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { UserRouter } from "./routes/user.js";
+import cookieParser from 'cookie-parser';
 import dotenv from "dotenv";
-
 dotenv.config();
 
+const JWT_SECRET = process.env.JWT_SECRET || "jwttokenkey";
+export { JWT_SECRET };
+
+
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  credentials: true,
+}));
 app.use(express.json());
+app.use(cookieParser());
 app.use('/auth', UserRouter);
 
-mongoose.connect('mongodb://localhost:27017/authentication', {
+mongoose.connect('mongodb://127.0.0.1:27017/SignUp', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -48,6 +27,10 @@ mongoose.connect('mongodb://localhost:27017/authentication', {
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
+
+
+
+
 
 
 

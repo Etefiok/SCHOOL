@@ -17,6 +17,7 @@ import School_Calendar_on_front from './School_Calendar_on_front';
 import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
 const HomePage_out =({ users}) => {
+  
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const containerRef = useRef(null);

@@ -28,7 +28,7 @@ import Loginforparent from './Loginforparent';
 import Login2 from './Login2';
 import HomePage_out from './HomePage_out';
 import Login_Student from './Login_Student';
-import HomePage_Student from './Hompage_Student';
+import HomePage_Student from './Homepage_Student';
 import AbdullahiShehuJss1ThirdTermResult from './AbdullahiShehuJss1ThirdTermResult';
 import AbdullahiShehuJss1SecondTermResult from './AbdullahiShehuJss1SecondTermResult';
 import InstructionLitInEnglishExams from './Jss1ExamsFolder/InstructionLitInEnglishExams';
@@ -56,18 +56,18 @@ import StarBlink from './StarBlink';
 
 function App() {
 
-  const [backendData, setBackendData] = useState([{}])
+  // const [backendData, setBackendData] = useState([{}])
 
 
-  useEffect(() => {
-    fetch("/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, [])
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/auth/login").then(
+  //     response => response.json()
+  //   ).then(
+  //     data => {
+  //       setBackendData(data)
+  //     }
+  //   )
+  // }, [])
 
   const updateScore = (newScore) => {
     function calculateScore(answers, correctAnswers) {
