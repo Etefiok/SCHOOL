@@ -37,8 +37,10 @@ const Login_Student = () => {
             Cookies.set('token', response.data.token);
             // localStorage.setItem('token', response.data.token);
             setAlertMessage(
+              <span>
               <span className="Login-successfull">
                 <FaCheck /> &nbsp; &nbsp; Login Successful ...
+              </span>
               </span>
             );
             setTimeout(() => {
@@ -47,16 +49,20 @@ const Login_Student = () => {
             }, 1500);
           } else {
             setAlertMessage(
+              <span>
               <span className="Login-Error-Message">
                 <FaTimes /> &nbsp; &nbsp; Incorrect crerdentials
+              </span>
               </span>
             );
           }
         } catch (err) {
           console.log(err);
           setAlertMessage(
+            <span>
             <span className="Login-Error-Message">
               <FaTimes /> &nbsp; &nbsp; An error occurred, please try again.
+            </span>
             </span>
           );
         }
@@ -65,7 +71,7 @@ const Login_Student = () => {
     
       
       
-  
+
     const validate = () => {
       let result = true;
       if (Password === "" || Password === null) {
@@ -80,9 +86,11 @@ const Login_Student = () => {
       if (IDnumber === "" || IDnumber === null) {
         result = false;
         setAlertMessage(
+          // <span className="alert-message">
           <span className="Login-Error-Message">
             <FaTimes /> &nbsp; &nbsp; Please enter a valid ID number
           </span>
+          // </span>
         );
       }
   
@@ -99,13 +107,16 @@ const Login_Student = () => {
       return result;
     };
 
+
   return (
     <div>
       <NavBar_Student />
       <div className="Logiback">
         <form onSubmit={handleSubmit} className="formcontain">
           <h2>Login</h2>
-          <div className="alert-message">{alertMessage}</div>
+          <div className="alert-message">
+          <div>{alertMessage}</div>
+          </div>
           <label className="label">
             Username
             <input

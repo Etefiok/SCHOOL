@@ -59,9 +59,9 @@ const CountdownTimer = () => {
 
   return (
     <div className='Timer'>
-      <h1>{countdown.hours}:</h1>
-      <h1>{countdown.minutes}:</h1>
-      <h1>{countdown.seconds}</h1>
+      <h1>{countdown.hours}<span>Hours</span></h1>
+      <h1>{countdown.minutes}<span>Minutes</span></h1>
+      <h1>{countdown.seconds}<span>Seconds</span></h1>
      {/* {countdown === 0 ? <button>Submit</button>: } */}
       {showSubmitButton && <ExamsTimeout />}
     </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavBar_out from "./NavBar_out";
 import "./Homepage.css";
-import Notification from './notification';
+import Notification from './Notification/notification';
 import Slider from './SliderComponent/Slider/Slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ import NavBar_Student from './NavBar_Student';
 import Dictionary from './ImageSlideFolder/Dictionary/Dictionary';
 import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 import Cookies from 'js-cookie';
+import Daily_Quiz from './Notification/Daily_Quiz';
 
 
 
@@ -123,8 +124,8 @@ const HomePage_Student =() => {
         <NavBar_Student />
       </nav>
  
-      
-    <Notification />
+    <Daily_Quiz />
+    {/* <Notification /> */}
     <Slider />
     <Mission />
     <ImageSlide />

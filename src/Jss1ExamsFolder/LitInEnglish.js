@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar_Student from '../NavBar_Student';
 import CountdownTimer from '../Countdown';
+import Cookies from "js-cookie"
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Question = (props) => {
   const [writtenAnswer, setWrittenAnswer] = useState('');
+  const navigate = useNavigate();
 
   const handleAnswerChange = (e) => {
     setWrittenAnswer(e.target.value);
@@ -13,6 +17,43 @@ const Question = (props) => {
     props.handleAnswer(writtenAnswer);
     setWrittenAnswer('');
   };
+
+
+  useEffect(() => {
+    const verifyUser = async () => { 
+      try {
+        // const token = localStorage.getItem('token');
+        const token = Cookies.get('token'); 
+        console.log({token})
+        if (token) {
+          navigate('/LitInEnglish');
+          return;
+        }
+        const response = await axios.get('http://localhost:5000/auth/verify?page=LitInEnglish', {
+          headers: {
+            Authorization: `Bearer ${token}` 
+          }
+        });
+        console.log('Verify response:', response.data);
+        if (response.data.status === true) {
+          navigate('/LitInEnglish');
+
+        } else {
+          navigate('/Login_Student');
+        }
+      } catch (error) {
+        console.error('Error verifying user:', error);
+        if (error.response) {
+          console.error('Server response:', error.response.data);
+        }
+ 
+        navigate('/Login_Student');
+      }
+    };
+
+    verifyUser();
+  }, [navigate]);
+
 
   return (
     <div>

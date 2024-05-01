@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./NavBar.css";
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
@@ -42,6 +42,25 @@ axios.defaults.withCredentials = true;
     })
     
   }
+
+
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/auth/welcomeuser');
+        setUser(response.data.user);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+
+
 
   const Students = Ss1profileData[0];
   const [showNotice, setShowNotice] = useState(false);
@@ -152,11 +171,14 @@ const handleSearch = () =>{
             <Button variant="outline-success" onClick={(e) => 
             {e.preventDefault(); handleSearch();}}>Search</Button>
           </Form>
+          {/* {users.map((user, index) => (<li key={index}><h2>{user.Username}</h2></li>))}  */}
 
-            <div className='profilepics'>                
-                <p><NavDropdown title={Students.name} id="">
-                <img src={Students.image} alt="Passport Preview"  style={{ maxWidth: '40%', maxHeight: '100%', borderRadius: '50px' }}  />
-                <p>{Students.StudentStatus}</p>
+            <div className='profilepics'> 
+           {user ? (         
+                <p><NavDropdown title={user.message} id=""> 
+               {/* <p><NavDropdown title="welcome, {username}" id=""> */}
+                {/* <img src={Students.image} alt="Passport Preview"  style={{ maxWidth: '40%', maxHeight: '100%', borderRadius: '50px' }}  /> */}
+                {/* <p>{Students.StudentStatus}</p> */}
                 <NavDropdown.Item onClick={() => { window.location.href = "./AbdullahiShehu"; }}><AccountCircleIcon />Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => { window.location.href = "./Performance";}}><EmojiEventsIcon />Performance</NavDropdown.Item>
 
@@ -169,6 +191,10 @@ const handleSearch = () =>{
                 <NavDropdown.Item href="#action5" onClick={handlelogout}><LogoutIcon /> Logout</NavDropdown.Item>
 
                 </NavDropdown></p>
+                ) : (
+                  <span>Loading...</span>
+                )}
+                
             </div>
           </div>    
 

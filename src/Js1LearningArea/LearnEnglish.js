@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Js1EnglishData from "./Js1EnglishData";
 import './LearnEconomics.css'
-import { useState } from 'react';
 import NavBar_Student from '../NavBar_Student';
 import Js1EconsTopic1 from './Js1EconomicsTopic1';
 import Js1EconsTopic1Test from './Js1EconsTopic1Test';
@@ -10,6 +10,8 @@ import Js1EngTopic1Test from './Js1EngTest1';
 import Js1EngTest2 from './Js1EngTest2';
 import Js1EngTest3 from './Js1EngTest3';
 import Js1EngTest1 from './Js1EngTest1';
+import axios from 'axios';
+import Cookies from "js-cookie";
 
 
 import Button from 'react-bootstrap/Button';
@@ -26,6 +28,48 @@ const LearnEnglish = ({updateScore}) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const navigate = useNavigate();
+  
+
+    const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+      const verifyUser = async () => { 
+        try {
+          // const token = localStorage.getItem('token');
+          const token = Cookies.get('token'); 
+          console.log({token})
+          if (token) {
+            navigate('/LearnEnglish');
+            return;
+          }
+          const response = await axios.get('http://localhost:5000/auth/verify?page=LearnEnglish', {
+            headers: {
+              Authorization: `Bearer ${token}` 
+            }
+          });
+          console.log('Verify response:', response.data);
+          if (response.data.status === true) {
+            navigate('/LearnEnglish');
+  
+          } else {
+            navigate('/Login_Student');
+          }
+        } catch (error) {
+          console.error('Error verifying user:', error);
+          if (error.response) {
+            console.error('Server response:', error.response.data);
+          }
+   
+          navigate('/Login_Student');
+        }
+      };
+  
+      verifyUser();
+    }, [navigate]);
+
+
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a

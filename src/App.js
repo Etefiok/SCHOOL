@@ -44,6 +44,7 @@ import AdmissionForm from './Forms/AdmissionForm';
 import LearnEnglish from './Js1LearningArea/LearnEnglish';
 import School_Calendar_Page from './School_Calendar_Page';
 import English from './Jss1ExamsFolder/English';
+import Mathematics from './Jss1ExamsFolder/Mathematics';
 import Test_Result_Sheet from './Js1_English_Test_ResultSheet_folder/Test_Result_Sheet';
 import Login_Admin from './Login_Admin';
 
@@ -52,6 +53,7 @@ import School_Calendar_on_front from './School_Calendar_on_front';
 import About_Us_Page from './About_Us_Folder/About_Us_Page';
 import HomePage_Admin from './HomePage_Admin';
 import StarBlink from './StarBlink';
+import InstructionMathsExams from './Jss1ExamsFolder/InstructionMathsExams';
 // import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
 function App() {
@@ -218,6 +220,9 @@ function App() {
 
         <Route path='/InstructionEnglishExams' element = {<InstructionEnglishExams/>} />
         <Route path='/English' element = {<English updateScore={updateScore}/>} />
+
+        <Route path='InstructionMathExams' element ={<InstructionMathsExams />} />
+        <Route path='Mathematics' element = {<Mathematics updateScore={updateScore}/>} />
 
 
         

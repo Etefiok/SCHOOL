@@ -7,6 +7,35 @@ import nodemailer from "nodemailer";
 
 const router = express.Router();
 
+// Middleware to parse JSON request bodies
+router.use(express.json());
+
+// API endpoint to retrieve user information
+router.get("/welcomeuser", async (req, res) => {
+  try {
+    // Fetch the user from the database based on the request
+    const user = await User.findOne({}, { Username: 1 });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({
+      status: true,      
+      user: {
+        message: `Welcome ${user.Username}!`,
+        Username: user.Username,
+        Firstname: user.Firstname,
+        Lastname: user.Lastname,
+        Email: user.Email,
+        Phonenumber: user.Phonenumber,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
 router.post("/signup", async (req, res) => {
   const {
     Username,
@@ -160,7 +189,24 @@ const verifyUser = async (req, res, next) => {
 };
 
 router.get('/verify', verifyUser, (req, res) => {
-  return res.json({ status: true, message: 'Authorized', user: req.user });
+  // Check the requested page and respond accordingly
+  const requestedPage = req.query.page;
+
+  switch (requestedPage) {
+    case 'LearnEnglish':
+      return res.json({ status: true, message: 'Authorized', user: req.user, page: 'LearnEnglish' });
+
+      //for Exams routes
+    case 'LitInEnglish':
+      return res.json({ status: true, message: 'Authorized', user: req.user, page: 'LitInEnglish' });
+    case 'English':
+      return res.json({ status: true, message: 'Authorized', user: req.user, page: 'English' });
+      case 'Subjects_For_Exams':
+      return res.json({ status: true, message: 'Authorized', user: req.user, page: 'Subjects_For_Exams' });
+    default:
+      return res.status(404).json({ status: false, message: 'Page not found' });
+  }
+  // return res.json({ status: true, message: 'Authorized', user: req.user });
 
 });
 
@@ -168,6 +214,8 @@ router.get("/logout", (req, res) => {
   res.clearCookie("token")
   return res.json({status:true})
 })
+
+
 
 
 export { router as UserRouter };

@@ -21,20 +21,6 @@ function Notification({ users }) {
   }, []);
 
 
-//   return (
-//     <div>
-// {showNotice && <div className="noticeboard">
-//       <h1>NOTICE !!!</h1>
-//         <h5>{massage.Title}</h5>
-//         <p>{massage.Text}</p>
-//         <button onClick={() => setShowNotice(false)}>Close</button>
-//       </div>}
-
-      
-//     </div>
-//   );
-// }
-
 return (
   <div>
     {showNotice && (

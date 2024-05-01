@@ -30,8 +30,6 @@
     }
   }
 
-
-
   .notice-overlay{
     position: fixed;
   top: 0;
@@ -56,13 +54,25 @@
   .noticeboard button{
     /* color: red; */
     border-radius: 5px;
-    padding: 5px 20px;
-    font-weight: bold;
-    font-size: large;
-    
+    padding: 5px 10px;
+    font-weight:lighter;
+    font-size: 10;    
     border-radius: 10px;
     border: none;
   }
+
+  @media screen and (min-width: 760px) {
+    .noticeboard button{
+      /* color: red; */
+      border-radius: 5px;
+      padding: 5px 20px;
+      font-weight: bold;
+      font-size: large;    
+      border-radius: 10px;
+      border: none;
+    }
+  }
+
   .noticeboard button:hover{
     background-color: aqua;
     border-right: 1px solid green;
@@ -74,4 +84,45 @@
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 
   }
+
+  .incorrect-answer-icon{
+    color: #C91E2F;
+    font-size: 15px;
+  }
+
+  @media screen and (min-width: 760px) {
+    .incorrect-answer-icon{
+      color: #C91E2F;
+      font-size: 30px;
+    }
+  }
+ 
+
+  .correct-answer-icon{
+    color: #008140;
+    font-size: 15px;
+  }
+
+  @media screen and (min-width: 760px) {
+    .correct-answer-icon{
+      color: #008140;
+      font-size: 30px;
+    }
+  }
+ 
+
+  .grammar-error-icon{
+    color: #EE7002;
+    font-size: 15px;
+  }
+
+  @media screen and (min-width: 760px) {
+    .grammar-error-icon{
+      color: #EE7002;
+      font-size: 30px;
+    }
+  }
+
+
+  
  

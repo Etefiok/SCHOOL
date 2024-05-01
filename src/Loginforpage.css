@@ -16,6 +16,12 @@
   color: #008140;
 }
 
+.alert-message{
+  /* border: 1px solid #008140; */
+  /* width: 100%; */
+  
+}
+
 .Logiback {
     display: flex;
     justify-content: center;
