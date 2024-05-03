@@ -167,6 +167,35 @@
     font-size: 12px;
    
 }
+.Note-container{
+    display: flex;
+    /* border: 1px solid red; */
+    /* background-color: white; */
+    gap: 30px
+    
+}
+
+.Note{
+    display: flex;
+    justify-content: space-around;
+    /* background-color: silver; */
+    margin: 0px;
+    width: 22%;
+    padding: 0px;
+    gap:50px
+    
+}
+
+.Note Button{
+    padding: 5px;
+    color: #005be4;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: #005be42c;
+    border: none;
+}
+
 
 .SubSection{
     display: flex;
@@ -271,8 +300,9 @@
 
 .content button{
     position: absolute;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 15px;
+    font-weight: bolder;
     right: 20px;
     top: 10px;
     background-color: rgba(255, 255, 255, 0.288);
@@ -301,8 +331,9 @@
 
     .content button{
         position: absolute;
-        color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         font-size: 15px;
+        font-weight: bolder;
         right: 10px;
         top: 10px;
         background-color: rgba(255, 255, 255, 0.288);

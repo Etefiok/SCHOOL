@@ -1,0 +1,66 @@
+.Lesson-Text{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(156, 155, 155);
+    margin: 20px;
+    padding: 20px;
+    height: 570px;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+    .Lesson-Text{
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(156, 155, 155);
+        margin: 20px;
+        padding: 20px;
+        margin-top: 100px;
+        height: 400px;
+
+    }
+}
+
+
+/* @media screen and (min-width:760px) {
+    .Lesson-Text{
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(156, 155, 155);
+        margin: 20px;
+        padding: 20px;
+        height: 800px;
+
+    }
+} */
+
+.Lesson-Text h3{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+
+}
+
+.Text-Border{
+    
+    /* border: 1px solid black; */
+    height: 520px;
+    overflow: auto;
+    padding: 0px;
+
+}
+
+@media screen and (min-width: 760px) {
+    .Text-Border{
+    
+        /* border: 1px solid black; */
+        height: 380px;
+        overflow: auto;
+        padding: 0px;
+    
+    }
+    
+}
+
+.Text-Border p{    
+    margin: 0px;
+    /* text-align: justify; */
+    font-size: 17px;
+    font-weight:unset;
+
+}

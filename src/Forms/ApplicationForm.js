@@ -3,6 +3,7 @@ import './Contactform.css';
 import { useNavigate } from 'react-router-dom';
 import Navba from '../NavBar_out';
 import NavBar_out from '../NavBar_out';
+import Form from 'react-bootstrap/Form';
 // import HomePage from './HomePage';
 
 
@@ -62,13 +63,19 @@ function ApplicationForm () {
             <label htmlFor="text">Position Applied For</label>
           </div>
 
-          <div className="formline">
+          {/* <div className="formline">
             <p>Submit your resume (pdf format) only</p>
             <input type="file" id="resume" accept=".pdf" />
             <label htmlFor="resume">Upload Resume (PDF only)</label>
-          </div>
+          </div> */}
 
-
+          <div className="formline">
+            <span>Your resume here</span>
+          {/* <Form.Group controlId="formFileMultiple" className="mb-3"> */}
+        <Form.Control type="file" multiple />
+        <label>Multiple files input example</label>
+      {/* </Form.Group> */}
+      </div>
           
           <div className="formline">
             <textarea type="Message" id="Message" placeholder="Message"></textarea>

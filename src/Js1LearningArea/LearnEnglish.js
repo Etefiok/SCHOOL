@@ -12,13 +12,10 @@ import Js1EngTest3 from './Js1EngTest3';
 import Js1EngTest1 from './Js1EngTest1';
 import axios from 'axios';
 import Cookies from "js-cookie";
-
-
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
-
 
 
 const LearnEnglish = ({updateScore}) => {
@@ -70,7 +67,6 @@ const LearnEnglish = ({updateScore}) => {
     }, [navigate]);
 
 
-
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href="#"
@@ -85,11 +81,6 @@ const LearnEnglish = ({updateScore}) => {
     </a>
   ));
   
-
-  
-
-
-// const [showResult, setShowResult] = useState(false)
 
 const [activeTab, setActiveTab] = useState('Tab1');
 const handleTabClick = (tabName) => {

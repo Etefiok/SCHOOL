@@ -31,6 +31,7 @@ import { useNavigate } from 'react-router-dom';
 const NavBar_Student = () => {
 const navigate = useNavigate()
 axios.defaults.withCredentials = true;
+
   const handlelogout = () => {
     axios.get("http://localhost:5000/auth/logout")
     .then(res => {
@@ -39,17 +40,18 @@ axios.defaults.withCredentials = true;
       }
     }).catch(err => {
       console.log(err)
-    })
+    });
     
-  }
+  };
 
 
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get('http://localhost:5000/auth/welcomeuser');
+        console.log(response.data.user)
         setUser(response.data.user);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -175,7 +177,7 @@ const handleSearch = () =>{
 
             <div className='profilepics'> 
            {user ? (         
-                <p><NavDropdown title={user.message} id=""> 
+                <p><NavDropdown title= {`welcome, ${user.Username}`} id=""> 
                {/* <p><NavDropdown title="welcome, {username}" id=""> */}
                 {/* <img src={Students.image} alt="Passport Preview"  style={{ maxWidth: '40%', maxHeight: '100%', borderRadius: '50px' }}  /> */}
                 {/* <p>{Students.StudentStatus}</p> */}

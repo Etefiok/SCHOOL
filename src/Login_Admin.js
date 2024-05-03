@@ -1,92 +1,195 @@
-// import { useState, useEffect } from "react";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import './Loginforpage.css';
-import NavBar_out from "./NavBar_out";
+import { Link, useNavigate } from "react-router-dom";
+import "./Loginforpage.css";
+import NavBar_Student from "./NavBar_out";
+import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Cookies from 'js-cookie';
 
-function Login_Admin() {
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        idnumber: ''
-    });
-
-
-
+const Login_Admin = () => {
+    const [user, setUser] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
+    const [Username, setUsername] = useState("");
+    const [IDnumber, setIdnumber] = useState("");
+    const [Password, setPassword] = useState("");
+    const [alertMessage, setAlertMessage] = useState("");
+  
     const navigate = useNavigate();
-
-    function handleChange(e) {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    }
-    
-// function loginUser(e) {
-//     e.preventDefault();
-//     setFormData({
-//         username: '',
-//         idnumber:'',
-//         password: '',
-//     });
-
-//     navigate("/ss1profilemap");
-    
-// }
-
-
-    
-    function loginUser(e) {
-        e.preventDefault();
-        if(formData.username === 'samuel' &&
-           formData.idnumber === '3454' && 
-           formData.password === 'Onelove@2??'        
-        )
-        {
-        navigate("/Homepage_Admin");
-        console.log( formData.username, formData.password, formData.idnumber)
+  
+    axios.defaults.withCredentials = true;
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (validate()) {
+        try {
+          const response = await axios.post("http://localhost:5000/auth/login_Admin", {
+            Username: Username,
+            IDnumber: IDnumber,
+            Password: Password,
+          });
+          console.log({ response });
+          if (response.data.message === 
+            "Login successful") {
+            console.log(response.data.token)
+            Cookies.set('token', response.data.token);
+            // localStorage.setItem('token', response.data.token);
+            setAlertMessage(
+              <span>
+              <span className="Login-successfull">
+                <FaCheck /> &nbsp; &nbsp; Login Successful ...
+              </span>
+              </span>
+            );
+            setTimeout(() => {
+              console.log("success")
+              navigate("/Homepage_Admin");
+            }, 1500);
+          } else {
+            setAlertMessage(
+              <span>
+              <span className="Login-Error-Message">
+                <FaTimes /> &nbsp; &nbsp; Incorrect crerdentials
+              </span>
+              </span>
+            );
+          }
+        } catch (err) {
+          console.log(err);
+          setAlertMessage(
+            <span>
+            <span className="Login-Error-Message">
+              <FaTimes /> &nbsp; &nbsp; An error occurred, please try again.
+            </span>
+            </span>
+          );
         }
-        else{
-            alert("Invalid username, ID number, or password. Please try again.")
-        }
-    }
-
-
-
-    function signupuser() {
-        navigate ('/signup');
-    }
-
-    // const Navigate = useNavigate();
+      }
+    };
     
+      
+      
 
-    return (
-        <div>
-            <NavBar_out />
-            <div className='Logiback'>
-            <form onSubmit={loginUser}  className="formcontain">
-            
-            <h2>Login</h2>
-            <input className="blur" value={formData.username} type="text" placeholder=" Username" name="username" onChange={handleChange} /> 
-            <input className="blur" value={formData.idnumber} type="number" placeholder=" ID number" name="idnumber" onChange={handleChange} />
-            <input className="blur" value={formData.password} type="password" placeholder=" Password" name="password" onChange={handleChange} />
-           
+    const validate = () => {
+      let result = true;
+      if (Password === "" || Password === null) {
+        result = false;
+        setAlertMessage(
+          <span className="Login-Error-Message">
+            <FaTimes /> &nbsp; &nbsp; Please enter a valid password
+          </span>
+        );
+      }
 
-            
-            <div className='sign'>
-            <button onClick={() => { window.location.href="./HomePage_Admin";}}>Log In</button><br />
+      if (IDnumber === "" || IDnumber === null) {
+        result = false;
+        setAlertMessage(
+          // <span className="alert-message">
+          <span className="Login-Error-Message">
+            <FaTimes /> &nbsp; &nbsp; Please enter a valid ID number
+          </span>
+          // </span>
+        );
+      }
+  
 
-            
-                <a href="http://localhost:3000/forgetpassword">Forget password?</a>
-        <br></br><br></br>
-        click on the Sign Up Botton to Register<br></br>
-        <button onClick={signupuser}>Sign Up</button>
-        </div>
-            </form>
+      if (Username === "" || Username === false) {
+        result = false;
+        setAlertMessage(
+          <span className="Login-Error-Message">
+            <FaTimes /> &nbsp; &nbsp; Please enter a valid username
+          </span>
+        );
+      }
+  
+      return result;
+    };
+
+
+  return (
+    <div>
+      <NavBar_Student />
+      <div className="Logiback">
+        <form onSubmit={handleSubmit} className="formcontain">
+          <h2>Login</h2>
+          <div className="alert-message">
+          <div>{alertMessage}</div>
+          </div>
+          <label className="label">
+            Username
+            <input
+              className="blur"
+              value={Username}
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
+          <label className="label">
+            ID number
+            <input
+              className="blur"
+              value={IDnumber}
+              type="number"
+              placeholder="ID number"
+              name="idnumber"
+              onChange={(e) => setIdnumber(e.target.value)}
+            />
+          </label>
+          <label className="label">
+            Password
+            <div className="password-input">
+              <input
+                className="blur_password"
+                value={Password}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                type="button"
+                className="toggle-password-button"
+                onClick={() =>
+                  setShowPassword((prevShowPassword) => !prevShowPassword)
+                }
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
-        </div>
-    );
+          </label>
+          <div className="sign">
+            <button className="border1" type="submit">
+              Login
+            </button>
+            <button
+              className="border2"
+              type="button"
+              onClick={() => {
+                window.location.href = "./forgetpassword";
+              }}
+            >
+              <span>Forgot password?</span>
+            </button>
+          </div>
+          <div className="forgetpassword">
+            Don't have an account?
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = "./Signup";
+              }}
+            >
+              Signup
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
 
-export default Login_Admin
+export default Login_Admin;

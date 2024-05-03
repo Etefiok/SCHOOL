@@ -26,7 +26,7 @@ import Loginforss1 from './Loginforss1';
 import DropdownPage from './DropdownPage'
 import Loginforparent from './Loginforparent';
 import Login2 from './Login2';
-import HomePage_out from './HomePage_out';
+import HomePage_out from './Homepage_out';
 import Login_Student from './Login_Student';
 import HomePage_Student from './Homepage_Student';
 import AbdullahiShehuJss1ThirdTermResult from './AbdullahiShehuJss1ThirdTermResult';
@@ -51,7 +51,7 @@ import Login_Admin from './Login_Admin';
 import SideNavBar from './SideNavBar/SideNavBar';
 import School_Calendar_on_front from './School_Calendar_on_front';
 import About_Us_Page from './About_Us_Folder/About_Us_Page';
-import HomePage_Admin from './HomePage_Admin';
+import Homepage_Admin from './Homepage_Admin';
 import StarBlink from './StarBlink';
 import InstructionMathsExams from './Jss1ExamsFolder/InstructionMathsExams';
 // import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
@@ -174,7 +174,7 @@ function App() {
       {/* <Redirect from="/" to="/Login_Student" /> */}
       <Route path='/Login_Admin' element={<Login_Admin />} />
       <Route path='/Homepage_Student' element={<HomePage_Student />} /> 
-      <Route path='/HomePage_Admin' element={<HomePage_Admin />} />
+      <Route path='/Homepage_Admin' element={<Homepage_Admin />} />
 
 
       <Route path='/details/:idnumber' element={<details users={details} />} /> 

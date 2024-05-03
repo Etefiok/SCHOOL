@@ -3,6 +3,18 @@ body{
     
 }
 
+.blankSpace{
+    background-color: red;
+    height: 57px;
+}
+
+@media screen and (min-width: 760px) {
+    .blankSpace{
+        background-color: red;
+        height: 0px;
+    }
+}
+
 .Homepage{
     background-color: #B0DDEE;
 

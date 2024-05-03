@@ -18,6 +18,7 @@ router.get("/welcomeuser", async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    
     return res.status(200).json({
       status: true,      
       user: {
@@ -29,6 +30,9 @@ router.get("/welcomeuser", async (req, res) => {
         Phonenumber: user.Phonenumber,
       },
     });
+
+    
+    
   } catch (error) {
     console.error("Error fetching user data:", error);
     return res.status(500).json({ message: "Internal server error" });
@@ -76,6 +80,55 @@ router.post("/signup", async (req, res) => {
 
 
 router.post("/login", async (req, res) => {
+  const { Username, IDnumber, Password } = req.body;
+
+  // Validate required fields
+  if (!Username || !IDnumber || !Password) {
+    return res
+      .status(400)
+      .json({ message: "Please provide username, ID number, and password" });
+  }
+
+  try {
+    const user = await User.findOne({ Username, IDnumber });
+
+    // Check if user exists
+    if (!user) {
+      return res.status(404).json({ message: "Invalid username or ID number" });
+    }
+
+    // Validate password
+    const validPassword = await bcrypt.compare(Password, user.Password);
+    if (!validPassword) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    // Return success response with user data and token
+    return res.status(200).json({
+        status: true,
+        message: "Login successful",
+        token: token,
+        user: {
+        Username: user.Username,
+        Firstname: user.Firstname,
+        Lastname: user.Lastname,
+        Email: user.Email,
+        Phonenumber: user.Phonenumber,
+      },
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
+router.post("/login_Admin", async (req, res) => {
   const { Username, IDnumber, Password } = req.body;
 
   // Validate required fields
@@ -201,10 +254,15 @@ router.get('/verify', verifyUser, (req, res) => {
       return res.json({ status: true, message: 'Authorized', user: req.user, page: 'LitInEnglish' });
     case 'English':
       return res.json({ status: true, message: 'Authorized', user: req.user, page: 'English' });
-      case 'Subjects_For_Exams':
-      return res.json({ status: true, message: 'Authorized', user: req.user, page: 'Subjects_For_Exams' });
+    case 'Subjects_For_Exams':
+    return res.json({ status: true, message: 'Authorized', user: req.user, page: 'Subjects_For_Exams' });
+    
+//for Homepage_Admin route
+    case 'Homepage_Admin':
+    return res.json({ status: true, message: 'Authorized', user: req.user, page: 'Homepage_Admin' });
+      
     default:
-      return res.status(404).json({ status: false, message: 'Page not found' });
+    return res.status(404).json({ status: false, message: 'Page not found' });
   }
   // return res.json({ status: true, message: 'Authorized', user: req.user });
 

@@ -61,7 +61,7 @@ const handleSearch = () =>{
           <Nav>
 
 <div className='menu'>  
-            <Nav.Link className='Animation1' id="navbarScrollingDropdown" onClick={() => { window.location.href = "./Homepage_Student"; }}>Home</Nav.Link>
+            <Nav.Link className='Animation1' id="navbarScrollingDropdown" onClick={() => { window.location.href = "./Homepage_Admin"; }}>Home</Nav.Link>
 
             <NavDropdown className='Animation2' title="Academics" id="navbarScrollingDropdown">
             <NavDropdown.Item onClick={() => { window.location.href = "./ClassesForExams"; }}><DescriptionIcon />Exams</NavDropdown.Item>
