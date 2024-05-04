@@ -14,6 +14,7 @@
     }
 }
 
+
 .comment-section {
     background-color: #f8f9fa;
     border-radius: 8px;
@@ -65,24 +66,89 @@
     margin-top: 16px;
     padding: 10px;
   }
+  
+.Commenting{
+  /* width: 50%; */
+  display: flex;
+  position:relative;
+  /* background-color: rgb(193, 193, 255); */
+  margin-left: 0px;
+  margin-top: 0px;
+  height: 30px;
+  padding-left: 0px;
+}
 
-  .total-Container Button{
-    display: flex;
-    background-color: #F8F9FA;
-    gap: 40px;
+  .total-Comment-Container Button{
+    position: inherit;
+    background-color: #f8f9fa;
+    font-size: small;
+    margin-left: 10px;
+
+    /* padding: 3px; */
    
   }
 
-  .total-Container {
-    margin-left: 100px;
+  .total-Comment-Container {
+    display: flex;
+    margin-left: 0px;
+    gap: 10px;
+    background-color: #f8f9fa;
+    width: 100%;
+
+  }
+
+  .Comment-Line{
+    display: flex;
+    gap:8px;
+    /* background-color: red; */
+    padding-top: 10px;
+  }
+
+  @media screen and (min-width:768px) {
+    .Comment-Line{
+      display: flex;
+      gap:12px;
+      /* background-color: red; */
+      padding-top: 8px;
+    }
+  }
+
+  
+  .Comment-Line h6{
+    font-size: 9px;
+  }
+
+  @media screen and (min-width:768px) {
+    .Comment-Line h6{
+      font-size:12px;
+    }
+  }
+
+  .titleBox{
+    /* background-color: red; */
+    overflow: hidden;
+    width: 120px;
+  }
+
+  @media screen and (min-width:768px) {
+    .titleBox{
+      /* background-color: red; */
+      overflow: hidden;
+      width: 180px;
+    }
+  
+    
+  }
+
+  @media screen and (min-width: 768) {
+    .Comment-Line h6{
+      font-size: initial;
+
+    }
+    
   }
   
-  /* .total-Comment{
-    background-color: #F8F9FA;
-  } */
-
-
-  .comment-item p {
+ .comment-item p {
     font-size: 16px;
     margin: 0;
   }

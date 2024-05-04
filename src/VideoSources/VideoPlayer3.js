@@ -90,22 +90,20 @@ function VideoPlayer3() {
           type="video/mp4"
         />
       </video>
-      {/* <button onClick={handlePlayPause}>
-        {isPlaying ? 'Pause' : 'Play'}
-      </button> */}
 
-      <div className="Comment">
-        <>
-        <div className="total-Container">
+      <div className="Commenting">
+      <>
+        <div className="total-Comment-Container"> 
+                
           <Button variant="primary" onClick={() => setShow(true)}>
             Comments:
-            
-            <div className="total-Comment">
-            {totalComments}
-            </div>
-          </Button>         
-          </div>
-
+          </Button> 
+          <div className="Comment-Line">        
+              <h6>{totalComments}</h6>
+              <h6 className="titleBox">|| Your Session Title Here ||</h6>
+              <h6 className="titleBox">|| Session SubTitle Here ||</h6>
+          </div>  
+          </div> 
           <Modal
             show={show}
             onHide={() => setShow(false)}
@@ -148,11 +146,11 @@ function VideoPlayer3() {
                 </div>
               </div>
 
-             
+              
             </Modal.Body>
           </Modal>
-        </>
-      </div>
+      </>
+        </div>
     </div>
   );
 }
