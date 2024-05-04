@@ -1,38 +1,40 @@
 import React, { useState } from "react";
 import "../session.css";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import EventIcon from '@mui/icons-material/Event';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
-import PersonIcon from '@mui/icons-material/Person';
-import DescriptionIcon from '@mui/icons-material/Description';
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import EventIcon from "@mui/icons-material/Event";
+import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
+import PersonIcon from "@mui/icons-material/Person";
+import DescriptionIcon from "@mui/icons-material/Description";
 import VideoPlayer1 from "../VideoSources/VideoPlayer1";
 import VideoPlayer2 from "../VideoSources/VideoPlayer2";
 import VideoPlayer3 from "../VideoSources/VideoPlayer3";
 import Lesson_Slide from "./Lesson_Note";
 import Lesson_Note from "./Lesson_Note";
-
-
-
-
-
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const Lightbox = ({ isOpen, onClose, children }) => {
-  
-  
+
   return (
-     
-    <div className="video-lightbox">
- <div className={`lightbox ${isOpen ? 'open' : ''}`} onClick={onClose}>
-                <div className="content" onClick={(e) => e.stopPropagation()}>
-                  {children}
-                  <button onClick={onClose} className="close-button">X</button>
-                </div>
-              </div>
-    </div> 
+    // <div className="Comment">
+      <div className="video-lightbox">
+          <div className={`lightbox ${isOpen ? "open" : ""}`} onClick={onClose}>
+            <div className="content" onClick={(e) => e.stopPropagation()}>
+              {children}
+              <button onClick={onClose} className="close-button">
+                X
+              </button>
+            </div>
+          </div>
+      </div>
+      // </div>
+        
+
   );
 };
 
-const SlideButton = ({slideComponent, onOpen}) => {
+
+const SlideButton = ({ slideComponent, onOpen }) => {
   const [show, setShow] = useState(false);
 
   const openSlide = () => {
@@ -50,20 +52,19 @@ const SlideButton = ({slideComponent, onOpen}) => {
     <div>
       <VideoLibraryIcon />
       <button onClick={show ? closeSlide : openSlide}>
-        {show ? 'Close Slide' : 'Watch Slide'}
+        {show ? "Close Slide" : "Watch Slide"}
       </button>
-  
+
       {show && (
         <Lightbox isOpen={show} onClose={closeSlide}>
           {slideComponent}
         </Lightbox>
       )}
-   </div>
+    </div>
   );
-
 };
 
-const ShortNote = ({noteComponent, onOpen}) => {
+const ShortNote = ({ noteComponent, onOpen }) => {
   const [show, setShow] = useState(false);
 
   const openNote = () => {
@@ -81,26 +82,24 @@ const ShortNote = ({noteComponent, onOpen}) => {
     <div>
       <DescriptionIcon />
       <button onClick={show ? closeNote : openNote}>
-        {show ? 'Close Note' : 'Open Note'}
+        {show ? "Close Note" : "Open Note"}
       </button>
-  
+
       {show && (
         <Lightbox isOpen={show} onClose={closeNote}>
           {noteComponent}
         </Lightbox>
       )}
-   </div>
+    </div>
   );
-
-}
-
+};
 
 const VideoButton = ({ videoComponent, onOpen }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   // const [isSlideOpen, ]
 
   const [show, setShow] = useState(false);
-  
+
   const openVideo = () => {
     setShow(true);
     // setIsVideoOpen(true);
@@ -111,26 +110,22 @@ const VideoButton = ({ videoComponent, onOpen }) => {
     // setIsVideoOpen(false);
     setShow(false);
   };
-  
 
-return (
-  <div>
-    <VideoLibraryIcon />
-    <button onClick={show ? closeVideo : openVideo}>
-      {show ? 'Close' : 'Watch Session'}
-    </button>
+  return (
+    <div>
+      <VideoLibraryIcon />
+      <button onClick={show ? closeVideo : openVideo}>
+        {show ? "Close" : "Watch Session"}
+      </button>
 
-    {show && (
-      <Lightbox isOpen={show} onClose={closeVideo}>
-        {videoComponent}
-      </Lightbox>
-    )}
- </div>
-);
-
-}
-
-
+      {show && (
+        <Lightbox isOpen={show} onClose={closeVideo}>
+          {videoComponent}
+        </Lightbox>
+      )}
+    </div>
+  );
+};
 
 const Jss1MathsSessions = () => {
   const openVideo = (videoComponent) => {
@@ -146,176 +141,200 @@ const Jss1MathsSessions = () => {
     console.log(`Opening Note: ${noteComponent}`);
   };
 
-    return (
-        <div className="sessionbody">
-<div className="title">
-    <p>Mathematics</p>
-</div>
-            <div className="session-title">
-                <div>
-                  <div className="Note-container">
-                    <h6><DescriptionIcon />Your Session Title Here</h6>
-                  
-                  <div className="Note">
-                    <ShortNote noteComponent={<Lesson_Note />} onOpen={openNote} />
-                    </div>
-                    <div className="Note">
-                    <SlideButton slideComponent={<VideoPlayer3 />} onOpen={openSlide} />
-                    </div>                  
-                  </div>
-                </div>
-                    <p>Session SubTitle Here</p>
+  return (
+    <div className="sessionbody">
+      <div className="title">
+        <p>Mathematics</p>
+      </div>
+      <div className="session-title">
+        <div>
+          <div className="Note-container">
+            <h6>
+              <DescriptionIcon />
+              Your Session Title Here
+            </h6>
+
+            <div className="Note">
+              <ShortNote noteComponent={<Lesson_Note />} onOpen={openNote} />
             </div>
-            
-            <div className="SubSection">
-                <div className="icon">
-                    <PersonIcon />
-                    <p>Instructor's Name</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
-
-                <div className="icon">                    
-                    <EventIcon />                       
-                     <p>Date</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
-
-                <div className="icon">                    
-                    <AccessTimeIcon />                    
-                    <p> Duration</p><br className="break-gap"/>
-                    <p>Instructor</p>
-                </div>
-
-                <div>
-                <VideoButton videoComponent={<VideoPlayer3 />} onOpen={openVideo} />
-                </div>
+            <div className="Note">
+              <SlideButton slideComponent={<VideoPlayer3 />} onOpen={openSlide}
+              />
             </div>
+          </div>
+        </div>
+        <p>Session SubTitle Here</p>
+      </div>
 
-            <div className="empty"></div>
+      <div className="SubSection">
+        <div className="icon">
+          <PersonIcon />
+          <p>Instructor's Name</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-            <div className="session-title">
-                    <h6><DescriptionIcon />Your Session Title Here</h6>
-                    <p>Session SubTitle Here</p>
-            </div>
-            <div className="SubSection">
-                <div className="icon">
-                    <PersonIcon />
-                    <p>Instructor's Name</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
+        <div className="icon">
+          <EventIcon />
+          <p>Date</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                <div className="icon">                    
-                    <EventIcon />                       
-                     <p>Date</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
+        <div className="icon">
+          <AccessTimeIcon />
+          <p> Duration</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                <div className="icon">                    
-                    <AccessTimeIcon />                    
-                    <p> Duration</p><br className="break-gap"/>
-                    <p>Instructor</p>
-                </div>
+        <div>
+          <VideoButton videoComponent={<VideoPlayer3 />} onOpen={openVideo} />
+        </div>
+      </div>
 
-                <div>
-                <VideoButton videoComponent={<VideoPlayer1 />} onOpen={openVideo} />
-  
-                </div>
-            </div>
+      <div className="empty"></div>
 
+      <div className="session-title">
+        <h6>
+          <DescriptionIcon />
+          Your Session Title Here
+        </h6>
+        <p>Session SubTitle Here</p>
+      </div>
+      <div className="SubSection">
+        <div className="icon">
+          <PersonIcon />
+          <p>Instructor's Name</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-            <div className="empty"></div>
+        <div className="icon">
+          <EventIcon />
+          <p>Date</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-            <div className="session-title">
-                    <h6><DescriptionIcon />Your Session Title Here</h6>
-                    <p>Session SubTitle Here</p>
-            </div>
-            <div className="SubSection">
-                <div className="icon">
-                    <PersonIcon />
-                    <p>Instructor's Name</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
+        <div className="icon">
+          <AccessTimeIcon />
+          <p> Duration</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                <div className="icon">                    
-                    <EventIcon />                       
-                     <p>Date</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
+        <div>
+          <VideoButton videoComponent={<VideoPlayer1 />} onOpen={openVideo} />
+        </div>
+      </div>
 
-                <div className="icon">                    
-                    <AccessTimeIcon />                    
-                    <p> Duration</p><br className="break-gap"/>
-                    <p>Instructor</p>
-                </div>
+      <div className="empty"></div>
 
-                <div>
-                <VideoButton videoComponent={<VideoPlayer2 />} onOpen={openVideo} />
+      <div className="session-title">
+        <h6>
+          <DescriptionIcon />
+          Your Session Title Here
+        </h6>
+        <p>Session SubTitle Here</p>
+      </div>
+      <div className="SubSection">
+        <div className="icon">
+          <PersonIcon />
+          <p>Instructor's Name</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                </div>
-            </div>
+        <div className="icon">
+          <EventIcon />
+          <p>Date</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
+        <div className="icon">
+          <AccessTimeIcon />
+          <p> Duration</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-            <div className="empty"></div>
+        <div>
+          <VideoButton videoComponent={<VideoPlayer2 />} onOpen={openVideo} />
+        </div>
+      </div>
 
+      <div className="empty"></div>
 
-            <div className="session-title">
-                    <h6><DescriptionIcon />Your Session Title Here</h6>
-                    <p>Session SubTitle Here</p>
-            </div>
-            <div className="SubSection">
-                <div className="icon">
-                    <PersonIcon />
-                    <p>Instructor's Name</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
+      <div className="session-title">
+        <h6>
+          <DescriptionIcon />
+          Your Session Title Here
+        </h6>
+        <p>Session SubTitle Here</p>
+      </div>
+      <div className="SubSection">
+        <div className="icon">
+          <PersonIcon />
+          <p>Instructor's Name</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                <div className="icon">                    
-                    <EventIcon />                       
-                     <p>Date</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
+        <div className="icon">
+          <EventIcon />
+          <p>Date</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                <div className="icon">                    
-                    <AccessTimeIcon />                    
-                    <p> Duration</p><br className="break-gap"/>
-                    <p>Instructor</p>
-                </div>
+        <div className="icon">
+          <AccessTimeIcon />
+          <p> Duration</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                <div>
-                <VideoButton videoComponent={<VideoPlayer3 />} onOpen={openVideo} />
+        <div>
+          <VideoButton videoComponent={<VideoPlayer3 />} onOpen={openVideo} />
+        </div>
+      </div>
 
-                </div>
-            </div>
+      <div className="empty"></div>
 
-            <div className="empty"></div>
+      <div className="session-title">
+        <h6>
+          <DescriptionIcon />
+          Your Session Title Here
+        </h6>
+        <p>Session SubTitle Here</p>
+      </div>
+      <div className="SubSection">
+        <div className="icon">
+          <PersonIcon />
+          <p>Instructor's Name</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
+        <div className="icon">
+          <EventIcon />
+          <p>Date</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-            <div className="session-title">
-                    <h6><DescriptionIcon />Your Session Title Here</h6>
-                    <p>Session SubTitle Here</p>
-            </div>
-            <div className="SubSection">
-                <div className="icon">
-                    <PersonIcon />
-                    <p>Instructor's Name</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
+        <div className="icon">
+          <AccessTimeIcon />
+          <p> Duration</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-                <div className="icon">                    
-                    <EventIcon />                       
-                     <p>Date</p><br className="break-gap" />
-                    <p>Instructor</p>
-                </div>
-
-                <div className="icon">                    
-                    <AccessTimeIcon />                    
-                    <p> Duration</p><br className="break-gap"/>
-                    <p>Instructor</p>
-                </div>
-
-                <div>
-                    <VideoLibraryIcon />
-                    {/* <button onClick={openVideo}>Watch Session</button>
+        <div>
+          <VideoLibraryIcon />
+          {/* <button onClick={openVideo}>Watch Session</button>
                     {isVideoOpen && (
                     <div className="lightbox" onClick={closeVideo}>
                       <div  >
@@ -323,38 +342,43 @@ const Jss1MathsSessions = () => {
                       </div>
                     </div>
                     )} */}
-                </div>
-            </div>
+        </div>
+      </div>
 
-            <div className="empty"></div>
+      <div className="empty"></div>
 
-
-<div className="session-title">
-        <h6><DescriptionIcon />Your Session Title Here</h6>
+      <div className="session-title">
+        <h6>
+          <DescriptionIcon />
+          Your Session Title Here
+        </h6>
         <p>Session SubTitle Here</p>
-</div>
-<div className="SubSection">
-    <div className="icon">
-        <PersonIcon />
-        <p>Instructor's Name</p><br className="break-gap" />
-        <p>Instructor</p>
-    </div>
+      </div>
+      <div className="SubSection">
+        <div className="icon">
+          <PersonIcon />
+          <p>Instructor's Name</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-    <div className="icon">                    
-        <EventIcon />                       
-         <p>Date</p><br className="break-gap" />
-        <p>Instructor</p>
-    </div>
+        <div className="icon">
+          <EventIcon />
+          <p>Date</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-    <div className="icon">                    
-        <AccessTimeIcon />                    
-        <p> Duration</p><br className="break-gap"/>
-        <p>Instructor</p>
-    </div>
+        <div className="icon">
+          <AccessTimeIcon />
+          <p> Duration</p>
+          <br className="break-gap" />
+          <p>Instructor</p>
+        </div>
 
-    <div>
-        <VideoLibraryIcon />
-        {/* <button onClick={openVideo}>Watch Session</button>
+        <div>
+          <VideoLibraryIcon />
+          {/* <button onClick={openVideo}>Watch Session</button>
           {isVideoOpen && (
           <div className="lightbox" onClick={closeVideo}>
             <div className="content" >
@@ -362,11 +386,10 @@ const Jss1MathsSessions = () => {
             </div>
           </div>
           )} */}
-    </div>
-</div>
-
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Jss1MathsSessions;

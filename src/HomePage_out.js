@@ -15,15 +15,19 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Dropdown from 'react-bootstrap/Dropdown';
 import School_Calendar_on_front from './School_Calendar_on_front';
 import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
+import axios from 'axios';
+
+
 
 const HomePage_out =({ users}) => {
+    
   
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const containerRef = useRef(null);
     const totalSlides = 3;
-  
-    const plusSlides = (value) => {
+
+  const plusSlides = (value) => {
       const newSlide = currentSlide + value;
   
       if (newSlide >= 0 && newSlide < totalSlides) {
@@ -149,7 +153,7 @@ const HomePage_out =({ users}) => {
 <div className='Registered'>
     <AccountCircle color="white" fontSize="large" />
     <p>REGISTERED</p>
-    <h3>Numbers</h3>
+    <h3>0</h3>
 </div>
 
       <footer className='footer'>
@@ -186,5 +190,20 @@ const HomePage_out =({ users}) => {
 }
 
 export default HomePage_out
+
+
+
+// useEffect(() => {
+//   const fetchUserCount = async () => {
+//     try {
+//       const response = await axios.get('http://localhost:5000/auth/count');
+//       setUserCount(response.data.count);
+//     } catch (error) {
+//       console.error('Error fetching user count:', error);
+//     }
+//   };
+
+//   fetchUserCount();
+// }, []);
 
 

@@ -268,7 +268,7 @@
 
 @media screen and (min-width:768px) {
     .video-lightbox .lightbox{
-    
+        display: grid;
         background-color: rgb(34, 31, 31);
         width:39%;
         height: 50vh;
@@ -297,6 +297,16 @@
 
 }
 
+.Comment{
+position:absolute;
+/* float: left; */
+/* z-index:1; */
+/* margin-top: 600px; */
+margin-left: 100px;
+background-color: blue;
+
+
+}
 
 .content button{
     position: absolute;

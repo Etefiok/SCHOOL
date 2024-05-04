@@ -4,7 +4,7 @@ import { User } from "../models/User.js";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../index.js";
 import nodemailer from "nodemailer";
-
+import { Comment } from "../models/Comment.js";
 const router = express.Router();
 
 // Middleware to parse JSON request bodies
@@ -29,16 +29,56 @@ router.get("/welcomeuser", async (req, res) => {
         Email: user.Email,
         Phonenumber: user.Phonenumber,
       },
-    });
-
-    
-    
+    });    
   } catch (error) {
     console.error("Error fetching user data:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 });
 
+
+router.get('/comments', async (req, res) => {
+  try {
+    const comments = await Comment.find().sort({ createdAt: -1 });
+    res.json(comments);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.post('/comments', async (req, res) => {
+  const { content, Username } = req.body;
+  const newComment = new Comment({ content, Username });
+
+  try {
+    await newComment.save();
+    res.status(201).json(newComment);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+
+router.get('/comments/count', async (req, res) => {
+  try {
+    const totalComments = await Comment.countDocuments();
+    res.json({ totalComments });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+// API endpoint to get the total number of registered users
+// router.get('/count', async (req, res) => {
+//   try {
+//     const userCount = await Number_UserCount.countDocuments();
+//     res.json({ count: userCount });
+//   } catch (error) {
+//     console.error('Error fetching user count:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
 router.post("/signup", async (req, res) => {
   const {
@@ -261,6 +301,13 @@ router.get('/verify', verifyUser, (req, res) => {
     case 'Homepage_Admin':
     return res.json({ status: true, message: 'Authorized', user: req.user, page: 'Homepage_Admin' });
       
+
+//for Jss1session route
+case 'Jss1session':
+  return res.json({ status: true, message: 'Authorized', user: req.user, page: 'Jss1session' });
+    
+
+
     default:
     return res.status(404).json({ status: false, message: 'Page not found' });
   }
