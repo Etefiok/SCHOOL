@@ -6,9 +6,24 @@ import { JWT_SECRET } from "../index.js";
 import nodemailer from "nodemailer";
 import { Comment } from "../models/Comment.js";
 const router = express.Router();
+import PrivateMessage from "../models/PrivateMessage.js";
+import {EconomicsExam} from "../models/EconomicsExam.js";
+import multer from "multer";
+import path from "path-browserify";
+
+
+
+
+// import privateMessagesRoute from './routes/privateMessages';
+
+
+
+
 
 // Middleware to parse JSON request bodies
 router.use(express.json());
+
+
 
 // API endpoint to retrieve user information
 router.get("/welcomeuser", async (req, res) => {
@@ -79,6 +94,88 @@ router.get('/comments/count', async (req, res) => {
 //     res.status(500).json({ error: 'Internal server error' });
 //   }
 // });
+
+
+
+
+// server.js
+router.post('/auth/comments/:commentId/replies', async (req, res) => {
+  try {
+    const { commentId } = req.params;
+    const { content, Username } = req.body;
+
+    // Find the comment
+    const comment = await Comment.findById(commentId);
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+
+    // Create a new reply
+    const reply = new Reply({
+      content,
+      Username,
+      commentId: comment._id,
+      userId: req.user.id, // Assuming you have authentication middleware to get the user's ID
+      createdAt: new Date(),
+    });
+    await reply.save();
+
+    // Update the comment with the new reply
+    comment.replies.push(reply);
+    await comment.save();
+
+    // Return the new reply
+    res.status(201).json(reply);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+
+
+
+
+
+// Get private messages between two users
+router.get('/:userId/:receiverId', async (req, res) => {
+  try {
+    const messages = await PrivateMessage.find({
+      $or: [
+        { senderId: req.params.userId, receiverId: req.params.receiverId },
+        { senderId: req.params.receiverId, receiverId: req.params.userId },
+      ],
+    }).sort({ createdAt: 'asc' });
+    res.json(messages);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Create a new private message
+router.post('/', async (req, res) => {
+  const { content, senderId, receiverId } = req.body;
+
+  const newMessage = new PrivateMessage({
+    content,
+    senderId,
+    receiverId,
+    createdAt: new Date(),
+  });
+
+  try {
+    const savedMessage = await newMessage.save();
+    res.status(201).json(savedMessage);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+
+
+
+
+
 
 router.post("/signup", async (req, res) => {
   const {
@@ -257,6 +354,41 @@ router.post("/forgot-password", async (req, res) => {
 
 
 
+router.post('/Economics-exam', async (req, res) => {
+  try {
+    const { question, instructions, options, correctAnswer, image, answerType } = req.body;
+    const newQuestion = new EconomicsExam({
+      question,
+      instructions,
+      options: {
+        A: options.A,
+        B: options.B,
+        C: options.C,
+        D: options.D,
+        E: options.E,
+      },
+      correctAnswer,
+      image,
+      answerType,
+    });
+    const savedQuestion = await newQuestion.save();
+    res.status(200).json(savedQuestion);
+  } catch (error) {
+    res.status(500).json({ message: 'Error saving question', error: error.message });
+  }
+});
+
+// API endpoint to retrieve questions
+router.get('/Economics-exam', async (req, res) => {
+  try {
+    const questions = await EconomicsExam.find();
+    res.status(200).json(questions);
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving questions', error: error.message });
+  }
+});
+
+
 
 const verifyUser = async (req, res, next) => {
   try {
@@ -320,6 +452,85 @@ router.get("/logout", (req, res) => {
   return res.json({status:true})
 })
 
+
+// Configure Multer storage for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  }
+});
+
+// Initialize Multer with the configured storage
+const upload = multer({ storage });
+//auth/comments/:commentId/replies'
+// Admission form route
+router.post('auth/admission-form', upload.fields([
+  { name: 'passportImage', maxCount: 1 },
+  { name: 'birthCertificate', maxCount: 1 }
+]), async (req, res) => {
+  try {
+    const {
+      fullName,
+      motherName,
+      dob,
+      residentialAddress,
+      email,
+      className,
+      motherTongue,
+      religion,
+      placeOfBirth,
+      city,
+      district,
+      state,
+      lastSchoolAttended,
+      admissionStandard,
+      disability,
+      bloodGroup,
+      identificationMark,
+      message
+    } = req.body;
+
+    // Process the uploaded files
+    const passportImage = req.files.passportImage?.[0].filename;
+    const birthCertificate = req.files.birthCertificate?.[0].filename;
+
+    // Create a new admission document
+    const newAdmission = new admissionForm({
+      fullName,
+      motherName,
+      dob,
+      residentialAddress,
+      email,
+      className,
+      motherTongue,
+      religion,
+      birthCertificate,
+      placeOfBirth,
+      city,
+      district,
+      state,
+      lastSchoolAttended,
+      admissionStandard,
+      disability,
+      bloodGroup,
+      identificationMark,
+      message,
+      passportImage
+    });
+
+    // Save the admission document to the database
+    await newAdmission.save();
+
+    // Return a success response
+    res.status(200).json({ message: 'Form submitted successfully' });
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    res.status(500).json({ message: 'Error submitting form' });
+  }
+});
 
 
 

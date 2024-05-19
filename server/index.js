@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { UserRouter } from "./routes/user.js";
 import cookieParser from 'cookie-parser';
+// import economicsExamRouter from './routes/economicsExamRouter.js';
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -18,11 +19,16 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 app.use('/auth', UserRouter);
+// Use the economics exam router
+// app.use('/auth', economicsExamRouter);
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/SignUp', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+
 
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
