@@ -191,6 +191,7 @@
   .TopicBox{
     /* background-color: #0112ff; */
     display: grid;
+    overflow: hidden;
     
         }
 

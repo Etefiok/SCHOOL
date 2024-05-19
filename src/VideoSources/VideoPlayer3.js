@@ -4,8 +4,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import moment from "moment";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import PrivateChat from "../ChatRoom/PrivateChat";
+import AttachmentIcon from '@mui/icons-material/Attachment';
 
 function VideoPlayer3() {
   const [comments, setComments] = useState([]);
@@ -15,10 +17,60 @@ function VideoPlayer3() {
   const [show, setShow] = useState(false);
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [totalComments, setTotalComments] = useState(0);
 
-  
+  const [showPrivateChat, setShowPrivateChat] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const handleUsernameClick = (userId) => {
+    setSelectedUserId(userId);
+    setShowPrivateChat(true);
+  };
+
+  const [replyTexts, setReplyTexts] = useState({});
+  const [commentsWithReplyInput, setCommentsWithReplyInput] = useState([]);
+
+  const handleReplyButtonClick = (commentId) => {
+    setCommentsWithReplyInput((prevComments) => [...prevComments, commentId]);
+  };
+
+  const handleReplyChange = (event, commentId) => {
+    setReplyTexts({ ...replyTexts, [commentId]: event.target.value });
+  };
+
+  const handleReplySubmit = async (event, commentId) => {
+    event.preventDefault();
+    const replyText = replyTexts[commentId];
+    if (replyText.trim() !== "") {
+      try {
+        const response = await axios.post(
+          `http://localhost:5000/auth/comments/${commentId}/replies`,
+          {
+            content: replyText,
+            Username: user.Username,
+          }
+        );
+        setComments((prevComments) =>
+          prevComments.map((comment) =>
+            comment._id === commentId
+              ? {
+                  ...comment,
+                  replies: [...(comment.replies || []), response.data],
+                  showReplyInput: false,
+                }
+              : comment
+          )
+        );
+        setReplyTexts({ ...replyTexts, [commentId]: "" });
+        setCommentsWithReplyInput(
+          commentsWithReplyInput.filter((id) => id !== commentId)
+        );
+      } catch (error) {
+        console.error("Error submitting reply:", error);
+      }
+    }
+  };
 
   useEffect(() => {
     fetchComments();
@@ -37,16 +89,20 @@ function VideoPlayer3() {
 
   const fetchTotalComments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/auth/comments/count');
+      const response = await axios.get(
+        "http://localhost:5000/auth/comments/count"
+      );
       setTotalComments(response.data.totalComments);
     } catch (error) {
-      console.error('Error fetching total comments:', error);
+      console.error("Error fetching total comments:", error);
     }
   };
 
   const fetchUsername = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/auth/welcomeuser");
+      const response = await axios.get(
+        "http://localhost:5000/auth/welcomeuser"
+      );
       setUser(response.data.user);
     } catch (error) {
       console.error("Error fetching username:", error);
@@ -61,7 +117,8 @@ function VideoPlayer3() {
     event.preventDefault();
     if (newComment.trim() !== "") {
       try {
-        const response = await axios.post("http://localhost:5000/auth/comments",
+        const response = await axios.post(
+          "http://localhost:5000/auth/comments",
           { content: newComment, Username: username }
         );
         setComments([response.data, ...comments]);
@@ -92,18 +149,18 @@ function VideoPlayer3() {
       </video>
 
       <div className="Commenting">
-      <>
-        <div className="total-Comment-Container"> 
-                
-          <Button variant="primary" onClick={() => setShow(true)}>
-            Comments:
-          </Button> 
-          <div className="Comment-Line">        
+        <>
+          <div className="total-Comment-Container">
+            <Button variant="primary" onClick={() => setShow(true)}>
+              Comments:
+            </Button>
+            <div className="Comment-Line">
               <h6>{totalComments}</h6>
               <h6 className="titleBox">|| Your Session Title Here ||</h6>
+
               <h6 className="titleBox">|| Session SubTitle Here ||</h6>
-          </div>  
-          </div> 
+            </div>
+          </div>
           <Modal
             show={show}
             onHide={() => setShow(false)}
@@ -116,41 +173,107 @@ function VideoPlayer3() {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <div class="comment-section">
-                {/* <h2>Comment</h2> */}
-                <form onSubmit={handleCommentSubmit}>
-                  <textarea
-                    value={newComment}
-                    onChange={handleCommentChange}
-                    placeholder=""
-                    rows="3"
-                  ></textarea>
-                  <button type="submit">Send</button>
-                </form>
-                <div>
+
+            <div class="comment-section"> 
+                <form onSubmit={handleCommentSubmit}> 
+                    <textarea 
+                        value={newComment} 
+                        onChange={handleCommentChange} 
+                        placeholder="" rows="3" 
+                        > 
+                        
+                    </textarea> 
+                      <div className="send"> 
+                        <button type="submit">Send</button> 
+                      </div> 
+                </form> 
+            <div>
+                  
                   {comments.map((comment) => (
-                    <div key={comment._id} class="comment-item">
+                    <div key={comment._id} className="comment-item">
                       <div className="comment-username">
-                      <span>{user.Username}:</span>
-                      <p>
+                        <span
+                          onClick={() => handleUsernameClick(comment.userId)}
+                        >
+                          {user.Username}:
+                        </span>
+                        <p>
                           {moment(comment.createdAt).format(
-                          "MMM D, YYYY [at] h:mm A"
-                        )}
-                      </p>
+                            "MMM D, YYYY [at] h:mm A"
+                          )}
+                        </p>
                       </div>
                       <div className="comment-body">
-                      <p>{comment.content}</p>
+                        <p>{comment.content}</p>
+                        <div className="reply-section">
+                          {comment.showReplyInput ? (
+                            <form
+                              onSubmit={(event) =>
+                                handleReplySubmit(event, comment._id)
+                              }
+                            >
+                              <AttachmentIcon fontSize="large" color="primary" />
+                              <textarea
+                              
+                                value={replyTexts[comment._id] || ""}
+                                onChange={(event) =>
+                                  handleReplyChange(event, comment._id)
+                                }
+                                placeholder="Reply..."
+                                rows="2"
+                              ></textarea>
+                              <div className="Reply-button">
+                                <button type="submit">Reply</button>
+                              </div>
+                            </form>
+                          ) : (
+                            <button
+                              onClick={() =>
+                                handleReplyButtonClick(comment._id)
+                              }
+                            >
+                              Reply
+                            </button>
+                          )}
+                          {comment.replies &&
+                            comment.replies.map((reply) => (
+                              <div key={reply._id} className="reply-item">
+                                <div className="reply-username">
+                                  <span
+                                    onClick={() =>
+                                      handleUsernameClick(reply.userId)
+                                    }
+                                  >
+                                    {reply.Username}:
+                                  </span>
+                                  <p>
+                                    {moment(reply.createdAt).format(
+                                      "MMM D, YYYY [at] h:mm A"
+                                    )}
+                                  </p>
+                                </div>
+                                <div className="reply-body">
+                                  <p>{reply.content}</p>
+                                </div>
+                              </div>
+                            ))}
+                        </div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-
-              
             </Modal.Body>
           </Modal>
-      </>
-        </div>
+        </>
+      </div>
+      {showPrivateChat && selectedUserId && (
+        <PrivateChat
+          userId={user.id}
+          username={user.Username}
+          receiverId={selectedUserId}
+        />
+      )}
     </div>
   );
 }

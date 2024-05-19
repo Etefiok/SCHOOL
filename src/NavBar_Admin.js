@@ -19,6 +19,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ChatIcon from '@mui/icons-material/Chat';
 import { FaCog } from 'react-icons/fa';
 import Ss1profileData from './Ss1profileData';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faTv, faBloggerB } from '@fortawesome/free-brands-svg-icons';
+// import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 
 // import Loginforparent from './Loginforparent'
@@ -99,15 +102,64 @@ const handleSearch = () =>{
               <NavDropdown.Item onClick={() => { window.location.href = "./Library";}}><LibraryBooksIcon />Library</NavDropdown.Item>
             </NavDropdown>
         
-            <NavDropdown className='Animation3' 
+            {/* <NavDropdown className='Animation3' 
             title="Parent Portal" id="navbarScrollingDropdown">
             <NavDropdown.Item onClick={() => { window.location.href = "./Loginforparent"; }}><LoginIcon /> Login</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./School_Calendar_Page";}}><TodayIcon /> Academic Calender</NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
 
-        <NavDropdown className='Animation4' title="Student Portal" id="navbarScrollingDropdown">
+        {/* <NavDropdown className='Animation4' title="Student Portal" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ChatRoom"; }}><ChatIcon /> Chat Room</NavDropdown.Item>
-        </NavDropdown>
+        </NavDropdown> */}
+
+        
+        {/* <div> */}
+      {/* <li>
+        <a href="#">
+          <FontAwesomeIcon icon={faTv} id="icons" />
+          SERVICES
+        </a>
+        <div className="sub_menu1">
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li className="hover_me">
+              <a href="#">
+                Marketing
+                <FontAwesomeIcon icon={faAngleRight} />
+              </a>
+              <div className="sub_menu2">
+                <ul>
+                  <li><a href="#">SEO</a></li>
+                  <li><a href="#">Social Media</a></li>
+                  <li><a href="#">Youtube</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="#">Trading</a></li>
+            <li className="hover_me">
+              <a href="#">
+                Mobile App
+                <FontAwesomeIcon icon={faAngleRight} />
+              </a>
+              <div className="sub_menu2">
+                <ul>
+                  <li><a href="#">Android App</a></li>
+                  <li><a href="#">IOS App</a></li>
+                  <li><a href="#">Ionic App</a></li>
+                  <li><a href="#">Flutter App</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">
+          <FontAwesomeIcon icon={faBloggerB} id="icons" />
+        </a>
+      </li>
+    </div> */}
+
 
 {/* This is the profile for media query */}
                 <NavDropdown className='Animation5' title={Students.name} id="navbarScrollingDropdown">
@@ -125,11 +177,10 @@ const handleSearch = () =>{
                 <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ "; }}><LogoutIcon /> Logout</NavDropdown.Item>
 
                 </NavDropdown>
-{/* profile for media queryends here */}
-        
-        
-        
-        
+{/* profile for media query ends here */}   
+
+
+
  </div>
 </Nav>
          

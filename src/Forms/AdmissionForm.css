@@ -17,10 +17,10 @@
 }  */
 
 .FormBody{
-    display:grid;
+    /* display:grid; */
     border-radius: 10px;
     border: 1px solid rgb(209, 209, 209);
-    width: fit-content;
+    width: 90%;
     height: fit-content;
     margin:auto;
 } 
@@ -50,7 +50,7 @@
     display:flex;    
     justify-content: center;
     background-color: rgb(240, 240, 240);
-    width: 900px;
+    /* width: 900px; */
     height: 110%;
     gap: 60px;
     border-top-right-radius: 10px;
@@ -65,7 +65,7 @@
         justify-content: center;
         justify-items: center;
         /* background-color: rgb(226, 24, 24); */
-        width: 100%;
+        /* width: 100%; */
         height: none;
         gap: 0px;
         border-top-right-radius: none;
@@ -155,12 +155,7 @@
 
 @media screen and (max-width: 780px) {
     
-    .FormBody{
-        /* background-color: blue; */
-        margin-top: none;
-    }    
-    
-    .Formimage img{
+     .Formimage img{
         width: 80px;
         
     }
@@ -241,7 +236,7 @@
 .formAdd{
     /* justify-content: center; */
     background-color: #f1f1f1;
-    width:70%;
+    width:100%;
     margin:auto;
     /* padding: 20px; */
     
@@ -251,20 +246,68 @@
 .Names{
     display: flex;
     justify-content: center;
+    /* justify-items: center; */
+    /* background-color: aqua; */
+    /* height: 100px; */
 }
+
+
+/* .Names input{
+    margin: 15px;
+   height: 30px;
+} */
+
+
+.formName input{
+    /* background-color: #cea135; */
+    width: 100%;
+
+}
+
+.NameContainerside{
+    /* background-color: #a0a0a0; */
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 10px;
+    width: 50%;
+    display: grid;
+    /* justify-content: center; */
+    padding-left: 40px;
+    height: fit-content;
+    
+}
+
+
+
 .formNames{
     margin-left: 10px;
     margin-top:10px ;
+    /* background-color: #cea135; */
    
 }
 
-.formName{
-    margin-left: 10px;
-    /* margin-top:10px ; */
+
+.ImportImage{
+    /* background-color: red; */
+    
 }
 
-.formEmail{
-    margin-left: 50px; 
+.ImportImage input{
+background-color: white;
+}
+
+.ImportImage p{
+    margin-bottom: 0px;
+    }
+.NameContainer{
+    /* background-color: chartreuse; */
+    display: flex;
+    justify-items: center;
+    gap: 20px;
+    
+}
+.formclass{
+    
+    /* margin-left: 50px;  */
 }
 
 .formAdd input{
@@ -338,13 +381,15 @@ outline:none;
 }
 
 .Statefile{
+    /* border: 1px solid black; */
     display: flex;
     gap: 10px;
     background-color: #f1f1f1;
     justify-content: center;
     font-size: small;
-    margin-left: 16%;
-    margin-right: 14%;
+    height: fit-content;
+    /* margin-left: 16%; */
+    margin-bottom: 14px;
     
 }
 
@@ -359,18 +404,21 @@ outline:none;
     padding-bottom: 1%;
 }
 
-.Disability{
+.Disability {
     display: flex;
-    gap: 10px;
-    background-color: #f1f1f1;
-    /* justify-content: center; */
-    /* font-size: small; */
-    margin-left: 16%;
-    margin-right: 14%;
-    padding-top: 1%;
-    padding-left: 6%;
-    padding-bottom: 2%;
-}
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .Disability > div {
+    display: flex;
+    align-items: center;
+    margin-right: 5rem;
+  }
+  
+  .Disability input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
 
 .MedicalInformation{
     display: flex;
@@ -391,3 +439,5 @@ outline:none;
 .No-Refund p{
     margin: 0px;
 }
+
+

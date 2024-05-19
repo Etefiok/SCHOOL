@@ -1,10 +1,10 @@
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./NavBar.css";
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from 'react';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
@@ -21,6 +21,7 @@ import { FaCog } from 'react-icons/fa';
 import Ss1profileData from './Ss1profileData';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 
 
 // import Loginforparent from './Loginforparent'
@@ -67,6 +68,8 @@ axios.defaults.withCredentials = true;
   const Students = Ss1profileData[0];
   const [showNotice, setShowNotice] = useState(false);
   const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+  
 
   function toggleText(){
     setShow(!show)
@@ -81,6 +84,8 @@ axios.defaults.withCredentials = true;
 const handleSearch = () =>{
     console.log('Performing Search...')
 };
+
+
 
   return (
     <div className='Navbar'>
@@ -111,6 +116,8 @@ const handleSearch = () =>{
                     <NavDropdown.Item onClick={() => { window.location.href = "./Jss1session"; }}>JSS1</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Jss2session";}}>JSS2</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Jss3session";}}>JSS3</NavDropdown.Item>
+                    
+
                     <NavDropdown.Item onClick={() => { window.location.href = "./Sss1session"; }}>SSS1</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Sss2session";}}>SSS2</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Sss3session";}}>SSS3</NavDropdown.Item>
@@ -134,6 +141,8 @@ const handleSearch = () =>{
               <NavDropdown.Item href="#action5" onClick={() => { window.location.href = "./ChatRoom"; }}><ChatIcon /> Chat Room</NavDropdown.Item>
         </NavDropdown>
 
+
+
 {/* This is the profile for media query */}
                 <NavDropdown className='Animation5' title={Students.name} id="navbarScrollingDropdown">
                 <img src={Students.image} alt="Passport Preview"  style={{ maxWidth: '40%', maxHeight: '100%', borderRadius: '50px' }}  />
@@ -150,6 +159,12 @@ const handleSearch = () =>{
                 <NavDropdown.Item href="#action5" onClick={handlelogout}><LogoutIcon /> Logout</NavDropdown.Item>
 
                 </NavDropdown>
+
+
+
+
+
+
 {/* profile for media query ends here */}
         
         

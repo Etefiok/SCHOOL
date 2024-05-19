@@ -54,6 +54,8 @@ import About_Us_Page from './About_Us_Folder/About_Us_Page';
 import Homepage_Admin from './Homepage_Admin';
 import StarBlink from './StarBlink';
 import InstructionMathsExams from './Jss1ExamsFolder/InstructionMathsExams';
+import Jss1Econs from './Admin/Exams/Jss1Econs';
+// import PrivateChat from './ChatRoom/PrivateChat';
 // import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
 function App() {
@@ -225,7 +227,7 @@ function App() {
         <Route path='Mathematics' element = {<Mathematics updateScore={updateScore}/>} />
 
 
-        
+        {/* <Route path='PrivateChat' element={<PrivateChat /> } /> */}
         
         
 
@@ -253,6 +255,10 @@ function App() {
 <Route path='/LearnEnglish' element = {<LearnEnglish updateScore={updateScore}/>} />
 
 
+
+{/* ADMIN SECTION */}
+{/* EXAMS */}
+<Route path='/Jss1Econs' element = {<Jss1Econs />} />
 
 
 

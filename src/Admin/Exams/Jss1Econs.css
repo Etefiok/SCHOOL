@@ -1,0 +1,102 @@
+
+  
+  .demo-wrapper {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    line-height: 12px;
+  }
+  
+  .demo-editor {
+    min-height: 200px;
+    padding: 20px;
+  }
+
+  .options-cover{
+    display: flex;
+    /* background-color: green; */
+
+  }
+
+  .options-section{
+    /* background-color: red; */
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  
+  .Answer-Type{
+    /* background-color: blueviolet; */
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-weight: bold;
+
+  }
+  
+.Preview-Section{
+    /* background-color: blue; */
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.Preview-Section h2{
+    /* background-color: blue; */
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.Correct-Answer{
+background-color: rgb(101, 101, 253);
+color: antiquewhite;
+}
+
+.Answer-Options{
+    display: grid;
+    justify-content: center;
+    /* background-color: blueviolet; */
+}
+
+.Title-container{
+  background-color: rgb(230, 230, 230);
+display: grid;
+grid-template-columns: auto auto ;
+
+
+gap:10px ;
+/* justify-content: center; */
+
+}
+
+  .All-Button {
+    display: flex;
+    justify-content: center;
+    /* background-color: red; */
+    gap: 10px;
+
+  }
+
+  .Delete-Post{
+    display: flex;
+    justify-content: center;
+    gap: 10px
+    
+  }
+
+  
+  .VideoContainer{
+     display: flex;
+     justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(230, 230, 230);
+  }
+  
+  .Video-Image{
+    width: 100%;
+   
+  }

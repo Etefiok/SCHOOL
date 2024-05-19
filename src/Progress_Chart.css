@@ -1,0 +1,10 @@
+.ProgressBar{
+    border: 1px solid black;
+    margin-bottom: 20px;
+
+}
+
+.text-center{
+    /* position: absolute; */
+    top: 0px;
+}
