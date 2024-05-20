@@ -128,10 +128,9 @@ const Jss1Econs = () => {
 
   const handlePostQuestions = async () => {
     try {
-      await axios.post('http://localhost:5000/auth/Economics-exam', { questions });
-      console.log('Questions saved to MongoDB');
+      const updatedQuestions = await axios.post('http://localhost:5000/auth/Economics-exam', { questions });
+      console.log({updatedQuestions});
       // Update the client page with the new questions
-      const { data: updatedQuestions } = await axios.get('http://localhost:5000/auth/Economics-exam');
       setQuestions(updatedQuestions);
     } catch (error) {
       console.error('Error saving questions:', error);
