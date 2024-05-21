@@ -55,6 +55,7 @@ import Homepage_Admin from './Homepage_Admin';
 import StarBlink from './StarBlink';
 import InstructionMathsExams from './Jss1ExamsFolder/InstructionMathsExams';
 import Jss1Econs from './Admin/Exams/Jss1Econs';
+// import store from "./redux/store"
 // import PrivateChat from './ChatRoom/PrivateChat';
 // import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
@@ -182,8 +183,8 @@ function App() {
       <Route path='/details/:idnumber' element={<details users={details} />} /> 
       <Route path="/performance" element={<Performance />} />  
       <Route path="/Subjects_For_Exams" element={<Subjects_For_Exams />} />
-        <Route path="/loginforexams" element={<LoginForExams />} />
-        <Route path='/loginforparent' element={< Loginforparent/>} />
+        {/* <Route path="/loginforexams" element={<LoginForExams />} /> */}
+        {/* <Route path='/loginforparent' element={< Loginforparent/>} /> */}
         <Route path='ClassesForExams' element={<ClassesForExams />} />
         <Route path="/exams" element={<Exams />} />  
         <Route path="/mypicture" element={<MyPicture />} />  
