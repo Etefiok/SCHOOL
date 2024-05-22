@@ -17,21 +17,24 @@
 }  */
 
 .FormBody{
-    /* display:grid; */
+    background-color: #B0DDEE;
+    display:grid;
+    /* justify-content: center; */
     border-radius: 10px;
     border: 1px solid rgb(209, 209, 209);
-    width: 90%;
-    height: fit-content;
+    /* width: 90%; */
+    /* height: fit-content; */
     margin:auto;
 } 
 
 @media screen and (max-width: 768px) {
 .FormBody{
-    display: block;
+    display: grid;
+    /* justify-content: center; */
     border-radius: 0;
     border: none;
-    width: auto;
-    height: auto;
+    /* width: auto; */
+    /* height: auto; */
     margin-top: 60px;
 } 
 }
@@ -134,20 +137,21 @@
 }
 
 .FormHeading{
-    /* justify-content: center; */
-    /* align-items: center; */
-    width: fit-content;
-    margin-left: 40%;
+    display: flex;
+    justify-content: center;
 }
+
+
 .FormHeading p{
     /* text-align: center; */
-    border: 1px solid red;
+    /* border: 1px solid red; */
     border-radius: 10px;
     margin: 10px;
     padding: 5px;
     font-family: "Times New Roman", Times, serif;
     color: rgb(132, 0, 255);
     font-weight: bolder;
+    font-size: 30px;
 
     /* width: fit-content; */
     
@@ -272,7 +276,7 @@
     
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 780px) {
     .NameContainer{
         /* background-color: chartreuse; */
         display: flex;
@@ -294,7 +298,7 @@
     
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 780px) {
     .NameContainerside{
     /* background-color: #a0a0a0; */
     border: 1px solid rgb(219, 219, 219);
