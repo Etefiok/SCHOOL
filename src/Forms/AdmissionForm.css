@@ -264,7 +264,38 @@
 
 }
 
+.NameContainer{
+    /* background-color: chartreuse; */
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    
+}
+
+@media screen and (min-width: 760px) {
+    .NameContainer{
+        /* background-color: chartreuse; */
+        display: flex;
+        justify-items: center;
+        gap: 20px;
+        
+    }
+}
+
 .NameContainerside{
+    /* background-color: #a0a0a0; */
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 10px;
+    width: 100%;
+    display: grid;
+    /* justify-content: center; */
+    padding-left: 40px;
+    height: fit-content;
+    
+}
+
+@media screen and (min-width: 760px) {
+    .NameContainerside{
     /* background-color: #a0a0a0; */
     border: 1px solid rgb(219, 219, 219);
     border-radius: 10px;
@@ -274,6 +305,7 @@
     padding-left: 40px;
     height: fit-content;
     
+}
 }
 
 
@@ -298,13 +330,7 @@ background-color: white;
 .ImportImage p{
     margin-bottom: 0px;
     }
-.NameContainer{
-    /* background-color: chartreuse; */
-    display: flex;
-    justify-items: center;
-    gap: 20px;
-    
-}
+
 .formclass{
     
     /* margin-left: 50px;  */
