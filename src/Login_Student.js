@@ -8,104 +8,107 @@ import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from 'js-cookie';
+import { connect } from "react-redux";
+import { setUsername, setIdnumber, setPassword, loginRequest, loginSuccess, loginFailure } from "./redux/actions";
 
-const Login_Student = () => {
-    const [user, setUser] = useState(null);
-    const [showPassword, setShowPassword] = useState(false);
-    const [Username, setUsername] = useState("");
-    const [IDnumber, setIdnumber] = useState("");
-    const [Password, setPassword] = useState("");
-    const [alertMessage, setAlertMessage] = useState("");
-  
-    const navigate = useNavigate();
-  
-    axios.defaults.withCredentials = true;
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      if (validate()) {
-        try {
-          const response = await axios.post("http://localhost:5000/auth/login", {
-            Username: Username,
-            IDnumber: IDnumber,
-            Password: Password,
-          });
-          console.log({ response });
-          if (response.data.message === 
-            "Login successful") {
-            console.log(response.data.token)
-            Cookies.set('token', response.data.token);
-            // localStorage.setItem('token', response.data.token);
-            setAlertMessage(
-              <span>
+const Login_Student = ({
+  Username,
+  IDnumber,
+  Password,
+  user,
+  token,
+  loading,
+  error,
+  setUsername,
+  setIdnumber,
+  setPassword,
+  loginRequest,
+  loginSuccess,
+  loginFailure,
+  navigate,
+}) => {
+
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validate()) {
+      try {
+        loginRequest();
+        const response = await axios.post("http://localhost:5000/auth/login", {
+          Username,
+          IDnumber,
+          Password,
+        });
+        if (response.data.message === "Login successful") {
+          loginSuccess(response.data.user, response.data.token);
+          Cookies.set('token', response.data.token);
+          setAlertMessage(
+            <span>
               <span className="Login-successfull">
                 <FaCheck /> &nbsp; &nbsp; Login Successful ...
               </span>
-              </span>
-            );
-            setTimeout(() => {
-              console.log("success")
-              navigate("/Homepage_Student");
-            }, 1500);
-          } else {
-            setAlertMessage(
-              <span>
-              <span className="Login-Error-Message">
-                <FaTimes /> &nbsp; &nbsp; Incorrect crerdentials
-              </span>
-              </span>
-            );
-          }
-        } catch (err) {
-          console.log(err);
+            </span>
+          );
+          setTimeout(() => {
+            navigate("/Homepage_Student");
+          }, 1500);
+        } else {
+          loginFailure(response.data.message);
           setAlertMessage(
             <span>
-            <span className="Login-Error-Message">
-              <FaTimes /> &nbsp; &nbsp; An error occurred, please try again.
-            </span>
+              <span className="Login-Error-Message">
+                <FaTimes /> &nbsp; &nbsp; Incorrect credentials
+              </span>
             </span>
           );
         }
-      }
-    };
-    
-      
-      
-
-    const validate = () => {
-      let result = true;
-      if (Password === "" || Password === null) {
-        result = false;
+      } catch (err) {
+        console.log(err);
+        loginFailure("An error occurred, please try again.");
         setAlertMessage(
-          <span className="Login-Error-Message">
-            <FaTimes /> &nbsp; &nbsp; Please enter a valid password
+          <span>
+            <span className="Login-Error-Message">
+              <FaTimes /> &nbsp; &nbsp; An error occurred, please try again.
+            </span>
           </span>
         );
       }
+    }
+  };
 
-      if (IDnumber === "" || IDnumber === null) {
-        result = false;
-        setAlertMessage(
-          // <span className="alert-message">
-          <span className="Login-Error-Message">
-            <FaTimes /> &nbsp; &nbsp; Please enter a valid ID number
-          </span>
-          // </span>
-        );
-      }
-  
+  const validate = () => {
+    let result = true;
+    if (Password === "" || Password === null) {
+      result = false;
+      setAlertMessage(
+        <span className="Login-Error-Message">
+          <FaTimes /> &nbsp; &nbsp; Please enter a valid password
+        </span>
+      );
+    }
 
-      if (Username === "" || Username === false) {
-        result = false;
-        setAlertMessage(
-          <span className="Login-Error-Message">
-            <FaTimes /> &nbsp; &nbsp; Please enter a valid username
-          </span>
-        );
-      }
-  
-      return result;
-    };
+    if (IDnumber === "" || IDnumber === null) {
+      result = false;
+      setAlertMessage(
+        <span className="Login-Error-Message">
+          <FaTimes /> &nbsp; &nbsp; Please enter a valid ID number
+        </span>
+      );
+    }
+
+    if (Username === "" || Username === false) {
+      result = false;
+      setAlertMessage(
+        <span className="Login-Error-Message">
+          <FaTimes /> &nbsp; &nbsp; Please enter a valid username
+        </span>
+      );
+    }
+
+    return result;
+  };
 
 
   return (
@@ -192,4 +195,27 @@ const Login_Student = () => {
   );
 }
 
-export default Login_Student;
+const mapStateToProps = (state) => {
+  console.log('Redux state:', state);
+  return {
+    Username: state.loginReducer.Username || '',
+    IDnumber: state.loginReducer.IDnumber || '',
+    Password: state.loginReducer.Password || '',
+    user: state.loginReducer.user || null,
+    token: state.loginReducer.token || null,
+    loading: state.loginReducer.loading || false,
+    error: state.loginReducer.error || null,
+  };
+};
+
+
+const mapDispatchToProps = {
+  setUsername,
+  setIdnumber,
+  setPassword,
+  loginRequest,
+  loginSuccess,
+  loginFailure,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login_Student);

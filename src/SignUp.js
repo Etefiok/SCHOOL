@@ -2,71 +2,71 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
 import NavBar_out from "./NavBar_out";
-import axios from "axios";
 import { FaCheck, FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-// import { respond } from "express";
+import { useDispatch, useSelector } from "react-redux";
+
+
+import {
+  setUsername,
+  setFirstname,
+  setLastname,
+  setPassword,
+  setConfirmpassword,
+  setIdnumber,
+  setPhonenumber,
+  setEmail,
+  setErrorMessage,
+  signUp,
+} from "./redux/actions";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [Username, setUsername] = useState("");
-  const [Firstname, setFirstname] = useState("");
-  const [Lastname, setLastname] = useState("");
-  const [Password, setPassword] = useState("");
-  const [Confirmpassword, setConfirmpassword] = useState("");
-  const [IDnumber, setIDnumber] = useState("");
-  const [Phonenumber, setPhonenumber] = useState("");
-  const [Email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {
+    Username = "",
+    Firstname = "",
+    Lastname = "",
+    Password = "",
+    Confirmpassword = "",
+    IDnumber = "",
+    Phonenumber = "",
+    Email = "",
+    errorMessage = "",
+    loading,
+  } = useSelector((state) => state.loginReducer);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (Password !== Confirmpassword) {
-      setErrorMessage("Passwords do not match");
+      dispatch(
+        setErrorMessage(
+          <span className="Login-Error-Message">
+            <FaTimes /> &nbsp; &nbsp; Passwords do not match
+          </span>
+        )
+      );
       return;
     }
 
-  axios.post("http://localhost:5000/auth/signup", {
-  Username: Username,
-  Firstname: Firstname,
-  Lastname: Lastname,
-  Password: Password,
-  Confirmpassword: Confirmpassword,
-  IDnumber: IDnumber,
-  Phonenumber: Phonenumber,
-  Email: Email
-})
-  .then((response) => {
-    console.log(response);
-    if (response.data.message === "User already exists") {       
-      setErrorMessage(<span className="Login-Error-Message">
-      <FaTimes /> &nbsp; &nbsp; User already exist
-    </span>);
-      
-     
-    } 
-    else {
-      // You may want to navigate to the login page here
-      setErrorMessage(<span className="Login-successfull">
-      <FaCheck /> &nbsp; &nbsp; Sign Up Successful ...
-    </span>);
+    dispatch(
+      signUp({
+        Username,
+        Firstname,
+        Lastname,
+        Password,
+        Confirmpassword,
+        IDnumber,
+        Phonenumber,
+        Email,
+      })
+    );
     setTimeout(() => {
-      navigate("/Login_Student");
-    }, 1500)
-      
-    }
-  })
-  .catch((error) => {
-    setErrorMessage("An error occurred while processing your request");
-    console.error(error);
-  });
-
+      navigate('/Login_Student');
+    }, 1500);
   };
-
-  
 
   return (
     <div>
@@ -137,7 +137,7 @@ const SignUp = () => {
                 id=""
                 placeholder="ID Number"
                 value={IDnumber}
-                onChange={(e) => setIDnumber(e.target.value)}
+                onChange={(e) => setIdnumber(e.target.value)}
               />
               <label htmlFor="ID Number">ID Number</label>
 

@@ -8,10 +8,13 @@ import { Comment } from "../models/Comment.js";
 const router = express.Router();
 import PrivateMessage from "../models/PrivateMessage.js";
 import {EconomicsExam} from "../models/EconomicsExam.js";
-import multer from "multer";
 import path from "path-browserify";
-
-
+import { AdmissionForm } from '../models/AdmissionForm.js';
+// import { AdmissionForm } from "../models/get_AdmissionFormSchema.js";
+import { ContactUs } from "../models/contactUsSchema.js";
+import { ApplicationForm } from "../models/applicationFormSchema.js";
+import multer from "multer";
+import { GeneralAlert } from "../models/GeneralAlertSchema.js";
 
 
 // import privateMessagesRoute from './routes/privateMessages';
@@ -98,7 +101,6 @@ router.get('/comments/count', async (req, res) => {
 
 
 
-// server.js
 router.post('/auth/comments/:commentId/replies', async (req, res) => {
   try {
     const { commentId } = req.params;
@@ -453,24 +455,23 @@ router.get("/logout", (req, res) => {
 })
 
 
-// Configure Multer storage for file uploads
+// Configure multer for file uploads
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: function (req, file, cb) {
     cb(null, 'uploads/');
   },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}_${file.originalname}`);
+  filename: function (req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
   }
 });
+const upload = multer({ storage: storage });
 
-// Initialize Multer with the configured storage
-const upload = multer({ storage });
-//auth/comments/:commentId/replies'
-// Admission form route
-router.post('auth/admission-form', upload.fields([
+// Route to handle the admission form submission
+router.post('/admission-form', upload.fields([
   { name: 'passportImage', maxCount: 1 },
   { name: 'birthCertificate', maxCount: 1 }
 ]), async (req, res) => {
+
   try {
     const {
       fullName,
@@ -493,12 +494,7 @@ router.post('auth/admission-form', upload.fields([
       message
     } = req.body;
 
-    // Process the uploaded files
-    const passportImage = req.files.passportImage?.[0].filename;
-    const birthCertificate = req.files.birthCertificate?.[0].filename;
-
-    // Create a new admission document
-    const newAdmission = new admissionForm({
+    const admissionForm = new AdmissionForm({
       fullName,
       motherName,
       dob,
@@ -507,7 +503,6 @@ router.post('auth/admission-form', upload.fields([
       className,
       motherTongue,
       religion,
-      birthCertificate,
       placeOfBirth,
       city,
       district,
@@ -518,20 +513,190 @@ router.post('auth/admission-form', upload.fields([
       bloodGroup,
       identificationMark,
       message,
-      passportImage
+      passportImage: req.files.passportImage ? req.files.passportImage[0].filename : null,
+      birthCertificate: req.files.birthCertificate ? req.files.birthCertificate[0].filename : null
     });
 
-    // Save the admission document to the database
-    await newAdmission.save();
-
-    // Return a success response
-    res.status(200).json({ message: 'Form submitted successfully' });
+    await admissionForm.save();
+    res.status(201).json({ message: 'Admission form submitted successfully' });
   } catch (error) {
-    console.error('Error submitting form:', error);
-    res.status(500).json({ message: 'Error submitting form' });
+    console.error(error);
+    res.status(500).json({ message: 'Error submitting admission form' });
+  }
+});
+
+
+// Route to get all admission form data
+router.get('/admission-forms', async (req, res) => {
+  try {
+    const admissionForms = await AdmissionForm.find();
+    res.json(admissionForms);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 
 
 
+// API endpoint to handle the contact form submission
+router.post('/ContactUs', async (req, res) => {
+  try {
+    const { fullName, emailAddress, title, message } = req.body;
+
+    // Create a new contact form data document
+    const newContact = new ContactUs({ fullName, emailAddress, title, message });
+
+    // Save the contact form data to the database
+    await newContact.save();
+
+    res.status(200).json({ message: 'Form submitted successfully' });
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    res.status(500).json({ error: 'Error submitting form' });
+  }
+});
+
+router.get('/ContactUs', async (req, res) => {
+  try {
+    // Fetch all the contact form data from the database, sorted in descending order
+    const contacts = await ContactUs.find().sort({ createdAt: -1 });
+
+    if (!contacts || contacts.length === 0) {
+      res.status(404).json({ error: 'No contact form data found' });
+      return;
+    }
+
+    res.status(200).json(contacts);
+  } catch (error) {
+    console.error('Error fetching contact details:', error);
+    res.status(500).json({ error: 'Error fetching contact details' });
+  }
+});
+
+router.post('/applications', upload.single('resume'), async (req, res) => {
+  try {
+    const { fullName, emailAddress, position, message } = req.body;
+    const resume = req.file?.buffer;
+
+    if (!fullName || !emailAddress || !position || !resume) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const newApplication = new ApplicationForm({
+      fullName,
+      emailAddress,
+      position,
+      resume,
+      message
+    });
+
+    await newApplication.save();
+    res.status(201).json({ message: 'Application submitted successfully' });
+  } catch (error) {
+    console.error('Error submitting application:', error);
+    res.status(500).json({ message: 'Error submitting application', error: error.message });
+  }
+});
+
+
+// router.post('/general-alert', async (req, res) => {
+//   try {
+//     const { questions } = req.body;
+//     const savedQuestions = await Promise.all(questions.map(async (question) => {
+//       const newQuestion = new GeneralAlert(question);
+//       return await newQuestion.save();
+//     }));
+//     res.status(201).json(savedQuestions);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
+
+// API endpoint to save questions
+router.post('/general-alert', async (req, res) => {
+  try {
+    const { topic, title, content} = req.body;
+
+    // Create a new general alert document
+    const newQuestion = new GeneralAlert({ topic, title, content});
+
+    // Save the general alert to the database
+    const savedQuestion = await newQuestion.save();
+
+    res.status(201).json(savedQuestion);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+
+// GET route to fetch all general alerts
+router.get('/general-alerts', async (req, res) => {
+  try {
+    const generalAlerts = await GeneralAlert.find();
+    res.status(200).json(generalAlerts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+// Delete a general alert
+router.delete('/general-alerts/:id', async (req, res) => {
+  try {
+    const alert = await GeneralAlert.findByIdAndDelete(req.params.id);
+    if (!alert) {
+      return res.status(404).json({ message: 'Alert not found' });
+    }
+    res.json({ message: 'Alert deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+// Repost a general alert
+router.post('/general-alerts/:id/repost', async (req, res) => {
+  try {
+    const alert = await GeneralAlert.findById(req.params.id);
+    if (!alert) {
+      return res.status(404).json({ message: 'Alert not found' });
+    }
+
+    const newAlert = new GeneralAlert({
+      topic: alert.topic,
+      title: alert.title,
+      content: alert.content,
+      createdAt: new Date(),
+    });
+
+    await newAlert.save();
+    res.json({ message: 'Alert reposted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Update a general alert
+router.put('/general-alerts/:id', async (req, res) => {
+  try {
+    const alert = await GeneralAlert.findById(req.params.id);
+    if (!alert) {
+      return res.status(404).json({ message: 'Alert not found' });
+    }
+
+    alert.topic = req.body.topic;
+    alert.title = req.body.title;
+    alert.content = req.body.content;
+    await alert.save();
+
+    res.json({ message: 'Alert updated successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
 export { router as UserRouter };
+
+

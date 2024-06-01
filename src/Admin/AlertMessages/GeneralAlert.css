@@ -1,0 +1,50 @@
+.Details-Section{
+    display: grid;
+background-color: #F8F9FA;
+gap: 5px;
+}
+
+.alert-card{
+    display: flex;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    padding-top: 5px;
+    gap: 5px;
+}
+
+.Alert-Order{
+    display: flex;
+    /* border: 1px solid black; */
+    width: 50%;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.Alert-content{
+    display: flex;
+    border: 1px solid black;
+    width: 50%;
+    height:30px;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.Alert-actions{
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+    width: 50%;
+    height: 30px;
+    padding-left: 10px;
+    gap: 10px;
+}
+
+.Alert-actions Button{
+    height: 30px;
+    padding-top: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+
+}
+

@@ -55,6 +55,7 @@ import Homepage_Admin from './Homepage_Admin';
 import StarBlink from './StarBlink';
 import InstructionMathsExams from './Jss1ExamsFolder/InstructionMathsExams';
 import Jss1Econs from './Admin/Exams/Jss1Econs';
+import PaymentPage from './PaymentPage';
 // import store from "./redux/store"
 // import PrivateChat from './ChatRoom/PrivateChat';
 // import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
@@ -202,8 +203,9 @@ function App() {
         <Route path='/login2' element = {<Login2 />} />
         <Route path='/ApplicationForm' element = {<ApplicationForm />} />
         <Route path='/AdmissionForm' element = {<AdmissionForm />} />
+        <Route path='/PaymentPage' element = {<PaymentPage />} />
 
-        
+         
          <Route path='/SideNavBar' element = {<SideNavBar />} /> {/*side nav bar */}
         
         

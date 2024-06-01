@@ -1,0 +1,40 @@
+.Contact-Container{
+    background-color: whitesmoke;
+}
+
+.ContactDetails p{
+    margin-left: 10px;
+    text-align: left;
+    line-height: 10px;
+    font-size: small;
+    font-weight:10px;
+}
+
+.MessageTitle{
+    width: 100%; 
+    text-align: center; 
+    line-height: 20px; 
+    padding-top: 10px;
+}
+
+.details-rows{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-Align: left;
+    border: 0px;
+    color: black;
+    background-Color: white;
+    height: 35px;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.details-rows:hover{
+    background-color: none;
+}
+
+.contact-fullname{
+    width: 50%;
+    /* border: 1px solid black; */
+}

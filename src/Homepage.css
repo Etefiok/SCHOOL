@@ -4,14 +4,14 @@ body{
 }
 
 .blankSpace{
-    background-color: red;
+    /* background-color: red; */
     height: 57px;
 }
 
 @media screen and (min-width: 760px) {
     .blankSpace{
-        background-color: red;
-        height: 0px;
+        /* background-color: red; */
+        height: 75px;
     }
 }
 

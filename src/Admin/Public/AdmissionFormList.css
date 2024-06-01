@@ -1,0 +1,23 @@
+/* .admission-form .form-row .form-field img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+   
+  } */
+
+  .detailsContainer{
+    display: flex;
+    background-color: rgb(218, 216, 214);
+    gap: 10px;
+  }
+
+  .TextContainer{
+    border: 1px solid brown;
+    width: 50%;
+  }
+
+  .form-row{
+    width: 50%;
+  }
+  

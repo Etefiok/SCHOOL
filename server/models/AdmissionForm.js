@@ -1,29 +1,29 @@
-// models/AdmissionForm.js
-import mongoose from "mongoose";
+// import { AdmissionForm } from '../models/AdmissionForm.js';
+import mongoose from 'mongoose';
 
 const admissionFormSchema = new mongoose.Schema({
-  fullName: { type: String, required: true },
-  motherName: { type: String, required: true },
-  dob: { type: String, required: true },
-  residentialAddress: { type: String, required: true },
-  email: { type: String, required: true },
-  className: { type: String, required: true },
-  motherTongue: { type: String, required: true },
-  religion: { type: String, required: true },
-//   birthCertificate: { type: String, required: true },
-  passportImage: { type: String, required: true },
-  placeOfBirth: { type: String, required: true },
-  city: { type: String, required: true },
-  district: { type: String, required: true },
-  state: { type: String, required: true },
-  lastSchoolAttended: { type: String, required: true },
-  admissionStandard: { type: String, required: true },
-  disability: { type: Boolean, required: true },
-  bloodGroup: { type: String, required: true },
-  identificationMark: { type: String, required: true },
-  message: { type: String, required: true },
-}, { timestamps: true });
+  fullName: { type: String},
+  motherName: { type: String},
+  dob: { type: String},
+  residentialAddress: { type: String},
+  email: { type: String},
+  className: { type: String},
+  motherTongue: { type: String},
+  religion: { type: String},
+  placeOfBirth: { type: String},
+  city: { type: String},
+  district: { type: String},
+  state: { type: String},
+  lastSchoolAttended: { type: String},
+  admissionStandard: { type: String},
+  disability: { type: Boolean},
+  bloodGroup: { type: String},
+  identificationMark: { type: String },
+  message: { type: String},
+  passportImage: { type: String },
+  birthCertificate: { type: String },
+  createdAt: { type: Date, default: Date.now },
+});
 
-const AdmissionForm = mongoose.model('AdmissionForm', admissionFormSchema);
+export const AdmissionForm = mongoose.model('AdmissionForm', admissionFormSchema);
 
-// export default AdmissionForm;

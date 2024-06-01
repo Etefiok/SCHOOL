@@ -11,9 +11,6 @@
     top: 50%;
     z-index: 100;
     /* gap: 30px */
-    
-
-
 }
 
 
@@ -78,8 +75,8 @@
     margin-top: 0px;
     display: grid;
     justify-items: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     text-align: center;
 
     
@@ -110,6 +107,14 @@
   .mission-statement button:active {
     background-color: #008cff;
   }
+
+  .About-Us{
+    /* background-color: white; */
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    height: 150px;
+}
   
 
   @media screen and (min-width: 780px) {
@@ -123,14 +128,13 @@
         margin-left: 10%;
         margin-bottom: 20px;
         position: absolute;
-        top: 600px;
+        top: 500px;
         /* z-index: -1; */
 
         /* gap: 30px */
     
     
     }
-    
 
     .mission span {
     border: none;
@@ -227,5 +231,13 @@
       .mission-statement button:active {
         background-color: #008cff;
       }
+
+      .About-Us{
+        /* background-color: white; */
+        margin-left: 10px;
+        margin-right: 10px;
+        overflow: hidden;
+        height: 150px;
+    }
       
   }

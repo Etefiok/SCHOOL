@@ -54,7 +54,7 @@
     justify-content: center;
     background-color: rgb(240, 240, 240);
     /* width: 900px; */
-    height: 110%;
+    /* height: 110%; */
     gap: 60px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -63,13 +63,13 @@
 
 @media screen and (max-width: 780px) {
     .FormContainer{
-        padding: 0px;
+        /* padding: 0px; */
         display:grid;    
-        justify-content: center;
+        /* justify-content: center; */
         justify-items: center;
         /* background-color: rgb(226, 24, 24); */
         /* width: 100%; */
-        height: none;
+        /* height: none; */
         gap: 0px;
         border-top-right-radius: none;
         border-top-left-radius: none;
@@ -79,9 +79,25 @@
 
 
 .Formimage img{
+    display: grid;
+    justify-content: center;
     width: 70px;
+    /* border: 3px solid green; */
+    margin-top: 30px;
     /* margin-top: 30px; */
 }
+
+@media screen and (min-width: 780px) {
+    .Formimage img{
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    /* border: 3px solid green; */
+    margin-top: 30px;
+    /* margin-top: 30px; */
+    }
+    
+    }
 .SchoolName{
     margin-top:10px;
     /* background-color: blanchedalmond; */
@@ -120,15 +136,26 @@
     border-top: 1px solid #dddddd;
     margin: 20px 0;
   } */
-
-.passport{
+  
+.passport-picture{
     background-color: rgb(255, 255, 255);
     width: 100px;
     height: 100px;
     text-align: center;
     margin-top: 30px;
 }
-.passport p{
+
+@media screen and (max-width: 780px) {
+.passport-picture{
+    background-color: rgb(255, 255, 255);
+    width:auto;
+    /* height: 100px; */
+    text-align: center;
+    margin-top: 0px;
+     }
+    }
+
+.passport-picture p{
     margin: 20px;
 }
 
@@ -157,12 +184,8 @@
     
 }
 
+
 @media screen and (max-width: 780px) {
-    
-     .Formimage img{
-        width: 80px;
-        
-    }
     .SchoolName{
         margin-top:10px;
         /* background-color: blanchedalmond; */
@@ -200,15 +223,6 @@
       }
       
    
-    .passport{
-        background-color: rgb(255, 255, 255);
-        width: 100px;
-        height: 100px;
-        text-align: center;
-        margin-top: 0px;
-         }
-    
-    
     .Date{
         margin-top: 16px;
     }
@@ -241,20 +255,30 @@
     /* justify-content: center; */
     background-color: #f1f1f1;
     width:100%;
-    margin:auto;
     /* padding: 20px; */
     
   
 }
 
 .Names{
-    display: flex;
+    display:contents;
     justify-content: center;
     /* justify-items: center; */
-    /* background-color: aqua; */
+    background-color: aqua;
     /* height: 100px; */
 }
 
+
+@media screen and (min-width: 768px) {
+    .Names{
+        display: flex;
+        justify-content: center;
+        background-color: transparent;
+        /* justify-items: center; */
+        /* background-color: aqua; */
+        /* height: 100px; */
+    }
+}
 
 /* .Names input{
     margin: 15px;
@@ -291,10 +315,10 @@
     border: 1px solid rgb(219, 219, 219);
     border-radius: 10px;
     width: 100%;
-    display: grid;
+    /* margin: 100px;  */
+    /* display: grid; */
     /* justify-content: center; */
-    padding-left: 40px;
-    height: fit-content;
+    /* height: fit-content; */
     
 }
 
@@ -303,11 +327,11 @@
     /* background-color: #a0a0a0; */
     border: 1px solid rgb(219, 219, 219);
     border-radius: 10px;
-    width: 50%;
-    display: grid;
+    width: 100%;
+    /* margin: 100px;  */
+    /* display: grid; */
     /* justify-content: center; */
-    padding-left: 40px;
-    height: fit-content;
+    /* height: fit-content; */
     
 }
 }
@@ -315,7 +339,7 @@
 
 
 .formNames{
-    margin-left: 10px;
+    margin-left: 30px;
     margin-top:10px ;
     /* background-color: #cea135; */
    
@@ -418,7 +442,7 @@ outline:none;
     justify-content: center;
     font-size: small;
     height: fit-content;
-    /* margin-left: 16%; */
+    margin-left: 15px;
     margin-bottom: 14px;
     
 }
@@ -436,18 +460,46 @@ outline:none;
 
 .Disability {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    /* align-items: center; */
+    justify-content:center;
+    /* justify-items: center; */
+    /* background-color: red; */
+    gap: 10px;
+    
+  }
+
+  .Disability p{
+    line-height: 0px;
+    
+  }
+
+  .Disability-Check{
+    display: flex;
+    /* background-color: #cea135; */
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .Disability-Check input{
+    display: flex;
+    margin-top: 6px;
+    /* width: fit-content; */
+    background-color: #00a15e;
   }
   
-  .Disability > div {
+  /* .Disability > div {
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+    width: 100%;
     display: flex;
     align-items: center;
     margin-right: 5rem;
-  }
+  } */
   
   .Disability input[type="checkbox"] {
-    margin-right: 0.5rem;
+    /* margin-right: 0.5rem; */
+    display: flex;
   }
 
 .MedicalInformation{
@@ -463,11 +515,78 @@ outline:none;
    
 }
 .No-Refund{
+    display: grid;
     text-align: center;
+    margin: 5px;
 }
 
 .No-Refund p{
-    margin: 0px;
+    margin: 12px;
 }
 
+.terms-and-conditions{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 
+}
+
+.Check-Container{
+    display: flex;
+    justify-Content: center;
+    /* background-Color: red; */
+    width: 70%;
+      
+
+}
+.term-container{
+    display: grid;
+    justify-content: center;
+    border: 1px solid rgb(207, 207, 207);
+    width: 60%;
+    height: 200px;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+  overflow-y: auto;
+  padding-right: 10px;
+  
+    
+}
+
+@media (max-width: 767px) {
+    .term-container{
+    display: grid;
+    justify-content: center;
+    border: 1px solid rgb(207, 207, 207);
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+    overflow-y: auto;
+    padding-right: 10px;
+      
+        
+    }
+}
+
+.term-container::-webkit-scrollbar{
+   width: 12px;
+    
+}
+
+.term-container::-webkit-scrollbar-track{
+    background-color: #f1f1f1;
+     
+ }
+
+ .term-container::-webkit-scrollbar-thumb{
+    background-color: #888;
+    border-radius: 16px;
+     
+ }
+
+ .term-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color of the scrollbar thumb on hover */
+  }
+
+ 

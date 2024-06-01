@@ -1,20 +1,10 @@
-// import { Reducer } from 'react';
-// import { createStore } from "redux"; 
-// import { combineReducers } from "redux"; 
-// import schoolReducer from "../Schoolproject/reducerSlice"
+import { createStore, applyMiddleware, compose } from 'redux';
+import {thunk, withExtraArgument} from 'redux-thunk';
+import SchoolReducer from './SchoolReducer';
 
 
-// const rootReducer = combineReducers({ school: schoolReducer })   
-// const store = createStore(rootReducer)  
+// const { signUpReducer, loginReducer } = reducer;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(SchoolReducer, composeEnhancers(applyMiddleware(thunk)));
 
-// export default store;
-
-
-// import {configureStore} from "@reduxjs/toolkit";
-
-// export const store = configureStore ({
-//     reducer: {
-
-//     }
-// });
-
+export default store;
