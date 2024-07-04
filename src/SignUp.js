@@ -1,12 +1,9 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
-import { useNavigate } from "react-router-dom";
 import NavBar_out from "./NavBar_out";
 import { FaCheck, FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-
+import { connect } from "react-redux";
 import {
   setUsername,
   setFirstname,
@@ -18,54 +15,61 @@ import {
   setEmail,
   setErrorMessage,
   signUp,
-} from "./redux/actions";
+} from "./redux/Actions.js";
 
-const SignUp = () => {
+const SignUp = ({
+  setUsername,
+  setFirstname,
+  setLastname,
+  setPassword,
+  setConfirmpassword,
+  setIdnumber,
+  setPhonenumber,
+  setEmail,
+  setErrorMessage,
+  signUp,
+  Username,
+  Firstname,
+  Lastname,
+  Password,
+  Confirmpassword,
+  IDnumber,
+  Phonenumber,
+  Email,
+  signUpSuccess,
+  errorMessage,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const {
-    Username = "",
-    Firstname = "",
-    Lastname = "",
-    Password = "",
-    Confirmpassword = "",
-    IDnumber = "",
-    Phonenumber = "",
-    Email = "",
-    errorMessage = "",
-    loading,
-  } = useSelector((state) => state.loginReducer);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (Password !== Confirmpassword) {
-      dispatch(
-        setErrorMessage(
-          <span className="Login-Error-Message">
-            <FaTimes /> &nbsp; &nbsp; Passwords do not match
-          </span>
-        )
+      setErrorMessage(
+        <span className="Login-Error-Message">
+          <FaTimes /> &nbsp; &nbsp; Passwords do not match
+        </span>
       );
       return;
     }
 
-    dispatch(
-      signUp({
-        Username,
-        Firstname,
-        Lastname,
-        Password,
-        Confirmpassword,
-        IDnumber,
-        Phonenumber,
-        Email,
-      })
-    );
-    setTimeout(() => {
-      navigate('/Login_Student');
-    }, 1500);
+    signUp({
+      Username,
+      Firstname,
+      Lastname,
+      Password,
+      Confirmpassword,
+      IDnumber,
+      Phonenumber,
+      Email,
+    });
+
+    if (signUpSuccess) {
+      setTimeout(() => {
+        navigate("/Login_Student");
+      }, 1500);
+    }
   };
 
   return (
@@ -133,7 +137,7 @@ const SignUp = () => {
               <label htmlFor="Lastname">Lastname</label>
 
               <input
-                type="Number"
+                type="number"
                 id=""
                 placeholder="ID Number"
                 value={IDnumber}
@@ -142,7 +146,7 @@ const SignUp = () => {
               <label htmlFor="ID Number">ID Number</label>
 
               <input
-                type="Number"
+                type="number"
                 id=""
                 placeholder="Phone Number"
                 value={Phonenumber}
@@ -151,7 +155,7 @@ const SignUp = () => {
               <label htmlFor="Phone Number">Phone Number</label>
 
               <input
-                type="Email"
+                type="email"
                 id=""
                 placeholder="Email"
                 value={Email}
@@ -197,7 +201,6 @@ const SignUp = () => {
                 <p>
                   Already have an account?{" "}
                   <Link to="/Login_Student">Login</Link>
-                  {/* <a href="http://localhost:3000/Login_Student">Login</a> */}
                 </p>
               </div>
             </div>
@@ -208,6 +211,30 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+  Username: state.signUp.Username,
+  Firstname: state.signUp.Firstname,
+  Lastname: state.signUp.Lastname,
+  Password: state.signUp.Password,
+  Confirmpassword: state.signUp.Confirmpassword,
+  IDnumber: state.signUp.IDnumber,
+  Phonenumber: state.signUp.Phonenumber,
+  Email: state.signUp.Email,
+  signUpSuccess: state.auth.signUpSuccess,
+  errorMessage: state.signUp.errorMessage,
+});
 
-// onClick={loginuser}
+const mapDispatchToProps = {
+setUsername,
+  setFirstname,
+  setLastname,
+  setPassword,
+  setConfirmpassword,
+  setIdnumber,
+  setPhonenumber,
+  setEmail,
+  setErrorMessage,
+  signUp,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -56,24 +56,21 @@ import StarBlink from './StarBlink';
 import InstructionMathsExams from './Jss1ExamsFolder/InstructionMathsExams';
 import Jss1Econs from './Admin/Exams/Jss1Econs';
 import PaymentPage from './PaymentPage';
+import TandC from './Forms/TandC';
+import ApplicationFormList from './Admin/Public/ApplicationFormList';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import VideoTest from './videoTest';
 // import store from "./redux/store"
 // import PrivateChat from './ChatRoom/PrivateChat';
 // import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 
+const ProtectedRoute = ({element}) => {
+  const {isLoggedIn} = useSelector((state) => state.auth);
+  return isLoggedIn ? element : < Navigate to="/Login_Student" />
+}
 function App() {
-
-  // const [backendData, setBackendData] = useState([{}])
-
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/auth/login").then(
-  //     response => response.json()
-  //   ).then(
-  //     data => {
-  //       setBackendData(data)
-  //     }
-  //   )
-  // }, [])
+  
 
   const updateScore = (newScore) => {
     function calculateScore(answers, correctAnswers) {
@@ -177,7 +174,7 @@ function App() {
       <Route path='/Login_Student' element={<Login_Student />} /> 
       {/* <Redirect from="/" to="/Login_Student" /> */}
       <Route path='/Login_Admin' element={<Login_Admin />} />
-      <Route path='/Homepage_Student' element={<HomePage_Student />} /> 
+      <Route path='/Homepage_Student' element={< ProtectedRoute element={<HomePage_Student />}/>} /> 
       <Route path='/Homepage_Admin' element={<Homepage_Admin />} />
 
 
@@ -186,7 +183,7 @@ function App() {
       <Route path="/Subjects_For_Exams" element={<Subjects_For_Exams />} />
         {/* <Route path="/loginforexams" element={<LoginForExams />} /> */}
         {/* <Route path='/loginforparent' element={< Loginforparent/>} /> */}
-        <Route path='ClassesForExams' element={<ClassesForExams />} />
+        <Route path='ClassesForExams' element={ <ProtectedRoute element={<ClassesForExams />} /> } />
         <Route path="/exams" element={<Exams />} />  
         <Route path="/mypicture" element={<MyPicture />} />  
         <Route path="/adddetails" element={<Adding />} /> 
@@ -199,11 +196,13 @@ function App() {
         <Route path='/abdullahishehu' element={<AbdullahiShehu />} />
         <Route path='/tyronneebuehi' element={<Tyronneebuehi />} />
         <Route path='/adminpage' element={<Adminpage />} />
-        <Route path='/Loginforss1' element = {<Loginforss1 />} />
-        <Route path='/login2' element = {<Login2 />} />
+        {/* <Route path='/Loginforss1' element = {<Loginforss1 />} /> */}
+        {/* <Route path='/login2' element = {<Login2 />} /> */}
         <Route path='/ApplicationForm' element = {<ApplicationForm />} />
         <Route path='/AdmissionForm' element = {<AdmissionForm />} />
         <Route path='/PaymentPage' element = {<PaymentPage />} />
+
+        <Route path='/videoTest' element = {<VideoTest />} />
 
          
          <Route path='/SideNavBar' element = {<SideNavBar />} /> {/*side nav bar */}
@@ -251,6 +250,7 @@ function App() {
 
         <Route path='/Js1SubjectForLearning' element = {<Js1SubjectForLearning />} />
 
+        <Route path='/TandC' element = {<TandC />} />
 
 
 {/* learning Area */}
@@ -264,7 +264,7 @@ function App() {
 <Route path='/Jss1Econs' element = {<Jss1Econs />} />
 
 
-
+<Route path='ApplicationFormList' element={<ApplicationFormList />} />
 
 
         

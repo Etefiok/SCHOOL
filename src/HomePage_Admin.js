@@ -27,6 +27,10 @@ import Books from "./Admin/Books/Books";
 import ContactUsMessage from "./Admin/Public/Contact_Messages";
 // import AdmissionFormList from "./Admin/adminssionForm/AdmissionFormList";
 import AdmissionFormList from "./Admin/Public/AdmissionFormList";
+import TermsAndConditions from "./Admin/Public/TermsAndConditions";
+import ApplicationFormList from "./Admin/Public/ApplicationFormList";
+import UsersList from "./Admin/Public/UsersList";
+import MathsSession from "./Admin/Media/MathsSession";
 
 const Homepage_Admin = ({ updateScore }) => {
   const [show, setShow] = useState(false);
@@ -644,9 +648,10 @@ const Homepage_Admin = ({ updateScore }) => {
 
     // for media
     EconomicsMedia: <EconomicsSession />,
+    MathsSession: <MathsSession />,
 
-    // Galaxy
-    Galary: <Galary />,
+    // Gallery
+    Gallery: <Galary />,
 
     // Alert Messages
     AlertMessages: <AlertMessages />,
@@ -659,6 +664,14 @@ const Homepage_Admin = ({ updateScore }) => {
 
     //Admission List
     AdmissionList: <AdmissionFormList />,
+
+    //Application List
+    ApplicationFormList: <ApplicationFormList />,
+
+    // Terms And Condition
+    TermsAndConditions: < TermsAndConditions />,
+
+    UsersList: <UsersList />
 
     // Tab5:  <Js1EconsTopic1 />,
     // Tab6:  <Js1EconsTopic1 />,
@@ -3526,7 +3539,7 @@ const Homepage_Admin = ({ updateScore }) => {
               )}
 
               {/* media section */}
-              {/* files that handles the session videos */}
+              {/* files that handles the session videos for media query */}
 
               <div className="dropdown-arrow">
                 <button
@@ -3573,7 +3586,7 @@ const Homepage_Admin = ({ updateScore }) => {
                         <div className="arrow-head"></div>
                       </div>
                     </button>
-                    <p className="arrow-arrow-text">Select Subject</p>
+                    <p className="arrow-arrow-text">Select Subjectmm</p>
                   </div>
 
                   <div>
@@ -3584,7 +3597,7 @@ const Homepage_Admin = ({ updateScore }) => {
                           activeTab === "EconomicsMedia" ? "active" : ""
                         }`}
                       >
-                        <p className="arrow-arrow-text">economics</p>
+                        <p className="arrow-arrow-text">Mathematics</p>
                       </button>
                     )}
                   </div>
@@ -3592,7 +3605,7 @@ const Homepage_Admin = ({ updateScore }) => {
                   <div>
                     {isRotatedMediaClic && (
                       <button className="sucbject01-additional-arrow-container">
-                        <p className="arrow-arrow-text">Subject01</p>
+                        <p className="arrow-arrow-text">econs</p>
                       </button>
                     )}
                   </div>
@@ -7232,9 +7245,14 @@ const Homepage_Admin = ({ updateScore }) => {
 
                       <div>
                         {isRotatedMediaClic && (
-                          <button className="sucbject01-additional-arrow-container">
-                            <p className="arrow-arrow-text">Subject01</p>
-                          </button>
+                          <button
+                          onClick={() => handleTabClick("MathsSession")}
+                          className={`sucbject01-additional-arrow-container ${
+                            activeTab === "EconomicsMedia" ? "active" : ""
+                          }`}
+                        >
+                          <p className="arrow-arrow-text">Mathematics</p>
+                        </button>
                         )}
                       </div>
 
@@ -7926,7 +7944,7 @@ const Homepage_Admin = ({ updateScore }) => {
                         activeTab === "Galary" ? "active" : ""
                       }`}
                     >
-                      <p className="arrow-arrow-text">Galary</p>
+                      <p className="arrow-arrow-text">Gallery</p>
                     </button>
                   </div>
 
@@ -7971,7 +7989,7 @@ const Homepage_Admin = ({ updateScore }) => {
                   </div>
 
 
-                  {/*ApplicationList section  */}
+                  {/*AdmissionList section  */}
 
                   <div className="dropdown-alert">
                     <button
@@ -7986,6 +8004,45 @@ const Homepage_Admin = ({ updateScore }) => {
                 {/* <div>
                     < ContactUsMessage />
                 </div> */}
+
+
+{/*ApplicationList section  */}
+
+<div className="dropdown-alert">
+                    <button
+                      onClick={() => handleTabClick("ApplicationFormList")}
+                      className={`sucbject01-additional-arrow-container ${
+                        activeTab === "Galary" ? "active" : ""
+                      }`}
+                    >
+                      <p className="arrow-arrow-text">Application List</p>
+                    </button>
+                  </div>
+
+                  
+                <div className="dropdown-alert">
+                    <button
+                      onClick={() => handleTabClick("TermsAndConditions")}
+                      className={`sucbject01-additional-arrow-container ${
+                        activeTab === "Galary" ? "active" : ""
+                      }`}
+                    >
+                      <p className="arrow-arrow-text">Terms and Condition</p>
+                    </button>
+                  </div>
+
+
+
+                  <div className="dropdown-alert">
+                    <button
+                      onClick={() => handleTabClick("UsersList")}
+                      className={`sucbject01-additional-arrow-container ${
+                        activeTab === "Galary" ? "active" : ""
+                      }`}
+                    >
+                      <p className="arrow-arrow-text">Users</p>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

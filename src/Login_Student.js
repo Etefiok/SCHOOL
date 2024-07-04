@@ -1,115 +1,59 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./Loginforpage.css";
 import NavBar_Student from "./NavBar_out";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
-import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Cookies from 'js-cookie';
+import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import { connect } from "react-redux";
-import { setUsername, setIdnumber, setPassword, loginRequest, loginSuccess, loginFailure } from "./redux/actions";
+import { setUsername, setIdnumber, setPassword, loginRequest, loginSuccess, loginFailure, login } from "./redux/Actions.js"; // Update import statement
+import { useDispatch, useSelector } from "react-redux";
 
-const Login_Student = ({
-  Username,
-  IDnumber,
-  Password,
-  user,
-  token,
-  loading,
-  error,
-  setUsername,
-  setIdnumber,
-  setPassword,
-  loginRequest,
-  loginSuccess,
-  loginFailure,
-  navigate,
-}) => {
 
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
 
-  const handleSubmit = async (e) => {
+
+const Login_Student = () => {
+  const dispatch = useDispatch();
+  const loginState = useSelector((state) => state.login); // Retrieve the login state
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const [Username, setUsername] = useState("");
+  const [IDnumber, setIdnumber] = useState("");
+  const [Password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (validate()) {
-      try {
-        loginRequest();
-        const response = await axios.post("http://localhost:5000/auth/login", {
-          Username,
-          IDnumber,
-          Password,
-        });
-        if (response.data.message === "Login successful") {
-          loginSuccess(response.data.user, response.data.token);
-          Cookies.set('token', response.data.token);
-          setAlertMessage(
-            <span>
-              <span className="Login-successfull">
-                <FaCheck /> &nbsp; &nbsp; Login Successful ...
-              </span>
-            </span>
-          );
-          setTimeout(() => {
-            navigate("/Homepage_Student");
-          }, 1500);
-        } else {
-          loginFailure(response.data.message);
-          setAlertMessage(
-            <span>
-              <span className="Login-Error-Message">
-                <FaTimes /> &nbsp; &nbsp; Incorrect credentials
-              </span>
-            </span>
-          );
-        }
-      } catch (err) {
-        console.log(err);
-        loginFailure("An error occurred, please try again.");
-        setAlertMessage(
-          <span>
-            <span className="Login-Error-Message">
-              <FaTimes /> &nbsp; &nbsp; An error occurred, please try again.
-            </span>
-          </span>
-        );
-      }
-    }
+    const formData = { Username, IDnumber, Password };
+    dispatch(login(formData, navigate));
   };
 
-  const validate = () => {
-    let result = true;
-    if (Password === "" || Password === null) {
-      result = false;
-      setAlertMessage(
-        <span className="Login-Error-Message">
-          <FaTimes /> &nbsp; &nbsp; Please enter a valid password
-        </span>
-      );
-    }
-
-    if (IDnumber === "" || IDnumber === null) {
-      result = false;
-      setAlertMessage(
-        <span className="Login-Error-Message">
-          <FaTimes /> &nbsp; &nbsp; Please enter a valid ID number
-        </span>
-      );
-    }
-
-    if (Username === "" || Username === false) {
-      result = false;
-      setAlertMessage(
-        <span className="Login-Error-Message">
-          <FaTimes /> &nbsp; &nbsp; Please enter a valid username
-        </span>
-      );
-    }
-
-    return result;
-  };
-
+  if (loginState.isLoggedIn) {
+    return (
+      <div>
+        <NavBar_Student />
+        <div className="Logiback">
+          <div className="formcontain">
+            <h2>Login</h2>
+            <div className="alert-message success">
+              <span className="Login-Success-Message">
+                <FaTimes /> &nbsp; &nbsp; Login Successful
+              </span>
+            </div>
+            <div className="forgetpassword">
+              <button
+                type="button"
+                onClick={() => {
+                  navigate("/Homepage_Student");
+                }}
+              >
+                Go to Homepage
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -117,9 +61,22 @@ const Login_Student = ({
       <div className="Logiback">
         <form onSubmit={handleSubmit} className="formcontain">
           <h2>Login</h2>
-          <div className="alert-message">
-          <div>{alertMessage}</div>
-          </div>
+          {/* {errorMessage && (
+            <div className="alert-message">
+              <span className="Login-Error-Message">
+                <FaTimes /> &nbsp; &nbsp; {errorMessage}
+              </span>
+            </div>
+          )} */}
+
+{loginState.error && (
+            <div className="alert-message">
+              <span className="Login-Error-Message">
+                <FaTimes /> &nbsp; &nbsp; {loginState.error}
+              </span>
+            </div>
+          )}
+
           <label className="label">
             Username
             <input
@@ -130,6 +87,9 @@ const Login_Student = ({
               name="username"
               onChange={(e) => setUsername(e.target.value)}
             />
+            {/* {errors.username && (
+              <div className="error-message">{errors.username}</div>
+            )} */}
           </label>
           <label className="label">
             ID number
@@ -141,6 +101,9 @@ const Login_Student = ({
               name="idnumber"
               onChange={(e) => setIdnumber(e.target.value)}
             />
+            {/* {errors.idnumber && (
+              <div className="error-message">{errors.idnumber}</div>
+            )} */}
           </label>
           <label className="label">
             Password
@@ -153,6 +116,9 @@ const Login_Student = ({
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {/* {errors.password && (
+                <div className="error-message">{errors.password}</div>
+              )} */}
               <span
                 type="button"
                 className="toggle-password-button"
@@ -164,6 +130,7 @@ const Login_Student = ({
               </span>
             </div>
           </label>
+
           <div className="sign">
             <button className="border1" type="submit">
               Login
@@ -193,21 +160,13 @@ const Login_Student = ({
       </div>
     </div>
   );
-}
-
-const mapStateToProps = (state) => {
-  console.log('Redux state:', state);
-  return {
-    Username: state.loginReducer.Username || '',
-    IDnumber: state.loginReducer.IDnumber || '',
-    Password: state.loginReducer.Password || '',
-    user: state.loginReducer.user || null,
-    token: state.loginReducer.token || null,
-    loading: state.loginReducer.loading || false,
-    error: state.loginReducer.error || null,
-  };
 };
 
+const mapStateToProps = (state) => ({
+  signUp: state.signUp,
+  login: state.login,
+  auth: state.authReducer,
+});
 
 const mapDispatchToProps = {
   setUsername,
@@ -216,6 +175,8 @@ const mapDispatchToProps = {
   loginRequest,
   loginSuccess,
   loginFailure,
+  login,
+ 
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login_Student);

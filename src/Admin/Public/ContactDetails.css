@@ -28,6 +28,7 @@
     height: 35px;
     overflow: hidden;
     gap: 10px;
+    padding-left: 10px;
 }
 
 .details-rows:hover{
@@ -35,6 +36,21 @@
 }
 
 .contact-fullname{
-    width: 50%;
+    width: 18%;
     /* border: 1px solid black; */
+    margin-top: 5px;
+    height: 25px;
+    overflow: hidden;
+    line-height: 20px;
+    
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-container button {
+    margin: 0 10px;
+  }

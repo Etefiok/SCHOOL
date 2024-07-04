@@ -124,7 +124,7 @@ const Jss1session = () => {
       {/* </div> */}
       <div className="SubjectTop_container">
         <div className="session">
-          <p>JSS1 Sessions History</p>
+          <p>JSS1 Sessions</p>
         </div>
         <button
           className={`SubjectTop ${activeTab === "Tab1" ? "active" : ""}`}

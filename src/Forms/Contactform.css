@@ -1,10 +1,10 @@
 .page{
     display: grid;
-    justify-content: center;
+    justify-items: center;
     margin-top: 53px;
     background-image: url('../images.jpg/loginBackground.jpg');
     align-items: center;
-    height: 150%;
+    height: 125vh;
     
 }
 
@@ -14,7 +14,7 @@
         justify-content: center;
         background-image: url('../images.jpg/loginBackground.jpg');
         align-items: center;
-        height: 150vh;
+        height: 100vh;
         margin-top: 75px;
     }
 }
@@ -45,7 +45,7 @@ margin-bottom: 0px;
         display: grid;
         justify-content: center;
         /* background-color: blue; */
-        margin: 20px;
+        margin: 0px;
         text-align: right;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: bold;
@@ -80,11 +80,24 @@ margin-bottom: 0px;
 }
 
 .form1{
+    display: grid;
     justify-content: center;
     background-color: #f1f1f1;
-    margin-top: 30px;
-    /* width: 700%; */
+    margin-top: 0px;
+    width:auto;
+    border-radius: 5px;
   
+}
+
+@media screen and (min-width: 768px) {
+    .form1{
+        display:block;
+        justify-content: center;
+        background-color: #f1f1f1;
+        margin-top: 30px;
+        width: 50%;
+      
+    }
 }
 .formline{
     margin-left: 60px;
@@ -180,6 +193,12 @@ outline:none;
     
   }
 
+  .Send-Button{
+    /* background-color: #004732; */
+    display: flex;
+    justify-content: center;
+  }
+
 /* .btn{
     background-color: black;
    
@@ -213,5 +232,7 @@ outline:none;
     
 
 /* } */
+
+
 
 

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import TandC from "./TandC";
 
 
 
@@ -47,7 +48,8 @@ const AdmissionForm = () => {
   };
 
   // State variables for the form fields
-  const [fullName, setFullName] = useState("");
+const [surName, setsurName] = useState("");
+const [fullName, setFullName] = useState("");
 const [motherName, setMotherName] = useState("");
 const [dob, setDob] = useState("");
 const [residentialAddress, setResidentialAddress] = useState("");
@@ -81,6 +83,7 @@ const [identificationMark, setIdentificationMark] = useState("");
     event.preventDefault();
   
     const formData = new FormData();
+    formData.append("surName", surName);
     formData.append("fullName", fullName);
     formData.append("motherName", motherName);
     formData.append("dob", dob);
@@ -177,8 +180,8 @@ const [identificationMark, setIdentificationMark] = useState("");
                   type="text"
                   id="fullName"
                   placeholder="Surname"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={surName}
+                  onChange={(e) => setsurName(e.target.value)}
                   // required
 
                 />
@@ -474,11 +477,8 @@ const [identificationMark, setIdentificationMark] = useState("");
             <div className="terms-and-conditions">
             <div className="term-container">
                 <div>
-                    <p>this jhgjhg kgkjiumgjhgjh jhgjh gjhg jhgjh gj hgj hgjhgjhgjhg jghjhg jhgj hgj hg jhg jhgjhgj gjhgj hgjh gj hgjhgjhgjhgjhgj hgj hg jhgjh jgh gjhgjhgj hgjhgj hgjhgjhgj hgj hgjhgj hgjh gjhgj hgj hgj hgj hg jhgj hgj hg jhg jhgj gh u iuyiuy iuiugug iuiuiutuytuytu iuyi uiuyiuyiutuygyugiuyg ui jhgjhg jhg jhgj hgj hgjhg jhgjh gjg jghjg jhgh gjhgj hgj hgjh gjhgj hgjh jtj jt jthiss uky kyu yui yui yuyi uyi y up ug[9u guy ugy ug gugugi] 89y i 7t7 u8y9898 0999jkhkjkjhj hkjhjh jkhk</p>
-                    <p>this jhgjhg kgkjiumgjhgjh jhgjh gjhg jhgjh gj hgj hgjhgjhgjhg jghjhg jhgj hgj hg jhg jhgjhgj gjhgj hgjh gj hgjhgjhgjhgjhgj hgj hg jhgjh jgh gjhgjhgj hgjhgj hgjhgjhgj hgj hgjhgj hgjh gjhgj hgj hgj hgj hg jhgj hgj hg jhg jhgj gh u iuyiuy iuiugug iuiuiutuytuytu iuyi uiuyiuyiutuygyugiuyg ui jhgjhg jhg jhgj hgj hgjhg jhgjh gjg jghjg jhgh gjhgj hgj hgjh gjhgj hgjh jtj jt jthiss uky kyu yui yui yuyi uyi y up ug[9u guy ugy ug gugugi] 89y i 7t7 u8y9898 0999jkhkjkjhj hkjhjh jkhk</p>
-                    <p>this jhgjhg kgkjiumgjhgjh jhgjh gjhg jhgjh gj hgj hgjhgjhgjhg jghjhg jhgj hgj hg jhg jhgjhgj gjhgj hgjh gj hgjhgjhgjhgjhgj hgj hg jhgjh jgh gjhgjhgj hgjhgj hgjhgjhgj hgj hgjhgj hgjh gjhgj hgj hgj hgj hg jhgj hgj hg jhg jhgj gh u iuyiuy iuiugug iuiuiutuytuytu iuyi uiuyiuyiutuygyugiuyg ui jhgjhg jhg jhgj hgj hgjhg jhgjh gjg jghjg jhgh gjhgj hgj hgjh gjhgj hgjh jtj jt jthiss uky kyu yui yui yuyi uyi y up ug[9u guy ugy ug gugugi] 89y i 7t7 u8y9898 0999jkhkjkjhj hkjhjh jkhk</p>
-                    <p>this jhgjhg kgkjiumgjhgjh jhgjh gjhg jhgjh gj hgj hgjhgjhgjhg jghjhg jhgj hgj hg jhg jhgjhgj gjhgj hgjh gj hgjhgjhgjhgjhgj hgj hg jhgjh jgh gjhgjhgj hgjhgj hgjhgjhgj hgj hgjhgj hgjh gjhgj hgj hgj hgj hg jhgj hgj hg jhg jhgj gh u iuyiuy iuiugug iuiuiutuytuytu iuyi uiuyiuyiutuygyugiuyg ui jhgjhg jhg jhgj hgj hgjhg jhgjh gjg jghjg jhgh gjhgj hgj hgjh gjhgj hgjh jtj jt jthiss uky kyu yui yui yuyi uyi y up ug[9u guy ugy ug gugugi] 89y i 7t7 u8y9898 0999jkhkjkjhj hkjhjh jkhk</p>
-                    <p>this jhgjhg kgkjiumgjhgjh jhgjh gjhg jhgjh gj hgj hgjhgjhgjhg jghjhg jhgj hgj hg jhg jhgjhgj gjhgj hgjh gj hgjhgjhgjhgjhgj hgj hg jhgjh jgh gjhgjhgj hgjhgj hgjhgjhgj hgj hgjhgj hgjh gjhgj hgj hgj hgj hg jhgj hgj hg jhg jhgj gh u iuyiuy iuiugug iuiuiutuytuytu iuyi uiuyiuyiutuygyugiuyg ui jhgjhg jhg jhgj hgj hgjhg jhgjh gjg jghjg jhgh gjhgj hgj hgjh gjhgj hgjh jtj jt jthiss uky kyu yui yui yuyi uyi y up ug[9u guy ugy ug gugugi] 89y i 7t7 u8y9898 0999jkhkjkjhj hkjhjh jkhk</p>
+                    <TandC />
+                    
                 </div>
             </div>
             </div>

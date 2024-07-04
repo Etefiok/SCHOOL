@@ -21,6 +21,7 @@ import { FaCog } from 'react-icons/fa';
 import Ss1profileData from './Ss1profileData';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
@@ -31,6 +32,10 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBar_Student = () => {
 const navigate = useNavigate()
+const [user, setUser] = useState(null);
+const User = useSelector((state) => state.login.user)
+
+// console.log(User)
 axios.defaults.withCredentials = true;
 
   const handlelogout = () => {
@@ -45,25 +50,15 @@ axios.defaults.withCredentials = true;
     
   };
 
-
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/auth/welcomeuser');
-        console.log(response.data.user)
-        setUser(response.data.user);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"))
+  //   setUser(user)
+  //   console.log({user})
+  // })
 
 
 
+ 
 
   const Students = Ss1profileData[0];
   const [showNotice, setShowNotice] = useState(false);
@@ -89,7 +84,6 @@ const handleSearch = () =>{
 
   return (
     <div className='Navbar'>
-    {/* <img src={require("./images.jpg/schoollogo.jpeg")}alt="logo" /> */}
     <Navbar expand="lg" className="" >
     
       <Container fluid >
@@ -98,7 +92,6 @@ const handleSearch = () =>{
           </div>
         <Navbar.Toggle aria-controls="" />
         <Navbar.Collapse id="">
-{/* <div className='manue'> */}
           <Nav>
 
 <div className='menu'>  
@@ -108,16 +101,11 @@ const handleSearch = () =>{
             <NavDropdown.Item onClick={() => { window.location.href = "./ClassesForExams"; }}><DescriptionIcon />Exams</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./Classes"; }}><DescriptionIcon />Learning</NavDropdown.Item>
             <NavDropdown.Item onClick={() => { window.location.href = "./Performance";}}><EmojiEventsIcon />Performance</NavDropdown.Item>
-        
-         
- 
             <NavDropdown title={<span><VideoLibraryIcon /> session</span>}>
                 <div>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Jss1session"; }}>JSS1</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Jss2session";}}>JSS2</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Jss3session";}}>JSS3</NavDropdown.Item>
-                    
-
                     <NavDropdown.Item onClick={() => { window.location.href = "./Sss1session"; }}>SSS1</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Sss2session";}}>SSS2</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => { window.location.href = "./Sss3session";}}>SSS3</NavDropdown.Item>
@@ -144,29 +132,17 @@ const handleSearch = () =>{
 
 
 {/* This is the profile for media query */}
-                <NavDropdown className='Animation5' title={Students.name} id="navbarScrollingDropdown">
+                <NavDropdown className='Animation5' title={User.Username} id="navbarScrollingDropdown">
                 <img src={Students.image} alt="Passport Preview"  style={{ maxWidth: '40%', maxHeight: '100%', borderRadius: '50px' }}  />
                 <p>{Students.StudentStatus}</p>
                 <NavDropdown.Item onClick={() => { window.location.href = "./AbdullahiShehu"; }}><AccountCircleIcon />Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => { window.location.href = "./Performance";}}><EmojiEventsIcon />Performance</NavDropdown.Item>
-
-           
-
                 <NavDropdown.Item onClick={() => { window.location.href = "";}}><FaCog /> Settings</NavDropdown.Item>
-
-            
-
                 <NavDropdown.Item href="#action5" onClick={handlelogout}><LogoutIcon /> Logout</NavDropdown.Item>
-
                 </NavDropdown>
 
 
-
-
-
-
 {/* profile for media query ends here */}
-        
         
         
         
@@ -191,8 +167,24 @@ const handleSearch = () =>{
           {/* {users.map((user, index) => (<li key={index}><h2>{user.Username}</h2></li>))}  */}
 
             <div className='profilepics'> 
-           {user ? (         
-                <p><NavDropdown title= {`welcome, ${user.Username}`} id=""> 
+
+            {/* <div>
+      {user && user.Username && (
+        <p>Welcome, {user.Username}!</p>
+      )}
+      <p>
+        <NavDropdown 
+          title={user?.Username ? `Hi, ${user.Username}` : ''} 
+          id=""
+        > */}
+          {/* Dropdown items */}
+        {/* </NavDropdown>
+      </p>
+    </div> */}
+
+
+           {/* {user ? (          */}
+                <p><NavDropdown title= {`Hi, ${User.Username}`} id=""> 
                {/* <p><NavDropdown title="welcome, {username}" id=""> */}
                 {/* <img src={Students.image} alt="Passport Preview"  style={{ maxWidth: '40%', maxHeight: '100%', borderRadius: '50px' }}  /> */}
                 {/* <p>{Students.StudentStatus}</p> */}
@@ -208,9 +200,9 @@ const handleSearch = () =>{
                 <NavDropdown.Item href="#action5" onClick={handlelogout}><LogoutIcon /> Logout</NavDropdown.Item>
 
                 </NavDropdown></p>
-                ) : (
+                {/* ) : (
                   <span>Loading...</span>
-                )}
+                )} */}
                 
             </div>
           </div>    

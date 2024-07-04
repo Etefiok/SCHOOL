@@ -1,10 +1,13 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import {thunk, withExtraArgument} from 'redux-thunk';
-import SchoolReducer from './SchoolReducer';
+// src/redux/store.js
+import { createStore, applyMiddleware } from 'redux';
+import {thunk} from 'redux-thunk';
+import rootReducer from './SchoolReducer'; // Adjust this path if necessary
 
+const middleware = [thunk];
 
-// const { signUpReducer, loginReducer } = reducer;
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(SchoolReducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(
+  rootReducer,
+  applyMiddleware(...middleware)
+);
 
 export default store;

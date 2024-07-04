@@ -1,76 +1,57 @@
 import React, { useState } from "react";
 import "./Contactform.css";
 import { useNavigate } from "react-router-dom";
-import Navba from "../NavBar_out";
 import NavBar_out from "../NavBar_out";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
 
-// import HomePage from './HomePage';
-
 function ApplicationForm() {
   const navigate = useNavigate();
+  const [resume, setResume] = useState(null);
   const [alertMessage, setAlertMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  // function HomePage (){
-  //   Navigate("/ ")
-  // }
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    emailAddress: "",
-    position: "",
-    resume: null,
-    message: "",
-  });
+  const [fullName, setFullName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [position, setPosition] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, resume: e.target.files[0] });
-    let isPdfFile = true;
-
-  for (let i = 0; i < e.target.files.length; i++) {
-    if (e.target.files[i].type !== 'application/pdf') {
-      isPdfFile = false;
-      break;
+  const handlePdfUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      setResume(file);
+    } else {
+      alert('Please select only PDF files.');
+      e.target.value = '';
     }
-  }
-
-  if (isPdfFile) {
-    setFormData({ ...formData, resume: e.target.files[0] });
-  } else {
-    alert('Please select only PDF files.');
-    e.target.value = '';
-  }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     // Validate the form fields
-    if (formData.fullName.trim() === '') {
+    if (fullName.trim() === '') {
       setErrorMessage('Please enter your full name.');
       setIsLoading(false);
       return;
     }
 
-    if (formData.emailAddress.trim() === '') {
+    if (emailAddress.trim() === '') {
       setErrorMessage('Please enter your email address.');
       setIsLoading(false);
       return;
     }
 
-    if (formData.position.trim() === '') {
+    if (position.trim() === '') {
       setErrorMessage('Please enter the position you are applying for.');
       setIsLoading(false);
       return;
     }
 
-    if (!formData.resume) {
+    if (!resume) {
       setErrorMessage('Please upload your resume.');
       setIsLoading(false);
       return;
@@ -78,23 +59,23 @@ function ApplicationForm() {
 
     try {
       const formData = new FormData();
-      formData.append('fullName', formData.fullName);
-      formData.append('emailAddress', formData.emailAddress);
-      formData.append('position', formData.position);
-      formData.append('resume', formData.resume);
-      formData.append('message', formData.message); 
+      formData.append('fullName', fullName);
+      formData.append('emailAddress', emailAddress);
+      formData.append('position', position);
+      formData.append('resume', resume);
+      formData.append('message', message);
 
-      await axios.post('http://localhost:5000/auth/applications', formData, {
+      await axios.post('http://localhost:5000/auth/application-form', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
-  
+
       console.log('Form submitted successfully:');
       setAlertMessage(
         <span>
           <span className="Login-successfull">
-            <FaCheck /> &nbsp; &nbsp; Message sent ...
+            <FaCheck /> &nbsp; &nbsp; Application submitted successfully!
           </span>
         </span>
       );
@@ -108,20 +89,6 @@ function ApplicationForm() {
       setIsLoading(false);
     }
   };
-
-  
-
-  // function handleFileChange(event) {
-  //   const files = event.target.files;
-  //   for (let i = 0; i < files.length; i++) {
-  //     if (files[i].type !== 'application/pdf') {
-  //       alert('Please select only PDF files.');
-  //       event.target.value = '';
-  //       return;
-  //     }
-  //   }
-
-  // }
 
   return (
     <div>
@@ -153,28 +120,33 @@ function ApplicationForm() {
         <form onSubmit={handleSubmit} className="form1">
           <h1 className="contacttext">Application form</h1>
           {errorMessage && (
-        <div className="alert alert-danger">
-          <FaTimes /> {errorMessage}
-        </div>
-      )}
+            <div className="alert alert-danger">
+              <FaTimes /> {errorMessage}
+            </div>
+          )}
+          {alertMessage && (
+            <div className="alert alert-success">
+              {alertMessage}
+            </div>
+          )}
           <div className="formline">
-            <input 
-            type="text" 
-            id="fullName" 
-            placeholder="Your name"
-            value={formData.fullName}
-            onChange={handleInputChange}
+            <input
+              type="text"
+              id="fullName"
+              placeholder="Your name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
             <label htmlFor="fullName">Your name</label>
           </div>
 
           <div className="formline">
-            <input 
-            type="email" 
-            id="emailAddress" 
-            placeholder="Your email" 
-            value={formData.emailAddress}
-            onChange={handleInputChange}
+            <input
+              type="email"
+              id="emailAddress"
+              placeholder="Your email"
+              value={emailAddress}
+              onChange={(e) => setEmailAddress(e.target.value)}
             />
             <label htmlFor="emailAddress">Your email</label>
           </div>
@@ -184,43 +156,38 @@ function ApplicationForm() {
               type="text"
               id="position"
               placeholder="Position Applied For"
-              value={formData.position}
-              onChange={handleInputChange}
+              value={position}
+              onChange={(e) => setPosition(e.target.value)}
             />
             <label htmlFor="text">Position Applied For</label>
           </div>
 
-          {/* <div className="formline">
-            <p>Submit your resume (pdf format) only</p>
-            <input type="file" id="resume" accept=".pdf" />
-            <label htmlFor="resume">Upload Resume (PDF only)</label>
-          </div> */}
-
           <div className="formline">
             <span>Your resume here</span>
-            <Form.Control type="file" multiple accept="pdf"
-            onChange={handleFileChange} />
+            <Form.Control type="file" accept="application/pdf"
+              onChange={handlePdfUpload} />
             <label>Your resume here</label>
           </div>
 
           <div className="formline">
             <textarea
               type="Message"
-              id="Message"
+              id="message"
               placeholder="Message"
-            ></textarea>
-            <label htmlFor="Message">Your message here</label>
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <label htmlFor="message">Your message here</label>
           </div>
 
           <div className="GoodLuckButton">
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Submitting...' : 'Submit'}
-          </button>
-        </div>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? 'Submitting...' : 'Submit'}
+            </button>
+          </div>
         </form>
       </div>
     </div>
-    // </div>
   );
 }
 

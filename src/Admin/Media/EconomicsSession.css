@@ -1,0 +1,97 @@
+.videoLightbox-lightbox .light{
+    
+    /* background-color: red; */
+    width:98%;
+    margin-left:auto;
+    
+
+    /* margin-right: 50px; */
+}
+
+@media screen and (min-width:768px) {
+    .videoLightbox-lightbox .light{
+        display: grid;
+        background-color: rgb(34, 31, 31);
+        width:fit-content;
+        /* height: 50vh; */
+        top: 35%;
+        margin-left: 60%;
+        box-sizing: border-box;
+    
+        /* margin-right: 50px; */
+
+    }
+}
+
+
+
+.close button{
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: bolder;
+    right: 20px;
+    top: 10px;
+    background-color: rgb(255, 0, 0);
+    cursor: pointer;
+    /* z-index: 1000; */
+    border: none;
+
+    
+}
+
+
+@media screen and (min-width:768px) {
+.close button{
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: bolder;
+    right: 10px;
+    top: 10px;
+    background-color: rgb(255, 0, 0);
+    cursor: pointer;
+    /* z-index: 1000; */
+    border: none;
+
+    
+}
+}
+
+.light {
+    position: fixed;
+    top: 8%;
+    margin-left: 5px;
+    margin-right:5px;
+    left: 0;
+    width: 100%;
+    /* height: 100%%; */
+    /* background: rgba(0, 0, 0, 0.6); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .light {
+        position: fixed;
+        top: 15%;
+        left: 0;
+        width: 100%;
+         /* height: 100%%; */
+        /* background: rgba(0, 0, 0, 0.6); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+
+    }
+}
+
+
+.clossButton{
+top: 50px
+}

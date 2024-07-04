@@ -8,8 +8,10 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import PrivateChat from "../ChatRoom/PrivateChat";
 import AttachmentIcon from '@mui/icons-material/Attachment';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-function VideoPlayer3() {
+const VideoPlayer3 = ({ content, updatedAt, video, video2, title, topic  }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [username, setUsername] = useState("");
@@ -22,6 +24,8 @@ function VideoPlayer3() {
 
   const [showPrivateChat, setShowPrivateChat] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const User = useSelector((state) => state.login.user)
 
   const handleUsernameClick = (userId) => {
     setSelectedUserId(userId);
@@ -77,6 +81,10 @@ function VideoPlayer3() {
     fetchUsername();
     fetchTotalComments();
   }, []);
+  
+
+
+  
 
   const fetchComments = async () => {
     try {
@@ -130,35 +138,40 @@ function VideoPlayer3() {
   };
 
   const handlePlayPause = () => {
-    if (videoRef.current.paused) {
+    if (videoRef.current && videoRef.current.paused) {
       videoRef.current.play();
       setIsPlaying(true);
-    } else {
+    } else if (videoRef.current) {
       videoRef.current.pause();
       setIsPlaying(false);
     }
   };
 
+
+
   return (
     <div>
       <video className="session-videoplayer" ref={videoRef} controls>
         <source
-          src={require("../Videos.mp4/TestVideo3.webm")}
+          src={video2}
           type="video/mp4"
         />
+        
       </video>
+      
 
       <div className="Commenting">
         <>
+        
           <div className="total-Comment-Container">
             <Button variant="primary" onClick={() => setShow(true)}>
               Comments:
             </Button>
             <div className="Comment-Line">
               <h6>{totalComments}</h6>
-              <h6 className="titleBox">|| Your Session Title Here ||</h6>
-
-              <h6 className="titleBox">|| Session SubTitle Here ||</h6>
+              <h6 className="titleBox">|| {title} ||</h6>
+              {/* <button onClick={handlePlayPause}>play</button> */}
+              <h6 className="titleBox">|| {topic} ||</h6>
             </div>
           </div>
           <Modal
@@ -167,35 +180,21 @@ function VideoPlayer3() {
             dialogClassName="modal-90w"
             aria-labelledby="example-custom-modal-styling-title"
           >
-            <Modal.Header closeButton>
+            {/* <Modal.Header closeButton>
               <Modal.Title id="example-custom-modal-styling-title">
                 Comment
               </Modal.Title>
-            </Modal.Header>
+            </Modal.Header> */}
             <Modal.Body>
-
-            <div class="comment-section"> 
-                <form onSubmit={handleCommentSubmit}> 
-                    <textarea 
-                        value={newComment} 
-                        onChange={handleCommentChange} 
-                        placeholder="" rows="3" 
-                        > 
-                        
-                    </textarea> 
-                      <div className="send"> 
-                        <button type="submit">Send</button> 
-                      </div> 
-                </form> 
-            <div>
-                  
+            <div class="comment-section">            
+                  <div className="ChatBox">
                   {comments.map((comment) => (
                     <div key={comment._id} className="comment-item">
                       <div className="comment-username">
                         <span
                           onClick={() => handleUsernameClick(comment.userId)}
                         >
-                          {user.Username}:
+                          {User.Username}:
                         </span>
                         <p>
                           {moment(comment.createdAt).format(
@@ -261,7 +260,27 @@ function VideoPlayer3() {
                       </div>
                     </div>
                   ))}
-                </div>
+                  </div>
+
+                  <form onSubmit={handleCommentSubmit}> 
+                    <textarea 
+                        value={newComment} 
+                        onChange={handleCommentChange} 
+                        placeholder="" rows="3" 
+                        > 
+                        
+                    </textarea> 
+                    <div className="send">  
+                        <div className="sendd"> 
+                           <button type="submit">
+                          <img src={require("../images.jpg/media_message.png")} alt="messager icon"/>
+                          </button> 
+                        </div> 
+                        <div className="sendd">
+                          <Modal.Header closeButton></Modal.Header>
+                      </div> 
+                      </div>
+                </form>                   
               </div>
             </Modal.Body>
           </Modal>

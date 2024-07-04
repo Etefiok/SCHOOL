@@ -18,11 +18,14 @@ gap: 5px;
     width: 50%;
     height: 30px;
     padding-left: 10px;
+    overflow: hidden;
+    /* justify-content: left; */
+    /* justify-items: left; */
 }
 
 .Alert-content{
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 50%;
     height:30px;
     overflow: hidden;

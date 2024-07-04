@@ -161,20 +161,6 @@ const Jss1Econs = () => {
   };
 
 
-  // const handleDeleteQuestion = async (index) => {
-  //   try {
-      // Assuming each question has an '_id' property
-  //     await deleteQuestion(questions[index]._id); 
-  //     setQuestions((prevQuestions) => prevQuestions.filter((_, i) => i !== index));
-  //     if (currentQuestionIndex === index) {
-  //       setCurrentQuestionIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  //     }
-  //   } catch (error) {
-  //     console.error('Error deleting question:', error);
-  //   }
-  // };
-
-
   const handleDeleteQuestion = (index) => {
     setQuestions((prevQuestions) => {
       const updatedQuestions = [...prevQuestions];

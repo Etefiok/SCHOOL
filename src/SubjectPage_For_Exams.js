@@ -6,6 +6,8 @@ import NavBar_Student from './NavBar_Student';
 import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie";
 import axios from 'axios';
+import { useSelector } from 'react-redux'; // Import useSelector hook to access Redux store
+
 
 
 
@@ -13,41 +15,13 @@ import axios from 'axios';
 function Subjects_For_Exams() {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const verifyUser = async () => { 
-          try {
-            // const token = localStorage.getItem('token');
-            const token = Cookies.get('token'); 
-            console.log({token})
-            if (token) {
-              navigate('/Subjects_For_Exams');
-              return;
-            }
-            const response = await axios.get('http://localhost:5000/auth/verify?page=Subjects_For_Exams', {
-              headers: {
-                Authorization: `Bearer ${token}` 
-              }
-            });
-            console.log('Verify response:', response.data);
-            if (response.data.status === true) {
-              navigate('/Subjects_For_Exams');
-    
-            } else {
-              navigate('/Login_Student');
-            }
-          } catch (error) {
-            console.error('Error verifying user:', error);
-            if (error.response) {
-              console.error('Server response:', error.response.data);
-            }
-     
-            navigate('/Login_Student');
-          }
-        };
-    
-        verifyUser();
-      }, [navigate]);
-
+      const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    //   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+      useEffect(() => {
+        if (!isLoggedIn) {
+          navigate('/Login_Student'); // Redirect to login if not logged in
+        }
+      }, [isLoggedIn, navigate]);
 
     return(
         <div>
@@ -58,9 +32,9 @@ function Subjects_For_Exams() {
                             <div className="Subject">
                                 <>
                                 
-                                    <button className='maths' onClick={() => { window.location.href = "./InstructionMathExams";}}>Mathematics</button>
+                                    <button className='maths' onClick={() => { window.location.href = "./InstructionMathExams"}}>Mathematics</button>
                                     <button className='english'onClick={() => { window.location.href = "./InstructionEnglishExams"}} >English</button>
-                                    <button className='english'onClick={() => { window.location.href = "./InstructionLitInEnglishExams";}}>Lit in English</button>
+                                    <button className='english'onClick={() => { window.location.href = "./InstructionLitInEnglishExams"}}>Lit in English</button>
                                     <button className='social'>Social Studies</button>
                                     <button className='Economics'>Economics</button>
                                     <button className='Computer'>Computer Studies</button>
@@ -80,6 +54,7 @@ function Subjects_For_Exams() {
                             </div>
                     </div>
                 </div>
+                {/* <div>User Token: {token}</div>  */}
         </div>
     )
 }

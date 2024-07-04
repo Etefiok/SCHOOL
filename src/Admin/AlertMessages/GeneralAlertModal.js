@@ -20,6 +20,7 @@ function GeneralAlertModal({ show, onHide, content, createdAt, title }) {
       </Modal.Header>
       <Modal.Body>
         {content}
+        <hr />
         <p>{moment(createdAt).format("MMM D, YYYY [at] h:mm A")}</p>
       </Modal.Body>
     </Modal>

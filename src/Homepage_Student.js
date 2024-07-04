@@ -17,104 +17,22 @@ import JAMB_Recomended_TextBook from './JAMB_Recomended_TestBook';
 import Cookies from 'js-cookie';
 import Daily_Quiz from './Notification/Daily_Quiz';
 
+// import { useSelector } from 'react-redux';
 
+import { useDispatch, useSelector } from 'react-redux';
 
-const HomePage_Student =() => {
+const HomePage_Student = () => {
   const navigate = useNavigate();
-
-
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   useEffect(() => {
-    const verifyUser = async () => { 
-      try {
-        // const token = localStorage.getItem('token');
-        const token = Cookies.get('token'); 
-        console.log({token})
-        if (token) {
-          navigate('/Homepage_Student');
-          return;
-        }
-        const response = await axios.get('http://localhost:5000/auth/verify', {
-          headers: {
-            Authorization: `Bearer ${token}` 
-          }
-        });
-        console.log('Verify response:', response.data);
-        if (response.data.status === true) {
-          navigate('/Homepage_Student');
-
-        } else {
-          navigate('/Login_Student');
-        }
-      } catch (error) {
-        console.error('Error verifying user:', error);
-        if (error.response) {
-          console.error('Server response:', error.response.data);
-        }
- 
-        navigate('/Login_Student');
-      }
-    };
-
-    verifyUser();
-  }, [navigate]);
-
-
-    
-  
-    
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const containerRef = useRef(null);
-    const totalSlides = 3;
-  
-    const plusSlides = (value) => {
-      const newSlide = currentSlide + value;
-  
-      if (newSlide >= 0 && newSlide < totalSlides) {
-        setCurrentSlide(newSlide);
-      }
-    };
-  
-    const showSlides = (n) => {
-      let i;
-      let slides = document.getElementsByClassName('mySlides');
-      let dots = document.getElementsByClassName('dot');
-      
-      if (n > slides.length) {
-        setCurrentSlide(1);
-      }
-      
-      if (n < 1) {
-        setCurrentSlide(slides.length);
-      }
-  
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-  
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace("active", "");
-      }
-  
-      slides[currentSlide - 1].style.display = "block";
-      dots[currentSlide - 1].className += " active";
-    };
-
-
-    
-
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
+    if (!isLoggedIn) {
+      navigate('/Login_Student'); // Redirect to login if not logged in
     }
-  }, [isDarkMode]);
+  }, [isLoggedIn, navigate]);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode);
-  };
+
+// const HomePage_Student =() => {
+//   const navigate = useNavigate();
 
 
   return (

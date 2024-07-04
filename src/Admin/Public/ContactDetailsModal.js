@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import moment from "moment";
-import "./ContactDetails.css"
+import "./ContactDetails.css";
 
 function ContactDetailsModal({ show, onHide, message, createdAt, title }) {
   return (
@@ -18,7 +18,7 @@ function ContactDetailsModal({ show, onHide, message, createdAt, title }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {message}
+        <div dangerouslySetInnerHTML={{ __html: message }} />
         <p>{moment(createdAt).format("MMM D, YYYY [at] h:mm A")}</p>
       </Modal.Body>
     </Modal>

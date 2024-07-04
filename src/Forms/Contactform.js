@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Navba from '../NavBar';
 import NavBar_out from '../NavBar_out';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 import { FaEye, FaEyeSlash, FaTimes, FaCheck } from "react-icons/fa";
-
-
 
 function ContactForm() {
   const navigate = useNavigate();
@@ -52,25 +51,24 @@ function ContactForm() {
       setErrors({ ...errors, emailAddress: 'Please enter a valid email' });
       hasErrors = true;
     }
+
     if (!formData.fullName.trim()) {
       setErrors({ ...errors, fullName: 'Please enter your name' });
       hasErrors = true;
     }
 
-    
-
     if (!hasErrors) {
       try {
         await handleFormSubmission();
         // Clear the form data after successful submission
-        setFormData({ fullName: '', emailAddress: '', Title: "", message: '' });
+        setFormData({ fullName: '', emailAddress: '', title: "", message: '' });
       } catch (error) {
         console.error('Error submitting form:', error);
         setError('An error occurred while submitting the form. Please try again later.');
       }
     }
   };
-  
+
   const handleFormSubmission = async () => {
     try {
       const response = await axios.post('http://localhost:5000/auth/ContactUs', formData);
@@ -92,11 +90,9 @@ function ContactForm() {
     }
   };
 
-
   const isValidEmail = (email) => {
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
   };
-
   return (
     <div>
       <NavBar_out />
@@ -134,9 +130,7 @@ function ContactForm() {
                 errors[key] !== '' && (
                   <div key={key} className="error">
                     {errors[key]}
-
                   </div>
-                  
                 )
               ))}
             </div>
@@ -172,7 +166,7 @@ function ContactForm() {
               value={formData.title}
               onChange={handleInputChange}
             />
-            <label htmlFor="fullName">Title</label>
+            <label htmlFor="title">Title</label>
           </div>
 
           <div className="formline">
@@ -184,10 +178,12 @@ function ContactForm() {
               onChange={handleInputChange}
             ></textarea>
             <label htmlFor="message">Your message here</label>
+            <div>
+            
+            </div>
           </div>
-
-          <div className="centerbtn">
-            <button type="submit">Send</button>
+          <div className='Send-Button'>
+<Button type="submit">Send</Button>
           </div>
         </form>
       </div>

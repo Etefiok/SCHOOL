@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 
 const admissionFormSchema = new mongoose.Schema({
+  surName: { type: String},
   fullName: { type: String},
   motherName: { type: String},
   dob: { type: String},

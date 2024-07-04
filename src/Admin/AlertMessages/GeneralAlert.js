@@ -24,6 +24,10 @@ const GeneralAlert = () => {
   const [editingAlert, setEditingAlert] = useState(null);
   const [showModal, setShowModal] = useState({});
 
+  const [isSavingPost, setIsSavingPost] = useState(false);
+  const [isSavingRepost, setIsSavingRepost] = useState(false);
+  const [selectedAlertForRepost, setSelectedAlertForRepost] = useState(null);
+
   const handleTitleChange = (index, value) => {
     setQuestions((prevQuestions) => {
       const updatedQuestions = [...prevQuestions];
@@ -51,20 +55,43 @@ const GeneralAlert = () => {
     setCurrentQuestionIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
-  const handlePostQuestions = async () => {
+  const [isSaving, setIsSaving] = useState(false);
+  const [expirationDate, setExpirationDate] = useState(null);
+
+  const handlePostQuestion = async () => {
+    if (isSavingPost) return; 
+    setIsSavingPost(true);
     try {
       const response = await axios.post('http://localhost:5000/auth/general-alert', {
         topic: questions[currentQuestionIndex].topic,
         title: questions[currentQuestionIndex].title,
         content: draftToHtml(convertToRaw(questions[currentQuestionIndex].content.getCurrentContent())),
+        expirationDate: expirationDate,
       });
 
-      console.log('Questions posted successfully:', response.data);
-      // Reset the questions state or perform any other necessary actions
+      console.log('Question posted successfully:', response.data);
+
+       // Reset the form fields
+    setQuestions((prevQuestions) => [
+      {
+        title: '',
+        topic: '',
+        content: EditorState.createEmpty(),
+      },
+    ]);
+    setCurrentQuestionIndex(0);
+    setExpirationDate(null);
+
     } catch (error) {
-      console.error('Error posting questions:', error);
+      console.error('Error posting question:', error);
+    } finally {
+      setIsSavingPost(false);
     }
   };
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  // const [alertsPerPage] = useState(20);
 
   useEffect(() => {
     const fetchGeneralAlerts = async () => {
@@ -78,6 +105,18 @@ const GeneralAlert = () => {
 
     fetchGeneralAlerts();
   }, []);
+
+  // const indexOfLastAlert = currentPage * alertsPerPage;
+  // const indexOfFirstAlert = indexOfLastAlert - alertsPerPage;
+  // const currentAlerts = generalAlerts.slice(indexOfFirstAlert, indexOfLastAlert);
+
+  // const handlePreviousPage = () => {
+  //   setCurrentPage(currentPage - 1);
+  // };
+
+  // const handleNextPage = () => {
+  //   setCurrentPage(currentPage + 1);
+  // };
 
 
   // useEffect(() => {
@@ -131,32 +170,51 @@ const GeneralAlert = () => {
     }
   };
 
-  const handleRepostAlert = async (alert) => {
+  const handleRepostAlert = async () => {
+    if (isSavingRepost || !selectedAlertForRepost) return; 
+    setIsSavingRepost(true);
     try {
-      await axios.post('http://localhost:5000/auth/general-alert', {
-        topic: alert.topic,
-        title: alert.title,
-        content: alert.content,
+      const response = await axios.post('http://localhost:5000/auth/general-alert', {
+        topic: selectedAlertForRepost.topic,
+        title: selectedAlertForRepost.title,
+        content: selectedAlertForRepost.content,
       });
-      console.log('Alert reposted successfully');
+
+      console.log('Alert reposted successfully:', response.data);
     } catch (error) {
       console.error('Error reposting general alert:', error);
+    } finally {
+      setIsSavingRepost(false);
+      setSelectedAlertForRepost(null);
     }
   };
 
+  const handleSelectAlertForRepost = (alert) => {
+    setSelectedAlertForRepost(alert);
+    setGeneralAlerts(prevAlerts => prevAlerts.map(a => a._id === alert._id ? { ...a, isRepostSelected: true } : { ...a, isRepostSelected: false }));
+  };
+
+
 
   const handleEditAlert = (alert) => {
-    setEditingAlert(alert);
-    setIsEditMode(true);
-    setQuestions((prevQuestions) => [
-      {
-        title: alert.title,
-        topic: alert.topic,
-        content: EditorState.createWithContent(convertFromRaw(JSON.parse(alert.content))),
-      },
-    ]);
-    setCurrentQuestionIndex(0);
+    try {
+      const parsedContent = JSON.parse(alert.content);
+      setEditingAlert(alert);
+      setIsEditMode(true);
+      setQuestions((prevQuestions) => [
+        {
+          title: alert.title,
+          topic: alert.topic,
+          content: EditorState.createWithContent(convertFromRaw(parsedContent)),
+        },
+      ]);
+      setCurrentQuestionIndex(0);
+    } catch (error) {
+      console.error('Error parsing alert content:', error);
+      // Handle the error, e.g., display an error message to the user
+    }
   };
+  
 
   const handleUpdateAlert = async () => {
     try {
@@ -164,11 +222,14 @@ const GeneralAlert = () => {
         topic: questions[currentQuestionIndex].topic,
         title: questions[currentQuestionIndex].title,
         content: draftToHtml(convertToRaw(questions[currentQuestionIndex].content.getCurrentContent())),
+        expirationDate: expirationDate,
       });
       setGeneralAlerts((prevAlerts) =>
         prevAlerts.map((alert) =>
           alert._id === editingAlert._id
-            ? { ...alert, topic: questions[currentQuestionIndex].topic, title: questions[currentQuestionIndex].title, content: draftToHtml(convertToRaw(questions[currentQuestionIndex].content.getCurrentContent())) }
+            ? { ...alert, topic: questions[currentQuestionIndex].topic, title: questions[currentQuestionIndex].title, content: draftToHtml(convertToRaw(questions[currentQuestionIndex].content.getCurrentContent())),
+            expirationDate: expirationDate,
+             }
             : alert
         )
       );
@@ -188,13 +249,29 @@ const GeneralAlert = () => {
     setShowModal({ ...showModal, [index]: false });
   };
 
+  // const [IsButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  // const handleDisableButton = () => {
+  //   setIsButtonDisabled(true);
+  // }
+
   return (
     <div>
       <h1>General Alert</h1>
       <div>
         <Form>
+
+        <Form.Group style={{width: "20%"}}>
+          <Form.Label>Expiration Date</Form.Label>
+          <Form.Control
+            type="date"
+            value={expirationDate ? moment(expirationDate).format('YYYY-MM-DD') : ''}
+            onChange={(e) => setExpirationDate(e.target.value)}
+          />
+        </Form.Group>
+
           <Form.Group>
-            <Form.Label>Title</Form.Label>
+            <Form.Label>Subject</Form.Label>
             <Form.Control
               type="text"
               value={currentQuestion.title}
@@ -227,64 +304,79 @@ const GeneralAlert = () => {
       <div className="All-Button">
         <Button onClick={handlePreviousQuestion}>Previous</Button>
         <Button onClick={handleNextQuestion}>Next</Button>
-        <Button onClick={handlePostQuestions}>Post</Button>
+        <Button disabled={isSavingPost} onClick={handlePostQuestion}>Post</Button>
+        
+        {/* <Button disabled={isSavingRepost || !selectedAlertForRepost} onClick={handleRepostAlert}>
+          Repost
+        </Button> */}
+
       </div>
+
       <div className="Preview-Section">
         <div>
           <h2>Preview</h2>
           <div className="Correct-Answer">
-            <p>Title: {currentQuestion.title}</p>
+            <p>Subject: {currentQuestion.title}</p>
           </div>
           <div dangerouslySetInnerHTML={{ __html: currentQuestionHtml }} />
         </div>
         <div className="Delete-Post">
-          <Button onClick={handlePostQuestions}>Post</Button>
+        <Button disabled={isSavingPost} onClick={handlePostQuestion}>Post</Button>
           <Button onClick={() => handleDeleteQuestion(currentQuestionIndex)}>
             Delete
           </Button>
         </div>
       </div>
       <hr />
+
+      {/* details section */}
+      
       <div className="Details-Section">
-        {generalAlerts.map((alert, index) => (
-          <div key={index} className="alert-card">
-            <span className='Alert-Order'>
-              <p>{alert.title}</p>
-            </span>
-            <span className='Alert-Order'>
-              <p>{alert.topic}</p>
-            </span>
-            <button onClick={() => handleModalOpen(index)} className='Alert-content'>
-            {/* <span> */}
-              <div dangerouslySetInnerHTML={{ __html: alert.content }} />
-              {/* <div dangerouslySetInnerHTML={{ __html: draftToHtml(convertToRaw(alert.content.getCurrentContent())) }} /> */}
-            {/* </span> */}
-            </button>
-            <span className='Alert-Order'>
-              {moment(alert.createdAt).format("MMM D, YYYY [at] h:mm A")}
-            </span>
-            <div className="Alert-actions">
-              <Button variant="danger" onClick={() => handleDeleteAlert(alert._id)}>
-                Delete
-              </Button>
-              <Button variant="primary" onClick={() => handleRepostAlert(alert)}>
-                Repost
-              </Button>
-              <Button variant="warning" onClick={() => handleEditAlert(alert)}>
-                Edit
-              </Button>
-              <GeneralAlertModal 
-               show={showModal[index] || false}
-               onHide={() => handleModalClose(index)}
-               title={alert.title}
-               content={alert.content}
-               createdAt={alert.createdAt}
-              />
-            </div>
-            <hr />
-          </div>
-        ))}
+    {generalAlerts.map((alert, index) => (
+      <div key={index} className="alert-card">
+        <span className="Alert-Order">
+          <p>{alert.title}</p>
+        </span>
+        <span className="Alert-Order">
+          <p>{alert.topic}</p>
+        </span>
+        <span onClick={() => handleModalOpen(index)} className="Alert-content">
+          <div dangerouslySetInnerHTML={{ __html: alert.content }} />
+        </span>
+        <span className="Alert-Order">
+          {moment(alert.createdAt).format("MMM D, YYYY [at] h:mm A")}
+        </span>
+        
+        <div className="Alert-actions">
+          <Button variant="danger" onClick={() => handleDeleteAlert(alert._id)}>
+            Delete
+          </Button>
+          <Form.Check
+          style={{cursor:"zoom-out"}}
+            type="checkbox"
+            checked={alert.isRepostSelected}
+            disabled={selectedAlertForRepost && selectedAlertForRepost._id !== alert._id}
+            onChange={() => handleSelectAlertForRepost(alert)}
+          />
+          <Button disabled={isSavingRepost || !selectedAlertForRepost} onClick={handleRepostAlert}>
+            Repost
+          </Button>
+          <Button variant="warning" onClick={() => handleEditAlert(alert)}>
+            Edit
+          </Button>
+          <GeneralAlertModal
+            show={showModal[index] || false}
+            onHide={() => handleModalClose(index)}
+            title={alert.title}
+            content={alert.content}
+            createdAt={alert.createdAt}
+          />
+        </div>
+        <hr />
       </div>
+    ))}
+  </div>
+
 
       {isEditMode && (
         <div className="Edit-Mode">

@@ -9,6 +9,7 @@
     margin-right: 10px;
     position: absolute;
     top: 63px;
+    width: 90%;
     z-index: 0;
 }
 
@@ -21,8 +22,9 @@
         margin-left: 10px;
         margin-right: 6px;
         position:relative;
-        top: 0px;
+        top: 80px;
         z-index: 0;
+        width: 98%;
     }
 }
 
@@ -71,6 +73,7 @@
         opacity: 1;
         z-index: 1;
         position:fixed;
+        top: 80px;
     }
 }
 
@@ -131,6 +134,7 @@
    
   }
 
+
 /* 
   .SubjectTop:active {
     transform: scaleX(1);
@@ -147,6 +151,7 @@
     margin-right: 20px;
     border-radius: 2px;
     padding:10px;
+    width: 96%;
     
     
 }
@@ -177,12 +182,25 @@
 
 .Note{
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     /* background-color: silver; */
+    /* border: 1px solid black; */
     margin: 0px;
-    width: 22%;
+    width: 50%;
     padding: 0px;
-    gap:50px
+    /* gap:50px */
+    
+}
+
+.Note-title{
+    display: grid;
+    justify-content: left;
+    /* background-color: silver; */
+    /* border: 1px solid black; */
+    margin: 0px;
+    width: 50%;
+    padding: 0px;
+    /* gap:50px */
     
 }
 
@@ -199,13 +217,15 @@
 
 .SubSection{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-color: white;
     border: 1px solid rgb(218, 218, 218);
     font-size: 12px;
     margin-left: 20px;
     margin-right: 20px;
     padding: 10px;
+    width: 96%;
+    gap: 20px;
 }
 .SubSection p{
     margin: 0;
@@ -226,9 +246,30 @@
 /* Icon Section */
 .icon {
     display: grid; 
+    justify-content: left;
     grid-template-columns: auto auto;
     text-align: left;
-    /* background-color: #005be4; */
+    /* background-color: #005be4;
+    border: 1px solid black; */
+    width: none;
+    height: none;
+    overflow: hidden;
+
+}
+
+
+@media screen and (min-width: 768px) {
+    .icon {
+        display: grid; 
+        justify-content: left;
+        grid-template-columns: auto auto;
+        text-align: left;
+        /* background-color: #005be4;
+        border: 1px solid black; */
+        width: 27%;
+        height: 10%;
+        overflow: hidden;
+    }
 }
 
 .break-gap{
@@ -305,14 +346,15 @@ background-color: blue;
 
 .content button{
     position: absolute;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 15px;
     font-weight: bolder;
     right: 20px;
     top: 10px;
-    background-color: rgba(255, 255, 255, 0.288);
+    background-color: rgb(255, 0, 0);
     cursor: pointer;
     z-index: 1000;
+    border: none;
 
     
 }
@@ -336,14 +378,15 @@ background-color: blue;
 
     .content button{
         position: absolute;
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
         font-size: 15px;
         font-weight: bolder;
         right: 10px;
         top: 10px;
-        background-color: rgba(255, 255, 255, 0.288);
+        background-color: rgb(255, 0, 0);
         cursor: pointer;
         z-index: 1000;
+        border: none;
     
         
     }

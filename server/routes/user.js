@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../index.js";
 import nodemailer from "nodemailer";
 import { Comment } from "../models/Comment.js";
-const router = express.Router();
 import PrivateMessage from "../models/PrivateMessage.js";
 import {EconomicsExam} from "../models/EconomicsExam.js";
 import path from "path-browserify";
@@ -15,12 +14,16 @@ import { ContactUs } from "../models/contactUsSchema.js";
 import { ApplicationForm } from "../models/applicationFormSchema.js";
 import multer from "multer";
 import { GeneralAlert } from "../models/GeneralAlertSchema.js";
-
-
+import {TermsAndConditions} from "../models/TermsAndConditionsSchema.js"
+import fs from 'fs';
 // import privateMessagesRoute from './routes/privateMessages';
+import  Jss1econssession  from "../models/EconomicsSessionSchema.js"; 
+import { CommentsEcons } from "../models/CommentsEcons.js";
+import Jss1MathsSession from "../models/MathsSessionSchema.js";
 
 
 
+const router = express.Router();
 
 
 // Middleware to parse JSON request bodies
@@ -87,16 +90,36 @@ router.get('/comments/count', async (req, res) => {
 });
 
 
-// API endpoint to get the total number of registered users
-// router.get('/count', async (req, res) => {
-//   try {
-//     const userCount = await Number_UserCount.countDocuments();
-//     res.json({ count: userCount });
-//   } catch (error) {
-//     console.error('Error fetching user count:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
+router.get('/commentsEcons', async (req, res) => {
+  try {
+    const commentsEcons = await CommentsEcons.find().sort({ createdAt: -1 });
+    res.json(commentsEcons);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.post('/commentsEcons', async (req, res) => {
+  const { content, Username } = req.body;
+  const newComment = new CommentsEcons({ content, Username });
+
+  try {
+    await newComment.save();
+    res.status(201).json(newComment);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+
+router.get('/commentsEcons/count', async (req, res) => {
+  try {
+    const totalCommentsEcons = await CommentsEcons.countDocuments();
+    res.json({ totalCommentsEcons });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 
 
@@ -174,11 +197,6 @@ router.post('/', async (req, res) => {
 });
 
 
-
-
-
-
-
 router.post("/signup", async (req, res) => {
   const {
     Username,
@@ -247,6 +265,11 @@ router.post("/login", async (req, res) => {
       expiresIn: "1h",
     });
 
+    // Generate JWT token
+    // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    //   expiresIn: "1h",
+    // });
+
     // Return success response with user data and token
     return res.status(200).json({
         status: true,
@@ -260,6 +283,7 @@ router.post("/login", async (req, res) => {
         Phonenumber: user.Phonenumber,
       },
     });
+    
   } catch (error) {
     console.error("Login error:", error);
     return res.status(500).json({ message: "Internal server error" });
@@ -415,6 +439,8 @@ const verifyUser = async (req, res, next) => {
   }
 };
 
+
+
 router.get('/verify', verifyUser, (req, res) => {
   // Check the requested page and respond accordingly
   const requestedPage = req.query.page;
@@ -456,15 +482,16 @@ router.get("/logout", (req, res) => {
 
 
 // Configure multer for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
-  }
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+      cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    },
+  }),
 });
-const upload = multer({ storage: storage });
 
 // Route to handle the admission form submission
 router.post('/admission-form', upload.fields([
@@ -474,6 +501,7 @@ router.post('/admission-form', upload.fields([
 
   try {
     const {
+      surName,
       fullName,
       motherName,
       dob,
@@ -495,6 +523,7 @@ router.post('/admission-form', upload.fields([
     } = req.body;
 
     const admissionForm = new AdmissionForm({
+      surName,
       fullName,
       motherName,
       dob,
@@ -573,10 +602,27 @@ router.get('/ContactUs', async (req, res) => {
   }
 });
 
-router.post('/applications', upload.single('resume'), async (req, res) => {
+
+
+
+
+// Configure multer for file uploads
+const applicationStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+  },
+});
+
+const applicationUpload = multer({ storage: applicationStorage });
+
+// Application Form Route
+router.post('/application-form', applicationUpload.single('resume'), async (req, res) => {
   try {
     const { fullName, emailAddress, position, message } = req.body;
-    const resume = req.file?.buffer;
+    const resume = req.file?.filename;
 
     if (!fullName || !emailAddress || !position || !resume) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -587,7 +633,7 @@ router.post('/applications', upload.single('resume'), async (req, res) => {
       emailAddress,
       position,
       resume,
-      message
+      message,
     });
 
     await newApplication.save();
@@ -596,6 +642,58 @@ router.post('/applications', upload.single('resume'), async (req, res) => {
     console.error('Error submitting application:', error);
     res.status(500).json({ message: 'Error submitting application', error: error.message });
   }
+});
+
+
+
+router.get('/application-forms', async (req, res) => {
+  try {
+    const applicationForms = await ApplicationForm.find().sort({ createdAt: -1 });
+    res.status(200).json(applicationForms);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Route to get application forms with pagination
+router.get('/application-forms', async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const skip = (page - 1) * limit;
+
+    const totalForms = await ApplicationForm.countDocuments();
+    const totalPages = Math.ceil(totalForms / limit);
+
+    const applicationForms = await ApplicationForm.find().skip(skip).limit(limit);
+
+    res.json({
+      forms: applicationForms,
+      totalForms,
+      totalPages
+    });
+  } catch (error) {
+    console.error('Error fetching application forms:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Serve static files from the uploads directory
+router.get('/uploads/:filename', (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(__dirname, '../uploads', filename);
+
+  // Check if the file exists
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ message: 'File not found' });
+  }
+
+  res.download(filePath, (err) => {
+    if (err) {
+      console.error('Error downloading file:', err);
+      res.status(500).json({ message: 'Error downloading file' });
+    }
+  });
 });
 
 
@@ -693,6 +791,171 @@ router.put('/general-alerts/:id', async (req, res) => {
     res.json({ message: 'Alert updated successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+});
+
+
+// API endpoint to get the terms and conditions
+router.get('/terms-and-conditions', async (req, res) => {
+  try {
+    const termsAndConditions = await TermsAndConditions.findOne({}, '-_id content updatedAt');
+    res.json(termsAndConditions);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error fetching terms and conditions' });
+  }
+});
+
+// API endpoint to save the terms and conditions
+router.post('/terms-and-conditions', async (req, res) => {
+  try {
+    const { content } = req.body;
+    const updatedAt = new Date().toLocaleString();
+    const termsAndConditions = await TermsAndConditions.findOneAndUpdate(
+      {},
+      { content, updatedAt },
+      { upsert: true, new: true }
+    );
+    res.json({ message: 'Terms and conditions saved successfully', updatedAt });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error saving terms and conditions' });
+  }
+});
+
+
+
+// POST endpoint to save questions
+router.post('/jss1econssession', async (req, res) => {
+  try {
+    const questionsData = req.body; // Assuming req.body is an array of questions
+    
+    // Save each question to MongoDB
+    const savedQuestions = await Jss1econssession.insertMany(questionsData);
+    
+    res.status(200).json(savedQuestions);
+  } catch (err) {
+    console.error('Error saving questions:', err);
+    res.status(500).json({ error: 'Failed to save questions' });
+  }
+});
+
+
+
+
+
+// // Multer setup for file upload
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'uploads/')
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+//   }
+// });
+
+// const econs = multer({ storage: storage });
+
+// // Route to handle file upload
+// router.post('/jss1econssession', econs.single('file'), (req, res) => {
+//   try {
+//     // Construct the URL based on your server's setup
+//     const fileUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+//     // Save fileUrl to MongoDB or return it to frontend
+//     res.json({ url: fileUrl });
+//   } catch (error) {
+//     console.error('Error uploading file:', error);
+//     res.status(500).json({ error: 'Failed to upload file' });
+//   }
+// });
+
+
+
+
+// GET all jss1econssession posts
+router.get('/jss1econssession', async (req, res) => {
+  try {
+    const posts = await Jss1econssession.find().sort({ updatedAt: -1 }); // Sort by updatedAt descending
+    res.json(posts);
+  } catch (error) {
+    console.error('Error fetching jss1econssession posts:', error);
+    res.status(500).json({ error: 'Failed to fetch jss1econssession posts' });
+  }
+});
+
+
+
+
+// DELETE a session post by ID
+router.delete('/jss1econssession/:postId', async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const deletedPost = await jss1econssession.findByIdAndDelete(postId);
+    if (!deletedPost) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+    res.status(200).json({ message: 'Post deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
+// POST endpoint to save questions
+router.post('/jss1MathsSession', async (req, res) => {
+  try {
+    const questionsData = req.body; // Assuming req.body is an array of questions
+    
+    // Save each question to MongoDB
+    const savedQuestions = await Jss1MathsSession.insertMany(questionsData);
+    
+    res.status(200).json(savedQuestions);
+  } catch (err) {
+    console.error('Error saving questions:', err);
+    res.status(500).json({ error: 'Failed to save questions' });
+  }
+});
+
+
+// API endpoint to fetch all jss1econssession posts
+router.get('/jss1MathsSession', async (req, res) => {
+  try {
+    const jss1MathsSessionPosts = await Jss1MathsSession.find().sort({createdAt: +1})
+    .exec();
+    res.json(jss1MathsSessionPosts);
+  } catch (error) {
+    console.error('Error fetching jss1MathsSession posts:', error);
+    res.status(500).json({ error: 'Failed to fetch jss1MathsSession posts' });
+  }
+});
+
+
+// DELETE a session post by ID
+router.delete('/jss1MathsSession/:postId', async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const deletedPost = await Jss1MathsSession.findByIdAndDelete(postId);
+    if (!deletedPost) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+    res.status(200).json({ message: 'Post deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
+
+// API endpoint to fetch all users
+router.get('/users', async (req, res) => {
+  try {
+    const users = await User.find({}, { Username: 1, Firstname: 1, Lastname: 1, Email: 1, Phonenumber: 1, Confirmpassword: 1 });
+    res.json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Failed to fetch users' });
   }
 });
 
